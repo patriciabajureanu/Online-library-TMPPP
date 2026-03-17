@@ -1,0 +1,1268 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|c:\\users\\user\\desktop\\an 3\\sem 2\\tmppp\\onlinelibrary\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\LibraryController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Controllers\\LibraryController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\facade\\libraryfacade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:facade\\libraryfacade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\facade\\subsystems\\auditlogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:facade\\subsystems\\auditlogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\facade\\subsystems\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:facade\\subsystems\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\facade\\subsystems\\loanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:facade\\subsystems\\loanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\facade\\subsystems\\bookcatalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:facade\\subsystems\\bookcatalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\facade\\subsystems\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:facade\\subsystems\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\facade\\subsystems\\uservalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:facade\\subsystems\\uservalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\composite\\genre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:composite\\genre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\composite\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:composite\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\composite\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:composite\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\composite\\librarycomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:composite\\librarycomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\BookController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Controllers\\BookController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\factory\\creators\\audiobookcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:factory\\creators\\audiobookcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\abstract\\factories\\professorfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:abstract\\factories\\professorfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\abstract\\factories\\studentfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:abstract\\factories\\studentfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\abstract\\products\\professorloan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:abstract\\products\\professorloan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\abstract\\products\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:abstract\\products\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\abstract\\products\\studentloan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:abstract\\products\\studentloan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\abstract\\products\\professor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:abstract\\products\\professor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\abstract\\interfaces\\iuserfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:abstract\\interfaces\\iuserfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\abstract\\interfaces\\iloan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:abstract\\interfaces\\iloan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\abstract\\interfaces\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:abstract\\interfaces\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\controllers\\readercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:controllers\\readercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Shared\\_Layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\Shared\\_Layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\User\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\User\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\adapter\\services\\libraryreaderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:adapter\\services\\libraryreaderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\adapter\\adapter\\pdfreaderadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:adapter\\adapter\\pdfreaderadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\adapter\\adaptee\\externalpdfreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:adapter\\adaptee\\externalpdfreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\adapter\\interfaces\\iebookreader.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:adapter\\interfaces\\iebookreader.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Builders\\LibraryDirector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Builder\\Builders\\LibraryDirector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Builders\\BookBuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Builder\\Builders\\BookBuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Loan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Models\\Loan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\singleton\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:singleton\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\PrintedBookCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Factory\\PrintedBookCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\DigitalBookCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Factory\\DigitalBookCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\LibraryItemCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Factory\\LibraryItemCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\AudioBookCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Factory\\AudioBookCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\PrintedBook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\PrintedBook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\ILibraryItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Interfaces\\ILibraryItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\DigitalBook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\DigitalBook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\ProfessorFactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Factory\\ProfessorFactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\AudioBook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\AudioBook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\Student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Professor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\Professor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\StudentLoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\StudentLoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\ProfessorLoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\ProfessorLoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\StudentFactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Factory\\StudentFactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\IUserFactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Interfaces\\IUserFactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\ILoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Interfaces\\ILoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\IUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Interfaces\\IUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Prototype\\Models\\AnalyticalReport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Prototype\\Models\\AnalyticalReport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Prototype\\Report\\ReportTemplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Prototype\\Report\\ReportTemplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Prototype\\Interfaces\\IPrototype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Prototype\\Interfaces\\IPrototype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\ReportController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Controllers\\ReportController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\Creators\\PrintedBookCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Factory\\Creators\\PrintedBookCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\Creators\\LibraryItemCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Factory\\Creators\\LibraryItemCreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Interfaces\\ILibraryBuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Builder\\Interfaces\\ILibraryBuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Models\\Book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Builder\\Models\\Book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Models\\Magazine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Builder\\Models\\Magazine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Builders\\MagazineBuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Builder\\Builders\\MagazineBuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Home\\Contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\Home\\Contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Home\\About.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\Home\\About.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\Web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Shared\\Error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\Shared\\Error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\_ViewStart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\_ViewStart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Book\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\Book\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\IAuthentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Interfaces\\IAuthentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\ILibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Interfaces\\ILibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\HomeController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Controllers\\HomeController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Library\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\Library\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Library\\Details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\Library\\Details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Library\\Borrow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Views\\Library\\Borrow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\FinePayment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Models\\FinePayment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Models\\Catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E13DFD-A507-412E-B5B9-43EA91D17611}|OnlineLibrary.csproj|solutionrelative:Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LibraryFacade.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\LibraryFacade.cs",
+              "RelativeDocumentMoniker": "Facade\\LibraryFacade.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\LibraryFacade.cs",
+              "RelativeToolTip": "Facade\\LibraryFacade.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:47:03.82Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuditLogger.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\AuditLogger.cs",
+              "RelativeDocumentMoniker": "Facade\\Subsystems\\AuditLogger.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\AuditLogger.cs",
+              "RelativeToolTip": "Facade\\Subsystems\\AuditLogger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:46:29.13Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\NotificationService.cs",
+              "RelativeDocumentMoniker": "Facade\\Subsystems\\NotificationService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\NotificationService.cs",
+              "RelativeToolTip": "Facade\\Subsystems\\NotificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:46:05.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoanService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\LoanService.cs",
+              "RelativeDocumentMoniker": "Facade\\Subsystems\\LoanService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\LoanService.cs",
+              "RelativeToolTip": "Facade\\Subsystems\\LoanService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:45:43.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BookCatalog.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\BookCatalog.cs",
+              "RelativeDocumentMoniker": "Facade\\Subsystems\\BookCatalog.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\BookCatalog.cs",
+              "RelativeToolTip": "Facade\\Subsystems\\BookCatalog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:45:14.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LibraryController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\LibraryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LibraryController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\LibraryController.cs",
+              "RelativeToolTip": "Controllers\\LibraryController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAADwvxkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:30:29.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAABQBAAAAAAAAAAAkwCsBAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:56:59.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Facade\\Subsystems\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\UserRepository.cs",
+              "RelativeToolTip": "Facade\\Subsystems\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:44:42.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserValidator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\UserValidator.cs",
+              "RelativeDocumentMoniker": "Facade\\Subsystems\\UserValidator.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Facade\\Subsystems\\UserValidator.cs",
+              "RelativeToolTip": "Facade\\Subsystems\\UserValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:44:09.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Genre.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Composite\\Genre.cs",
+              "RelativeDocumentMoniker": "Composite\\Genre.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Composite\\Genre.cs",
+              "RelativeToolTip": "Composite\\Genre.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAiwAkAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:26:43.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Author.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Composite\\Author.cs",
+              "RelativeDocumentMoniker": "Composite\\Author.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Composite\\Author.cs",
+              "RelativeToolTip": "Composite\\Author.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:25:14.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Composite\\Book.cs",
+              "RelativeDocumentMoniker": "Composite\\Book.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Composite\\Book.cs",
+              "RelativeToolTip": "Composite\\Book.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:24:55.915Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LibraryComponent.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Composite\\LibraryComponent.cs",
+              "RelativeDocumentMoniker": "Composite\\LibraryComponent.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Composite\\LibraryComponent.cs",
+              "RelativeToolTip": "Composite\\LibraryComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:24:05.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Products\\Student.cs",
+              "RelativeDocumentMoniker": "Abstract\\Products\\Student.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Products\\Student.cs",
+              "RelativeToolTip": "Abstract\\Products\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:25:04.715Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IUserFactory.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Interfaces\\IUserFactory.cs",
+              "RelativeDocumentMoniker": "Abstract\\Interfaces\\IUserFactory.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Interfaces\\IUserFactory.cs",
+              "RelativeToolTip": "Abstract\\Interfaces\\IUserFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:24:40.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Professor.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Products\\Professor.cs",
+              "RelativeDocumentMoniker": "Abstract\\Products\\Professor.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Products\\Professor.cs",
+              "RelativeToolTip": "Abstract\\Products\\Professor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:25:21.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AudioBookCreator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\Creators\\AudioBookCreator.cs",
+              "RelativeDocumentMoniker": "Factory\\Creators\\AudioBookCreator.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\Creators\\AudioBookCreator.cs",
+              "RelativeToolTip": "Factory\\Creators\\AudioBookCreator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:27:34.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ILoan.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Interfaces\\ILoan.cs",
+              "RelativeDocumentMoniker": "Abstract\\Interfaces\\ILoan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Interfaces\\ILoan.cs",
+              "RelativeToolTip": "Abstract\\Interfaces\\ILoan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:24:12.146Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "IUser.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Interfaces\\IUser.cs",
+              "RelativeDocumentMoniker": "Abstract\\Interfaces\\IUser.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Interfaces\\IUser.cs",
+              "RelativeToolTip": "Abstract\\Interfaces\\IUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:23:47.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ReaderController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\ReaderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReaderController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\ReaderController.cs",
+              "RelativeToolTip": "Controllers\\ReaderController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAQwCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:08:23.869Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BookController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\BookController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\BookController.cs",
+              "RelativeToolTip": "Controllers\\BookController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:31:28.295Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "StudentLoan.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Products\\StudentLoan.cs",
+              "RelativeDocumentMoniker": "Abstract\\Products\\StudentLoan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Products\\StudentLoan.cs",
+              "RelativeToolTip": "Abstract\\Products\\StudentLoan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:25:47.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProfessorLoan.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Products\\ProfessorLoan.cs",
+              "RelativeDocumentMoniker": "Abstract\\Products\\ProfessorLoan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Products\\ProfessorLoan.cs",
+              "RelativeToolTip": "Abstract\\Products\\ProfessorLoan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:26:08.067Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ProfessorFactory.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Factories\\ProfessorFactory.cs",
+              "RelativeDocumentMoniker": "Abstract\\Factories\\ProfessorFactory.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Factories\\ProfessorFactory.cs",
+              "RelativeToolTip": "Abstract\\Factories\\ProfessorFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:26:58.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "StudentFactory.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Factories\\StudentFactory.cs",
+              "RelativeDocumentMoniker": "Abstract\\Factories\\StudentFactory.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Abstract\\Factories\\StudentFactory.cs",
+              "RelativeToolTip": "Abstract\\Factories\\StudentFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:26:38.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "LibraryReaderService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Adapter\\Services\\LibraryReaderService.cs",
+              "RelativeDocumentMoniker": "Adapter\\Services\\LibraryReaderService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Adapter\\Services\\LibraryReaderService.cs",
+              "RelativeToolTip": "Adapter\\Services\\LibraryReaderService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T18:06:08.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Global.asax.cs",
+              "RelativeDocumentMoniker": "Global.asax.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Global.asax.cs",
+              "RelativeToolTip": "Global.asax.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T17:35:09.972Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\User\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\User\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\User\\Index.cshtml",
+              "RelativeToolTip": "Views\\User\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:36:33.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:51:16.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "PdfReaderAdapter.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Adapter\\Adapter\\PdfReaderAdapter.cs",
+              "RelativeDocumentMoniker": "Adapter\\Adapter\\PdfReaderAdapter.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Adapter\\Adapter\\PdfReaderAdapter.cs",
+              "RelativeToolTip": "Adapter\\Adapter\\PdfReaderAdapter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T17:43:42.592Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ExternalPdfReader.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Adapter\\Adaptee\\ExternalPdfReader.cs",
+              "RelativeDocumentMoniker": "Adapter\\Adaptee\\ExternalPdfReader.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Adapter\\Adaptee\\ExternalPdfReader.cs",
+              "RelativeToolTip": "Adapter\\Adaptee\\ExternalPdfReader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T17:52:07.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IEBookReader.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Adapter\\Interfaces\\IEBookReader.cs",
+              "RelativeDocumentMoniker": "Adapter\\Interfaces\\IEBookReader.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Adapter\\Interfaces\\IEBookReader.cs",
+              "RelativeToolTip": "Adapter\\Interfaces\\IEBookReader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T17:31:11.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "LibraryDirector.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Builders\\LibraryDirector.cs",
+              "RelativeDocumentMoniker": "Builder\\Builders\\LibraryDirector.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Builders\\LibraryDirector.cs",
+              "RelativeToolTip": "Builder\\Builders\\LibraryDirector.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T09:43:29.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:31:07.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Loan.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Loan.cs",
+              "RelativeDocumentMoniker": "Models\\Loan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Loan.cs",
+              "RelativeToolTip": "Models\\Loan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:33:00.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "BookBuilder.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Builders\\BookBuilder.cs",
+              "RelativeDocumentMoniker": "Builder\\Builders\\BookBuilder.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Builders\\BookBuilder.cs",
+              "RelativeToolTip": "Builder\\Builders\\BookBuilder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T09:42:30.283Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "IPrototype.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Prototype\\Interfaces\\IPrototype.cs",
+              "RelativeDocumentMoniker": "Prototype\\Interfaces\\IPrototype.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Prototype\\Interfaces\\IPrototype.cs",
+              "RelativeToolTip": "Prototype\\Interfaces\\IPrototype.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T08:27:01.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "ReportTemplate.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Prototype\\Report\\ReportTemplate.cs",
+              "RelativeDocumentMoniker": "Prototype\\Report\\ReportTemplate.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Prototype\\Report\\ReportTemplate.cs",
+              "RelativeToolTip": "Prototype\\Report\\ReportTemplate.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAIwB4AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T08:27:48.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "ReportController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\ReportController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReportController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\ReportController.cs",
+              "RelativeToolTip": "Controllers\\ReportController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAADwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T08:35:16.427Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "DatabaseManager.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Singleton\\DatabaseManager.cs",
+              "RelativeDocumentMoniker": "Singleton\\DatabaseManager.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Singleton\\DatabaseManager.cs",
+              "RelativeToolTip": "Singleton\\DatabaseManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T08:34:19.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "AnalyticalReport.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Prototype\\Models\\AnalyticalReport.cs",
+              "RelativeDocumentMoniker": "Prototype\\Models\\AnalyticalReport.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Prototype\\Models\\AnalyticalReport.cs",
+              "RelativeToolTip": "Prototype\\Models\\AnalyticalReport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T08:29:33.344Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "PrintedBookCreator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\Creators\\PrintedBookCreator.cs",
+              "RelativeDocumentMoniker": "Factory\\Creators\\PrintedBookCreator.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\Creators\\PrintedBookCreator.cs",
+              "RelativeToolTip": "Factory\\Creators\\PrintedBookCreator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T22:20:50.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "LibraryItemCreator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\Creators\\LibraryItemCreator.cs",
+              "RelativeDocumentMoniker": "Factory\\Creators\\LibraryItemCreator.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\Creators\\LibraryItemCreator.cs",
+              "RelativeToolTip": "Factory\\Creators\\LibraryItemCreator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T22:20:42.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "ILibraryBuilder.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Interfaces\\ILibraryBuilder.cs",
+              "RelativeDocumentMoniker": "Builder\\Interfaces\\ILibraryBuilder.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Interfaces\\ILibraryBuilder.cs",
+              "RelativeToolTip": "Builder\\Interfaces\\ILibraryBuilder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T09:41:37.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "Builder\\Models\\Book.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Models\\Book.cs",
+              "RelativeToolTip": "Builder\\Models\\Book.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:32:02.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "Magazine.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Models\\Magazine.cs",
+              "RelativeDocumentMoniker": "Builder\\Models\\Magazine.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Models\\Magazine.cs",
+              "RelativeToolTip": "Builder\\Models\\Magazine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAowAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T09:40:50.95Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "MagazineBuilder.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Builders\\MagazineBuilder.cs",
+              "RelativeDocumentMoniker": "Builder\\Builders\\MagazineBuilder.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Builder\\Builders\\MagazineBuilder.cs",
+              "RelativeToolTip": "Builder\\Builders\\MagazineBuilder.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwAEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T09:42:54.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "PrintedBookCreator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\PrintedBookCreator.cs",
+              "RelativeDocumentMoniker": "Factory\\PrintedBookCreator.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\PrintedBookCreator.cs",
+              "RelativeToolTip": "Factory\\PrintedBookCreator.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:34:54.719Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "DigitalBookCreator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\DigitalBookCreator.cs",
+              "RelativeDocumentMoniker": "Factory\\DigitalBookCreator.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\DigitalBookCreator.cs",
+              "RelativeToolTip": "Factory\\DigitalBookCreator.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:35:05.06Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "LibraryItemCreator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\LibraryItemCreator.cs",
+              "RelativeDocumentMoniker": "Factory\\LibraryItemCreator.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\LibraryItemCreator.cs",
+              "RelativeToolTip": "Factory\\LibraryItemCreator.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:34:45.6Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "AudioBookCreator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\AudioBookCreator.cs",
+              "RelativeDocumentMoniker": "Factory\\AudioBookCreator.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\AudioBookCreator.cs",
+              "RelativeToolTip": "Factory\\AudioBookCreator.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:35:15.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "PrintedBook.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\PrintedBook.cs",
+              "RelativeDocumentMoniker": "Models\\PrintedBook.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\PrintedBook.cs",
+              "RelativeToolTip": "Models\\PrintedBook.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:32:14.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "ILibraryItem.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\ILibraryItem.cs",
+              "RelativeDocumentMoniker": "Interfaces\\ILibraryItem.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\ILibraryItem.cs",
+              "RelativeToolTip": "Interfaces\\ILibraryItem.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:34:02.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "DigitalBook.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\DigitalBook.cs",
+              "RelativeDocumentMoniker": "Models\\DigitalBook.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\DigitalBook.cs",
+              "RelativeToolTip": "Models\\DigitalBook.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:32:23.848Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "ProfessorFactory.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\ProfessorFactory.cs",
+              "RelativeDocumentMoniker": "Factory\\ProfessorFactory.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\ProfessorFactory.cs",
+              "RelativeToolTip": "Factory\\ProfessorFactory.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T19:12:12.308Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "AudioBook.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\AudioBook.cs",
+              "RelativeDocumentMoniker": "Models\\AudioBook.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\AudioBook.cs",
+              "RelativeToolTip": "Models\\AudioBook.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:32:32.604Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "Models\\Student.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Student.cs",
+              "RelativeToolTip": "Models\\Student.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T19:10:03.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Professor.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Professor.cs",
+              "RelativeDocumentMoniker": "Models\\Professor.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Professor.cs",
+              "RelativeToolTip": "Models\\Professor.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T19:10:24.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "StudentLoan.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\StudentLoan.cs",
+              "RelativeDocumentMoniker": "Models\\StudentLoan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\StudentLoan.cs",
+              "RelativeToolTip": "Models\\StudentLoan.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T19:10:39.769Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "ProfessorLoan.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\ProfessorLoan.cs",
+              "RelativeDocumentMoniker": "Models\\ProfessorLoan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\ProfessorLoan.cs",
+              "RelativeToolTip": "Models\\ProfessorLoan.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T19:11:02.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "StudentFactory.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\StudentFactory.cs",
+              "RelativeDocumentMoniker": "Factory\\StudentFactory.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Factory\\StudentFactory.cs",
+              "RelativeToolTip": "Factory\\StudentFactory.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T19:11:28.529Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "IUserFactory.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\IUserFactory.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IUserFactory.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\IUserFactory.cs",
+              "RelativeToolTip": "Interfaces\\IUserFactory.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T19:09:37.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "ILoan.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\ILoan.cs",
+              "RelativeDocumentMoniker": "Interfaces\\ILoan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\ILoan.cs",
+              "RelativeToolTip": "Interfaces\\ILoan.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T19:09:10.58Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "IUser.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\IUser.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IUser.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\IUser.cs",
+              "RelativeToolTip": "Interfaces\\IUser.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T19:08:43.025Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Home\\Contact.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Contact.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Home\\Contact.cshtml",
+              "RelativeToolTip": "Views\\Home\\Contact.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:56:58.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\About.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "Views\\Home\\About.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:56:57.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Web.config",
+              "RelativeDocumentMoniker": "Views\\Web.config",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Web.config",
+              "RelativeToolTip": "Views\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-02-22T18:53:40.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:53:39.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:51:00.826Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Book\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Book\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Book\\Index.cshtml",
+              "RelativeToolTip": "Views\\Book\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:40:40.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "IAuthentication.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\IAuthentication.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IAuthentication.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\IAuthentication.cs",
+              "RelativeToolTip": "Interfaces\\IAuthentication.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:34:20.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "ILibrary.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\ILibrary.cs",
+              "RelativeDocumentMoniker": "Interfaces\\ILibrary.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Interfaces\\ILibrary.cs",
+              "RelativeToolTip": "Interfaces\\ILibrary.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:34:12.218Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:49:35.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Library\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Library\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Library\\Index.cshtml",
+              "RelativeToolTip": "Views\\Library\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:35:41.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Library\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Library\\Details.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Library\\Details.cshtml",
+              "RelativeToolTip": "Views\\Library\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:35:55.326Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "Borrow.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Library\\Borrow.cshtml",
+              "RelativeDocumentMoniker": "Views\\Library\\Borrow.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Views\\Library\\Borrow.cshtml",
+              "RelativeToolTip": "Views\\Library\\Borrow.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-22T18:36:09.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "FinePayment.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\FinePayment.cs",
+              "RelativeDocumentMoniker": "Models\\FinePayment.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\FinePayment.cs",
+              "RelativeToolTip": "Models\\FinePayment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:33:08.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "Catalog.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Catalog.cs",
+              "RelativeDocumentMoniker": "Models\\Catalog.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\Catalog.cs",
+              "RelativeToolTip": "Models\\Catalog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:32:50.326Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\An 3\\Sem 2\\TMPPP\\OnlineLibrary\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T18:32:41.565Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
