@@ -1,0 +1,37 @@
+﻿@model OnlineLibrary.Models.BridgeDemoViewModel
+
+@{
+     ViewBag.Title = "Bridge Demo";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="py-5">
+     <div class="container">
+          <div class="section-header align-center">
+               <div class="title">
+                    <span>Design Pattern Demonstration</span>
+               </div>
+               <h2 class="section-title">Bridge Pattern</h2>
+          </div>
+
+          <div class="mb-4">
+               <p>
+                    Bridge separates the resource type from the delivery method, allowing them to vary independently.
+               </p>
+          </div>
+
+          <div class="row">
+               @foreach (var item in Model.Items)
+               {
+                    <div class="col-md-6 mb-4">
+                         <div class="p-4 border rounded bg-white h-100">
+                              <h4>@item.ResourceType</h4>
+                              <p><strong>Delivery:</strong> @item.DeliveryType</p>
+                              <p><strong>Resource ID:</strong> @item.ResourceId</p>
+                              <p><strong>Result:</strong> @item.Result</p>
+                         </div>
+                    </div>
+               }
+          </div>
+     </div>
+</section>

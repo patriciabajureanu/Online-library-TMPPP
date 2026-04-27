@@ -1,0 +1,16 @@
+﻿@{
+     ViewBag.Title = "Memento Demo";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="py-5">
+     <div class="container">
+          <h2>Memento Pattern Demo</h2>
+
+          <div class="p-4 border rounded">
+               <p><strong>Saved state:</strong> @ViewBag.SavedState</p>
+               <p><strong>Changed state:</strong> @ViewBag.ChangedState</p>
+               <p><strong>Restored state after Undo:</strong> @ViewBag.RestoredState</p>
+          </div>
+     </div>
+</section>

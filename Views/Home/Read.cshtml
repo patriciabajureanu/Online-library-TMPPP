@@ -1,0 +1,13 @@
+﻿@{
+     ViewBag.Title = "Read Book";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="py-5">
+     <div class="container">
+          <h2>Book ID: @ViewBag.BookId</h2>
+          <div class="mt-4 p-4 border rounded">
+               <p>@ViewBag.Content</p>
+          </div>
+     </div>
+</section>

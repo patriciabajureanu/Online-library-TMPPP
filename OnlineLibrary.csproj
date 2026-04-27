@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="packages\Microsoft.AspNetCore.Mvc.Razor.Extensions.2.3.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.props" Condition="Exists('packages\Microsoft.AspNetCore.Mvc.Razor.Extensions.2.3.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.props')" />
   <Import Project="packages\Microsoft.DiaSymReader.Native.1.7.0\build\Microsoft.DiaSymReader.Native.props" Condition="Exists('packages\Microsoft.DiaSymReader.Native.1.7.0\build\Microsoft.DiaSymReader.Native.props')" />
   <Import Project="packages\Microsoft.AspNetCore.Razor.Design.2.3.0\build\netstandard2.0\Microsoft.AspNetCore.Razor.Design.props" Condition="Exists('packages\Microsoft.AspNetCore.Razor.Design.2.3.0\build\netstandard2.0\Microsoft.AspNetCore.Razor.Design.props')" />
@@ -48,6 +49,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Antiforgery, Version=2.3.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNetCore.Antiforgery.2.3.0\lib\netstandard2.0\Microsoft.AspNetCore.Antiforgery.dll</HintPath>
     </Reference>
@@ -499,20 +506,43 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Bridge\AudiobookResource.cs" />
+    <Compile Include="Bridge\CloudDelivery.cs" />
+    <Compile Include="Bridge\DownloadDelivery.cs" />
+    <Compile Include="Bridge\EbookResource.cs" />
+    <Compile Include="Bridge\IContentDelivery.cs" />
+    <Compile Include="Bridge\LibraryResource.cs" />
+    <Compile Include="Bridge\MagazineResource.cs" />
+    <Compile Include="Bridge\StreamingDelivery.cs" />
     <Compile Include="Builder\Builders\BookBuilder.cs" />
     <Compile Include="Builder\Builders\LibraryDirector.cs" />
     <Compile Include="Builder\Builders\MagazineBuilder.cs" />
+    <Compile Include="Command\BorrowBookCommand.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\LibraryInvoker.cs" />
+    <Compile Include="Command\LibraryManager.cs" />
+    <Compile Include="Command\ReserveBookCommand.cs" />
+    <Compile Include="Command\ReturnBookCommand.cs" />
     <Compile Include="Composite\Book.cs" />
     <Compile Include="Composite\Author.cs" />
     <Compile Include="Composite\Genre.cs" />
     <Compile Include="Composite\LibraryComponent.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\DecoratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibraryController.cs" />
     <Compile Include="Controllers\ReaderController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SingletonController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Data\OnlineLibraryDbContext.cs" />
+    <Compile Include="Decorator\AuthorizationDecorator.cs" />
+    <Compile Include="Decorator\BasicBookAccessService.cs" />
+    <Compile Include="Decorator\BookAccessDecorator.cs" />
+    <Compile Include="Decorator\CachingDecorator.cs" />
+    <Compile Include="Decorator\IBookAccessService.cs" />
+    <Compile Include="Decorator\LoggingDecorator.cs" />
     <Compile Include="Facade\LibraryFacade.cs" />
     <Compile Include="Facade\Subsystems\AuditLogger.cs" />
     <Compile Include="Facade\Subsystems\BookCatalog.cs" />
@@ -524,6 +554,11 @@
     <Compile Include="Factory\Creators\DigitalBookCreator.cs" />
     <Compile Include="Factory\Creators\LibraryItemCreator.cs" />
     <Compile Include="Factory\Creators\PrintedBookCreator.cs" />
+    <Compile Include="Flyweight\BookFormat.cs" />
+    <Compile Include="Flyweight\BookFormatFactory.cs" />
+    <Compile Include="Flyweight\IBookFormat.cs" />
+    <Compile Include="Flyweight\LibraryBook.cs" />
+    <Compile Include="Flyweight\LibraryService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -533,18 +568,53 @@
     <Compile Include="Factory\Interfaces\ILibraryItem.cs" />
     <Compile Include="Factory\Products\AudioBook.cs" />
     <Compile Include="Builder\Models\Book.cs" />
+    <Compile Include="Iterator\IIterableCollection.cs" />
+    <Compile Include="Iterator\IIterator.cs" />
+    <Compile Include="Iterator\Loan.cs" />
+    <Compile Include="Iterator\LoanIterator.cs" />
+    <Compile Include="Iterator\UserLoanCollection.cs" />
+    <Compile Include="Memento\ReadingHistory.cs" />
+    <Compile Include="Memento\ReadingSession.cs" />
+    <Compile Include="Memento\ReadingSnapshot.cs" />
+    <Compile Include="Migrations\202604270739089_InitialCreate.cs" />
+    <Compile Include="Migrations\202604270739089_InitialCreate.Designer.cs">
+      <DependentUpon>202604270739089_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BookDb.cs" />
+    <Compile Include="Models\BookViewModel.cs" />
+    <Compile Include="Models\BridgeDemoItemViewModel.cs" />
+    <Compile Include="Models\BridgeDemoViewModel.cs" />
     <Compile Include="Models\Catalog.cs" />
     <Compile Include="Factory\Products\DigitalBook.cs" />
     <Compile Include="Models\FinePayment.cs" />
-    <Compile Include="Models\Loan.cs" />
+    <Compile Include="Models\FlyweightViewModel.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Builder\Models\Magazine.cs" />
     <Compile Include="Factory\Products\PrintedBook.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\ProxyDemoViewModel.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Observer\EmailNotificationListener.cs" />
+    <Compile Include="Observer\EventListener.cs" />
+    <Compile Include="Observer\EventManager.cs" />
+    <Compile Include="Observer\LibraryEventService.cs" />
+    <Compile Include="Observer\LoggingListener.cs" />
+    <Compile Include="Observer\SmsNotificationListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prototype\Interfaces\IPrototype.cs" />
     <Compile Include="Prototype\Models\AnalyticalReport.cs" />
     <Compile Include="Prototype\Report\ReportTemplate.cs" />
+    <Compile Include="Proxy\AccessControlProxy.cs" />
+    <Compile Include="Proxy\DocumentCacheProxy.cs" />
+    <Compile Include="Proxy\IDocumentAccessService.cs" />
+    <Compile Include="Proxy\RareDocumentService.cs" />
     <Compile Include="Singleton\DatabaseManager.cs" />
+    <Compile Include="Strategy\BookCatalogContext.cs" />
+    <Compile Include="Strategy\IBookSortStrategy.cs" />
+    <Compile Include="Strategy\SortByFormatStrategy.cs" />
+    <Compile Include="Strategy\SortByTitleStrategy.cs" />
+    <Compile Include="Strategy\SortByIdStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -603,6 +673,14 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
+    <Content Include="Views\Home\Read.cshtml" />
+    <Content Include="Views\Home\BridgeDemo.cshtml" />
+    <Content Include="Views\Home\ProxyDemo.cshtml" />
+    <Content Include="Views\Home\CommandDemo.cshtml" />
+    <Content Include="Views\Home\MementoDemo.cshtml" />
+    <Content Include="Views\Home\IteratorDemo.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\DbBooks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -642,6 +720,11 @@
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202604270739089_InitialCreate.resx">
+      <DependentUpon>202604270739089_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -679,8 +762,11 @@
     <Error Condition="!Exists('packages\Microsoft.DiaSymReader.Native.1.7.0\build\Microsoft.DiaSymReader.Native.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.DiaSymReader.Native.1.7.0\build\Microsoft.DiaSymReader.Native.props'))" />
     <Error Condition="!Exists('packages\Microsoft.AspNetCore.Mvc.Razor.Extensions.2.3.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.AspNetCore.Mvc.Razor.Extensions.2.3.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.props'))" />
     <Error Condition="!Exists('packages\Microsoft.AspNetCore.Mvc.Razor.Extensions.2.3.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.AspNetCore.Mvc.Razor.Extensions.2.3.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.targets'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="packages\Microsoft.AspNetCore.Mvc.Razor.Extensions.2.3.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.targets" Condition="Exists('packages\Microsoft.AspNetCore.Mvc.Razor.Extensions.2.3.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.targets')" />
+  <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

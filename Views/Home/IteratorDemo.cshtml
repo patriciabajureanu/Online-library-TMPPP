@@ -1,0 +1,34 @@
+﻿@model List<OnlineLibrary.Iterator.Loan>
+
+@{
+     ViewBag.Title = "Iterator Demo";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="py-5">
+     <div class="container">
+          <h2>Iterator Pattern Demo</h2>
+
+          <table class="table">
+               <thead>
+                    <tr>
+                         <th>Id</th>
+                         <th>User</th>
+                         <th>Book</th>
+                         <th>Due Date</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @foreach (var loan in Model)
+                    {
+                         <tr>
+                              <td>@loan.Id</td>
+                              <td>@loan.UserId</td>
+                              <td>@loan.BookTitle</td>
+                              <td>@loan.DueDate.ToShortDateString()</td>
+                         </tr>
+                    }
+               </tbody>
+          </table>
+     </div>
+</section>

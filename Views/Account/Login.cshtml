@@ -1,0 +1,60 @@
+﻿@model OnlineLibrary.Models.LoginViewModel
+
+@{
+     ViewBag.Title = "Login";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="login-section" class="py-5 my-5 leaf-pattern-overlay">
+     <div class="corner-pattern-overlay"></div>
+
+     <div class="container">
+          <div class="row justify-content-center">
+               <div class="col-md-6">
+
+                    <div class="section-header align-center">
+                         <div class="title">
+                              <span>Welcome back</span>
+                         </div>
+                         <h2 class="section-title">Account Login</h2>
+                    </div>
+
+                    <div class="product-entry p-5 bg-white border rounded">
+
+                         @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                         {
+                              @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+                              <div class="mb-4">
+                                   @Html.LabelFor(m => m.Username, new { @class = "mb-2" })
+                                   @Html.TextBoxFor(m => m.Username, new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Enter username"
+                                   })
+                                   @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                              </div>
+
+                              <div class="mb-4">
+                                   @Html.LabelFor(m => m.Password, new { @class = "mb-2" })
+                                   @Html.PasswordFor(m => m.Password, new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Enter password"
+                                   })
+                                   @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                              </div>
+
+                              <div class="btn-wrap align-center">
+                                   <button type="submit" class="btn btn-outline-accent btn-accent-arrow">
+                                        Sign In <i class="icon icon-ns-arrow-right"></i>
+                                   </button>
+                              </div>
+                         }
+
+                    </div>
+
+               </div>
+          </div>
+     </div>
+</section>

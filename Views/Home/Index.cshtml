@@ -1,301 +1,1020 @@
-﻿@{
-     ViewBag.Title = "Online Library - Design Patterns";
+﻿@model OnlineLibrary.Models.HomeViewModel
+
+@{
+     ViewBag.Title = "Home";
+     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<main class="container mt-4">
-     <h1 class="mb-4 text-center">Online Library - Creational Patterns Demo</h1>
 
-     <!-- ========================= -->
-     <!-- FACTORY METHOD -->
-     <!-- ========================= -->
-     <section class="mb-5 border-bottom pb-4">
-          <h2 class="text-primary">Factory Method</h2>
-          <p class="text-muted">Create different types of books using a factory.</p>
 
-          <form method="post" asp-controller="Book" asp-action="Create">
-               <div class="mb-3">
-                    <label class="form-label">Book Title:</label>
-                    <input type="text" name="title" class="form-control" required />
+<section id="billboard">
+
+     <div class="container">
+          <div class="row">
+               <div class="col-md-12">
+
+                    <button class="prev slick-arrow">
+                         <i class="icon icon-arrow-left"></i>
+                    </button>
+
+                    <div class="main-slider pattern-overlay">
+                         <div class="slider-item">
+                              <div class="banner-content">
+                                   <h2 class="banner-title">Life of the Wild</h2>
+                                   <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
+                                        ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
+                                        urna, a eu.
+                                   </p>
+                                   <div class="btn-wrap">
+                                        <a href="#" class="btn btn-outline-accent btn-accent-arrow">
+                                             Read More<i class="icon icon-ns-arrow-right"></i>
+                                        </a>
+                                   </div>
+                              </div><!--banner-content-->
+                              <img src="~/Content/main-banner1.jpg" alt="banner" class="banner-image">
+                         </div><!--slider-item-->
+
+                         <div class="slider-item">
+                              <div class="banner-content">
+                                   <h2 class="banner-title">Birds gonna be Happy</h2>
+                                   <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
+                                        ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
+                                        urna, a eu.
+                                   </p>
+                                   <div class="btn-wrap">
+                                        <a href="#" class="btn btn-outline-accent btn-accent-arrow">
+                                             Read More<i class="icon icon-ns-arrow-right"></i>
+                                        </a>
+                                   </div>
+                              </div><!--banner-content-->
+                              <img src="~/Content/main-banner2.jpg" alt="banner" class="banner-image">
+                         </div><!--slider-item-->
+
+                    </div><!--slider-->
+
+                    <button class="next slick-arrow">
+                         <i class="icon icon-arrow-right"></i>
+                    </button>
+
                </div>
+          </div>
+     </div>
 
-               <div class="mb-3">
-                    <label class="form-label">Book Type:</label>
-                    <select name="bookType" class="form-select">
-                         <option value="Printed">Printed Book</option>
-                         <option value="Digital">Digital Book</option>
-                         <option value="Audio">Audio Book</option>
-                    </select>
+</section>
+
+<section id="client-holder" data-aos="fade-up">
+     <div class="container">
+          <div class="row">
+               <div class="inner-content">
+                    <div class="logo-wrap">
+                         <div class="grid">
+                              <a href="#"><img src="~/Content/client-image1.png" alt="client"></a>
+                              <a href="#"><img src="~/Content/client-image2.png" alt="client"></a>
+                              <a href="#"><img src="~/Content/client-image3.png" alt="client"></a>
+                              <a href="#"><img src="~/Content/client-image4.png" alt="client"></a>
+                              <a href="#"><img src="~/Content/client-image5.png" alt="client"></a>
+                         </div>
+                    </div><!--image-holder-->
                </div>
+          </div>
+     </div>
+</section>
+<a href="@Url.Action("BridgeDemo", "Home")" class="btn btn-outline-accent btn-accent-arrow">
+     Bridge Demo
+</a>
+<a href="@Url.Action("ProxyDemo", "Home")" class="btn btn-outline-accent btn-accent-arrow">
+     Proxy Demo
+</a>
+<section id="featured-books" class="py-5 my-5">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-12">
 
-               <button type="submit" class="btn btn-primary">Create Book</button>
-          </form>
+                    <div class="section-header align-center">
+                         <div class="title">
+                              <span>Online Library Collection</span>
+                         </div>
+                         <h2 class="section-title">Featured Books</h2>
+                         <div class="text-center mb-4">
+                              <span><strong>Sort by:</strong></span>
 
-          @if (ViewBag.BookDescription != null)
-          {
-               <div class="alert alert-primary mt-3">
-                    @ViewBag.BookDescription
-               </div>
-          }
-     </section>
+                              <a href="@Url.Action("Index", "Home", new { sortType = "title" })" class="btn btn-sm btn-outline-dark">
+                                   Title
+                              </a>
 
+                              <a href="@Url.Action("Index", "Home", new { sortType = "id" })" class="btn btn-sm btn-outline-dark">
+                                   ID
+                              </a>
 
-     <!-- ========================= -->
-     <!-- BUILDER -->
-     <!-- ========================= -->
-     <section class="mb-5 border-bottom pb-4">
-          <h2 class="text-warning">Builder Pattern</h2>
-          <p class="text-muted">Build complex publications step by step.</p>
-
-          <form method="post" asp-controller="Publication" asp-action="Build">
-               <div class="row">
-                    <div class="col-md-6 mb-3">
-                         <label class="form-label">Title:</label>
-                         <input type="text" name="title" class="form-control" required />
+                              <a href="@Url.Action("Index", "Home", new { sortType = "format" })" class="btn btn-sm btn-outline-dark">
+                                   Format
+                              </a>
+                         </div>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                         <label class="form-label">Author / Publisher:</label>
-                         <input type="text" name="author" class="form-control" required />
+                    <div class="row text-center mb-4">
+                         <div class="col-md-6">
+                              <h4>Total Books: @Model.TotalBooks</h4>
+                         </div>
+                         <div class="col-md-6">
+                              <h4>Shared Formats (Flyweight): @Model.TotalSharedFormats</h4>
+                         </div>
+                    </div>
+
+                    <div class="product-list" data-aos="fade-up">
+                         <div class="row">
+                              @foreach (var book in Model.FeaturedBooks)
+                              {
+                                   <div class="col-md-3 mb-4">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="@Url.Content("~/Content/product-item1.jpg")" alt="Books" class="product-item">
+                                                  <a href="@Url.Action("Read", "Home", new { id = book.Id })" class="add-to-cart">
+                                                       Read Book
+                                                  </a>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>@book.Title</h3>
+                                                  <span>ID: @book.Id</span>
+                                                  <div><strong>Format:</strong> @book.FormatType</div>
+                                                  <div><strong>Language:</strong> @book.Language</div>
+                                                  <div><strong>Publisher:</strong> @book.Publisher</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+                              }
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </div>
+</section>
+
+<section id="best-selling" class="leaf-pattern-overlay">
+     <div class="corner-pattern-overlay"></div>
+     <div class="container">
+          <div class="row justify-content-center">
+
+               <div class="col-md-8">
+
+                    <div class="row">
+
+                         <div class="col-md-6">
+                              <figure class="products-thumb">
+                                   <img src="~/Content/single-image.jpg" alt="book" class="single-image">
+                              </figure>
+                         </div>
+
+                         <div class="col-md-6">
+                              <div class="product-entry">
+                                   <h2 class="section-title divider">Best Selling Book</h2>
+
+                                   <div class="products-content">
+                                        <div class="author-name">By Timbur Hood</div>
+                                        <h3 class="item-title">Birds gonna be happy</h3>
+                                        <p>
+                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet,
+                                             libero ipsum enim pharetra hac.
+                                        </p>
+                                        <div class="item-price">$ 45.00</div>
+                                        <div class="btn-wrap">
+                                             <a href="#" class="btn-accent-arrow">
+                                                  shop it now <i class="icon icon-ns-arrow-right"></i>
+                                             </a>
+                                        </div>
+                                   </div>
+
+                              </div>
+                         </div>
+
+                    </div>
+                    <!-- / row -->
+
+               </div>
+
+          </div>
+     </div>
+</section>
+<div class="text-center mt-4">
+     <h5>Observer Actions</h5>
+
+     <a href="@Url.Action("ObserverDemo", "Home", new { id = "1" })"
+        class="btn btn-sm btn-outline-dark">
+          Borrow Book
+     </a>
+
+     <a href="@Url.Action("ObserverDemo", "Home", new { id = "2" })"
+        class="btn btn-sm btn-outline-dark">
+          Return Book
+     </a>
+
+     <a href="@Url.Action("ObserverDemo", "Home", new { id = "3" })"
+        class="btn btn-sm btn-outline-dark">
+          Reserve Book
+     </a>
+</div>
+<a href="@Url.Action("CommandDemo", "Home", new { id = "1" })"
+   class="btn btn-outline-accent btn-accent-arrow">
+     Command Demo
+</a>
+<a href="@Url.Action("MementoDemo", "Home")"
+   class="btn btn-outline-accent btn-accent-arrow">
+     Memento Demo
+</a>
+<a href="@Url.Action("IteratorDemo", "Home")"
+   class="btn btn-outline-accent btn-accent-arrow">
+     Iterator Demo
+</a>
+
+<section id="popular-books" class="bookshelf py-5 my-5">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-12">
+
+                    <div class="section-header align-center">
+                         <div class="title">
+                              <span>Some quality items</span>
+                         </div>
+                         <h2 class="section-title">Popular Books</h2>
+                    </div>
+
+                    <ul class="tabs">
+                         <li data-tab-target="#all-genre" class="active tab">All Genre</li>
+                         <li data-tab-target="#business" class="tab">Business</li>
+                         <li data-tab-target="#technology" class="tab">Technology</li>
+                         <li data-tab-target="#romantic" class="tab">Romantic</li>
+                         <li data-tab-target="#adventure" class="tab">Adventure</li>
+                         <li data-tab-target="#fictional" class="tab">Fictional</li>
+                    </ul>
+
+                    <div class="tab-content">
+                         <div id="all-genre" data-tab-content class="active">
+                              <div class="row">
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item1.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Portrait photography</h3>
+                                                  <span>Adam Silber</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item2.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Once upon a time</h3>
+                                                  <span>Klien Marry</span>
+                                                  <div class="item-price">$ 35.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item3.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Tips of simple lifestyle</h3>
+                                                  <span>Bratt Smith</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item4.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Just felt from outside</h3>
+                                                  <span>Nicole Wilson</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                              </div>
+                              <div class="row">
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Contentages/tab-item5.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Peaceful Enlightment</h3>
+                                                  <span>Marmik Lama</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item6.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Great travel at desert</h3>
+                                                  <span>Sanchit Howdy</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item7.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Life among the pirates</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item8.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Simple way of piece life</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                              </div>
+
+                         </div>
+                         <div id="business" data-tab-content>
+                              <div class="row">
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item2.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Peaceful Enlightment</h3>
+                                                  <span>Marmik Lama</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item4.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Great travel at desert</h3>
+                                                  <span>Sanchit Howdy</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item6.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Life among the pirates</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item8.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Simple way of piece life</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                              </div>
+                         </div>
+
+                         <div id="technology" data-tab-content>
+                              <div class="row">
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item1.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Peaceful Enlightment</h3>
+                                                  <span>Marmik Lama</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item3.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Great travel at desert</h3>
+                                                  <span>Sanchit Howdy</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item5.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Life among the pirates</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item7.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Simple way of piece life</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div id="romantic" data-tab-content>
+                              <div class="row">
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item1.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Peaceful Enlightment</h3>
+                                                  <span>Marmik Lama</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item3.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Great travel at desert</h3>
+                                                  <span>Sanchit Howdy</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item5.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Life among the pirates</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item7.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Simple way of piece life</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div id="adventure" data-tab-content>
+                              <div class="row">
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item5.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Life among the pirates</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item7.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Simple way of piece life</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div id="fictional" data-tab-content>
+                              <div class="row">
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item5.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Life among the pirates</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+
+                                   <div class="col-md-3">
+                                        <div class="product-item">
+                                             <figure class="product-style">
+                                                  <img src="~/Content/tab-item7.jpg" alt="Books" class="product-item">
+                                                  <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                       Add to
+                                                       Cart
+                                                  </button>
+                                             </figure>
+                                             <figcaption>
+                                                  <h3>Simple way of piece life</h3>
+                                                  <span>Armor Ramsey</span>
+                                                  <div class="item-price">$ 40.00</div>
+                                             </figcaption>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                    </div>
+
+               </div><!--inner-tabs-->
+
+          </div>
+     </div>
+</section>
+
+<section id="quotation" class="align-center pb-5 mb-5">
+     <div class="inner-content">
+          <h2 class="section-title divider">Quote of the day</h2>
+          <blockquote data-aos="fade-up">
+               <q>
+                    “The more that you read, the more things you will know. The more that you learn, the more places
+                    you’ll go.”
+               </q>
+               <div class="author-name">Dr. Seuss</div>
+          </blockquote>
+     </div>
+</section>
+
+<section id="special-offer" class="bookshelf pb-5 mb-5">
+
+     <div class="section-header align-center">
+          <div class="title">
+               <span>Grab your opportunity</span>
+          </div>
+          <h2 class="section-title">Books with offer</h2>
+     </div>
+
+     <div class="container">
+          <div class="row">
+               <div class="inner-content">
+                    <div class="product-list" data-aos="fade-up">
+                         <div class="grid product-grid">
+                              <div class="product-item">
+                                   <figure class="product-style">
+                                        <img src="~/Content/product-item5.jpg" alt="Books" class="product-item">
+                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                             Add to
+                                             Cart
+                                        </button>
+                                   </figure>
+                                   <figcaption>
+                                        <h3>Simple way of piece life</h3>
+                                        <span>Armor Ramsey</span>
+                                        <div class="item-price">
+                                             <span class="prev-price">$ 50.00</span>$ 40.00
+                                        </div>
+                              </div>
+                              </figcaption>
+
+                              <div class="product-item">
+                                   <figure class="product-style">
+                                        <img src="~/Content/product-item6.jpg" alt="Books" class="product-item">
+                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                             Add to
+                                             Cart
+                                        </button>
+                                   </figure>
+                                   <figcaption>
+                                        <h3>Great travel at desert</h3>
+                                        <span>Sanchit Howdy</span>
+                                        <div class="item-price">
+                                             <span class="prev-price">$ 30.00</span>$ 38.00
+                                        </div>
+                              </div>
+                              </figcaption>
+
+                              <div class="product-item">
+                                   <figure class="product-style">
+                                        <img src="~/Content/product-item7.jpg" alt="Books" class="product-item">
+                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                             Add to
+                                             Cart
+                                        </button>
+                                   </figure>
+                                   <figcaption>
+                                        <h3>The lady beauty Scarlett</h3>
+                                        <span>Arthur Doyle</span>
+                                        <div class="item-price">
+                                             <span class="prev-price">$ 35.00</span>$ 45.00
+                                        </div>
+                              </div>
+                              </figcaption>
+
+                              <div class="product-item">
+                                   <figure class="product-style">
+                                        <img src="~/Content/product-item8.jpg" alt="Books" class="product-item">
+                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                             Add to
+                                             Cart
+                                        </button>
+                                   </figure>
+                                   <figcaption>
+                                        <h3>Once upon a time</h3>
+                                        <span>Klien Marry</span>
+                                        <div class="item-price">
+                                             <span class="prev-price">$ 25.00</span>$ 35.00
+                                        </div>
+                              </div>
+                              </figcaption>
+
+                              <div class="product-item">
+                                   <figure class="product-style">
+                                        <img src="~/Content/product-item2.jpg" alt="Books" class="product-item">
+                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                             Add to
+                                             Cart
+                                        </button>
+                                   </figure>
+                                   <figcaption>
+                                        <h3>Simple way of piece life</h3>
+                                        <span>Armor Ramsey</span>
+                                        <div class="item-price">$ 40.00</div>
+                                   </figcaption>
+                              </div>
+                         </div><!--grid-->
+                    </div>
+               </div><!--inner-content-->
+          </div>
+     </div>
+</section>
+
+<section id="subscribe">
+     <div class="container">
+          <div class="row justify-content-center">
+
+               <div class="col-md-8">
+                    <div class="row">
+
+                         <div class="col-md-6">
+
+                              <div class="title-element">
+                                   <h2 class="section-title divider">Subscribe to our newsletter</h2>
+                              </div>
+
+                         </div>
+                         <div class="col-md-6">
+
+                              <div class="subscribe-content" data-aos="fade-up">
+                                   <p>
+                                        Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit amet, consectetur. Elit
+                                        adipiscing enim pharetra hac.
+                                   </p>
+                                   <form id="form">
+                                        <input type="text" name="email" placeholder="Enter your email addresss here">
+                                        <button class="btn-subscribe">
+                                             <span>send</span>
+                                             <i class="icon icon-send"></i>
+                                        </button>
+                                   </form>
+                              </div>
+
+                         </div>
+
                     </div>
                </div>
 
-               <div class="row">
-                    <div class="col-md-6 mb-3">
-                         <label class="form-label">Type:</label>
-                         <select name="type" class="form-select">
-                              <option value="Book">Book</option>
-                              <option value="Magazine">Magazine</option>
-                         </select>
+          </div>
+     </div>
+</section>
+
+<section id="latest-blog" class="py-5 my-5">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-12">
+
+                    <div class="section-header align-center">
+                         <div class="title">
+                              <span>Read our articles</span>
+                         </div>
+                         <h2 class="section-title">Latest Articles</h2>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                         <label class="form-label">Pages / Issue Number:</label>
-                         <input type="number" name="detail" class="form-control" required />
-                    </div>
-               </div>
+                    <div class="row">
 
-               <button type="submit" class="btn btn-warning">Build Publication</button>
-          </form>
+                         <div class="col-md-4">
 
-          @if (ViewBag.BuilderResult != null)
-          {
-               <div class="alert alert-warning mt-3">
-                    @ViewBag.BuilderResult
-               </div>
-          }
-     </section>
+                              <article class="column" data-aos="fade-up">
 
+                                   <figure>
+                                        <a href="#" class="image-hvr-effect">
+                                             <img src="~/Content/post-img1.jpg" alt="post" class="post-image">
+                                        </a>
+                                   </figure>
 
-     <!-- ========================= -->
-     <!-- ABSTRACT FACTORY -->
-     <!-- ========================= -->
-     <section class="mb-5">
-          <h2 class="text-success">Abstract Factory</h2>
-          <p class="text-muted">Create a User together with its Loan using a factory family.</p>
+                                   <div class="post-item">
+                                        <div class="meta-date">Mar 30, 2021</div>
+                                        <h3><a href="#">Reading books always makes the moments happy</a></h3>
 
-          <form method="post" asp-controller="User" asp-action="Create">
-               <div class="mb-3">
-                    <label class="form-label">User Name:</label>
-                    <input type="text" name="userName" class="form-control" required />
-               </div>
+                                        <div class="links-element">
+                                             <div class="categories">inspiration</div>
+                                             <div class="social-links">
+                                                  <ul>
+                                                       <li>
+                                                            <a href="#"><i class="icon icon-facebook"></i></a>
+                                                       </li>
+                                                       <li>
+                                                            <a href="#"><i class="icon icon-twitter"></i></a>
+                                                       </li>
+                                                       <li>
+                                                            <a href="#"><i class="icon icon-behance-square"></i></a>
+                                                       </li>
+                                                  </ul>
+                                             </div>
+                                        </div><!--links-element-->
 
-               <div class="mb-3">
-                    <label class="form-label">User Type:</label>
-                    <select name="userType" class="form-select">
-                         <option value="Student">Student</option>
-                         <option value="Professor">Professor</option>
-                    </select>
-               </div>
+                                   </div>
+                              </article>
 
-               <div class="mb-3">
-                    <label class="form-label">Book Title for Loan:</label>
-                    <input type="text" name="bookLoan" class="form-control" required />
-               </div>
+                         </div>
+                         <div class="col-md-4">
 
-               <button type="submit" class="btn btn-success">Create User + Loan</button>
-          </form>
+                              <article class="column" data-aos="fade-up" data-aos-delay="200">
+                                   <figure>
+                                        <a href="#" class="image-hvr-effect">
+                                             <img src="~/Content/post-img2.jpg" alt="post" class="post-image">
+                                        </a>
+                                   </figure>
+                                   <div class="post-item">
+                                        <div class="meta-date">Mar 29, 2021</div>
+                                        <h3><a href="#">Reading books always makes the moments happy</a></h3>
 
-          @if (ViewBag.UserLoan != null)
-          {
-               <div class="alert alert-success mt-3">
-                    @ViewBag.UserLoan
-               </div>
-          }
-     </section>
-     <!-- ========================= -->
-     <!-- PROTOTYPE -->
-     <!-- ========================= -->
-     <section class="mb-5 border-bottom pb-4">
-          <h2 class="text-info">Prototype Pattern</h2>
-          <p class="text-muted">Clone a membership template (Student or Professor).</p>
+                                        <div class="links-element">
+                                             <div class="categories">inspiration</div>
+                                             <div class="social-links">
+                                                  <ul>
+                                                       <li>
+                                                            <a href="#"><i class="icon icon-facebook"></i></a>
+                                                       </li>
+                                                       <li>
+                                                            <a href="#"><i class="icon icon-twitter"></i></a>
+                                                       </li>
+                                                       <li>
+                                                            <a href="#"><i class="icon icon-behance-square"></i></a>
+                                                       </li>
+                                                  </ul>
+                                             </div>
+                                        </div><!--links-element-->
 
-          <form method="post" asp-controller="Membership" asp-action="Clone">
-               <div class="mb-3">
-                    <label class="form-label">Select Base Prototype:</label>
-                    <div class="btn-group w-100" role="group">
-                         <input type="radio" class="btn-check" name="prototypeKey" id="proto1" value="Student" checked>
-                         <label class="btn btn-outline-info" for="proto1">Student Template</label>
+                                   </div>
+                              </article>
 
-                         <input type="radio" class="btn-check" name="prototypeKey" id="proto2" value="Professor">
-                         <label class="btn btn-outline-info" for="proto2">Professor Template</label>
-                    </div>
-               </div>
+                         </div>
+                         <div class="col-md-4">
 
-               <div class="mb-3">
-                    <label for="customLimit" class="form-label">Adjust Max Books (Optional):</label>
-                    <input type="number" id="customLimit" name="customLimit" class="form-control" placeholder="Leave empty to keep default" />
-               </div>
+                              <article class="column" data-aos="fade-up" data-aos-delay="400">
+                                   <figure>
+                                        <a href="#" class="image-hvr-effect">
+                                             <img src="~/Content/post-img3.jpg" alt="post" class="post-image">
+                                        </a>
+                                   </figure>
+                                   <div class="post-item">
+                                        <div class="meta-date">Feb 27, 2021</div>
+                                        <h3><a href="#">Reading books always makes the moments happy</a></h3>
 
-               <button type="submit" class="btn btn-info text-white">Clone Membership</button>
-          </form>
+                                        <div class="links-element">
+                                             <div class="categories">inspiration</div>
+                                             <div class="social-links">
+                                                  <ul>
+                                                       <li>
+                                                            <a href="#"><i class="icon icon-facebook"></i></a>
+                                                       </li>
+                                                       <li>
+                                                            <a href="#"><i class="icon icon-twitter"></i></a>
+                                                       </li>
+                                                       <li>
+                                                            <a href="#"><i class="icon icon-behance-square"></i></a>
+                                                       </li>
+                                                  </ul>
+                                             </div>
+                                        </div><!--links-element-->
 
-          @if (ViewBag.PrototypeResult != null)
-          {
-               <div class="alert alert-info mt-3">
-                    <strong>Cloned Membership:</strong> @ViewBag.PrototypeResult
-               </div>
-          }
-     </section>
-     <!-- ========================= -->
-     <!-- SINGLETON -->
-     <!-- ========================= -->
-     <section class="mb-5 border-bottom pb-4">
-          <h2 class="text-dark">Singleton Pattern</h2>
-          <p class="text-muted">Access a single instance of DatabaseManager.</p>
+                                   </div>
+                              </article>
 
-          <form method="post" asp-controller="Singleton" asp-action="Index">
-               <button type="submit" class="btn btn-dark">Test Singleton</button>
-          </form>
-
-          @if (ViewBag.SingletonDemo != null)
-          {
-               <div class="alert alert-dark mt-3">
-                    @ViewBag.SingletonDemo
-               </div>
-          }
-     </section>
-     <!-- ========================= -->
-     <!-- PROTOTYPE -->
-     <!-- ========================= -->
-     <section class="mb-5 border-bottom pb-4">
-          <h2 class="text-info">Prototype Pattern</h2>
-          <p class="text-muted">Clone a report template using the Prototype pattern.</p>
-
-          <form method="post" asp-controller="Report" asp-action="Clone">
-
-               <div class="mb-3">
-                    <label class="form-label">Select Report Prototype:</label>
-
-                    <div class="btn-group w-100" role="group">
-
-                         <input type="radio" class="btn-check"
-                                name="prototypeKey"
-                                id="proto1"
-                                value="BasicReport"
-                                checked>
-
-                         <label class="btn btn-outline-info" for="proto1">
-                              Basic Report Template
-                         </label>
-
-                         <input type="radio" class="btn-check"
-                                name="prototypeKey"
-                                id="proto2"
-                                value="AnalyticalReport">
-
-                         <label class="btn btn-outline-info" for="proto2">
-                              Analytical Report Template
-                         </label>
+                         </div>
 
                     </div>
+
+                    <div class="row">
+
+                         <div class="btn-wrap align-center">
+                              <a href="#" class="btn btn-outline-accent btn-accent-arrow" tabindex="0">
+                                   Read All Articles<i class="icon icon-ns-arrow-right"></i>
+                              </a>
+                         </div>
+                    </div>
+
                </div>
+          </div>
+     </div>
+</section>
 
+<section id="download-app" class="leaf-pattern-overlay">
+     <div class="corner-pattern-overlay"></div>
+     <div class="container">
+          <div class="row justify-content-center">
+               <div class="col-md-8">
+                    <div class="row">
 
-               <div class="mb-3">
-                    <label class="form-label">Custom Title (Optional):</label>
-                    <input type="text"
-                           name="customTitle"
-                           class="form-control"
-                           placeholder="Leave empty to keep default title" />
+                         <div class="col-md-5">
+                              <figure>
+                                   <img src="~/Content/device.png" alt="phone" class="single-image">
+                              </figure>
+                         </div>
+
+                         <div class="col-md-7">
+                              <div class="app-info">
+                                   <h2 class="section-title divider">Download our app now !</h2>
+                                   <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis sed ptibus
+                                        liberolectus nonet psryroin. Amet sed lorem posuere sit iaculis amet, ac urna.
+                                        Adipiscing fames semper erat ac in suspendisse iaculis.
+                                   </p>
+                                   <div class="google-app">
+                                        <img src="~/Content/google-play.jpg" alt="google play">
+                                        <img src="~/Content/app-store.jpg" alt="app store">
+                                   </div>
+                              </div>
+                         </div>
+
+                    </div>
                </div>
+          </div>
+     </div>
+</section>
 
-
-               <button type="submit" class="btn btn-info text-white">
-                    Clone Report
-               </button>
-
-          </form>
-
-
-          @if (ViewBag.PrototypeResult != null)
-          {
-               <div class="alert alert-info mt-3">
-                    <strong>Cloned Report:</strong>
-                    @ViewBag.PrototypeResult
-               </div>
-          }
-
-     </section>
-     <!-- ========================= -->
-     <!-- ADAPTER PATTERN - PDF Reader -->
-     <!-- ========================= -->
-     <section class="mb-5 border-bottom pb-4">
-          <h2 class="text-info">Adapter Pattern - PDF Reader</h2>
-          <p class="text-muted">Open and navigate PDF books using the Adapter pattern.</p>
-
-          <form method="get" asp-controller="Reader" asp-action="Read">
-               <div class="mb-3">
-                    <label class="form-label">Select PDF File:</label>
-                    <input type="text"
-                           name="filePath"
-                           class="form-control"
-                           placeholder="Enter PDF file name (e.g., book.pdf)"
-                           required />
-               </div>
-               <button type="submit" class="btn btn-info text-white">Open Book</button>
-          </form>
-
-          <form method="get" asp-controller="Reader" asp-action="GoToPage" class="mt-3">
-               <div class="mb-3">
-                    <label class="form-label">Go To Page:</label>
-                    <input type="number"
-                           name="page"
-                           class="form-control"
-                           placeholder="Enter page number"
-                           required />
-               </div>
-               <button type="submit" class="btn btn-info text-white">Go To Page</button>
-          </form>
-
-          <form method="get" asp-controller="Reader" asp-action="Close" class="mt-3">
-               <button type="submit" class="btn btn-danger text-white">Close Book</button>
-          </form>
-
-          @if (ViewBag.AdapterResult != null)
-          {
-               <div class="alert alert-info mt-3">
-                    <strong>Result:</strong> @ViewBag.AdapterResult
-               </div>
-          }
-     </section>
-     @{
-          ViewBag.Title = "Library Composite Example";
-     }
-
-     <h2>@ViewBag.Title</h2>
-
-<pre>
-@Html.Raw(ViewBag.LibraryDisplay)
-</pre>
-
-     <p>Total cărți în librărie: <strong>@ViewBag.TotalBooks</strong></p>
-     <p>Total cărți Science Fiction: <strong>@ViewBag.SciFiTotal</strong></p>
-     <p>Total cărți Fantasy: <strong>@ViewBag.FantasyTotal</strong></p>
-
-     @{
-          ViewBag.Title = "Online Library";
-     }
-
-     <h2>Borrow Book</h2>
-     <p>@ViewBag.Result</p>
-</main>
