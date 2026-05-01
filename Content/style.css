@@ -1837,111 +1837,148 @@ img.post-image {
 #header .menu-list a.active {
   color: var(--accent-color);
 }
+     #header .menu-item a {
+          padding-top: 20px;
+     }
+
+     #header .menu-item a {
+          color: #333;
+          transition: 0.3s;
+     }
+
+          #header .menu-item a:hover {
+               color: #c9a34e; /* galben elegant */
+          }
 
 /*----- Billboard
 --------------------------------------------------------------*/
-#billboard .main-slider {
-  padding: 80px 0;
+/* Billboard / Hero */
+#billboard {
+     padding: 30px 0 50px;
 }
 
-.main-slider .slider-item {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
+     #billboard .main-slider {
+          padding: 35px 0 !important;
+          position: relative;
+     }
 
-.main-slider .banner-content {
-  width: 35%;
-  margin-top: 60px;
-  margin-right: 175px;
-}
+          #billboard .main-slider .slider-item {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               min-height: 520px;
+               gap: 70px;
+          }
 
-.banner-content h2.banner-title {
-  font-size: 4.5em;
-  font-weight: 500;
-  color: #222;
-}
+          /* Text */
+          #billboard .main-slider .banner-content {
+               width: 55%;
+               padding-left: 90px;
+               margin-top: -20px !important;
+               margin-right: 0 !important;
+          }
 
-.banner-content p {
-  margin: 0 0 30px 0;
-}
+               #billboard .main-slider .banner-content h2.banner-title {
+                    font-size: 56px !important;
+                    line-height: 1.15;
+                    margin-top: 0;
+                    margin-bottom: 22px;
+                    color: #222;
+               }
 
-#billboard .slick-dots {
-  left: 200px;
-  bottom: 110px;
-  width: 10%;
-  text-align: inherit;
-}
+               #billboard .main-slider .banner-content p {
+                    font-size: 18px;
+                    line-height: 1.8;
+                    max-width: 720px;
+                    margin-bottom: 28px;
+               }
 
-#billboard button.slick-arrow {
-  background: transparent;
-  border: 1px solid #E5E3DA;
-  padding: initial;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  z-index: 5;
-  cursor: pointer;
-}
+     /* Buton */
+     #billboard .btn-wrap {
+          margin-top: 10px;
+     }
 
-#billboard button.slick-arrow:hover {
-  border: 1px solid #74642F;
-  background-color: #E5E3DA;
-}
+          #billboard .btn-wrap .btn {
+               padding: 16px 34px;
+               font-size: 15px;
+          }
 
-#billboard button.prev.slick-arrow {
-  left: 110px;
-}
+     /* Imagine */
+     #billboard .main-slider .banner-image {
+          width: 34%;
+          height: 460px;
+          object-fit: contain;
+          margin-right: 90px;
+     }
 
-#billboard button.next.slick-arrow {
-  right: 110px;
-}
+     /* Ascunde punctele */
+     #billboard .slick-dots {
+          display: none !important;
+     }
 
-#billboard .slick-arrow i.icon {
-  color: #8C8C8C;
-}
+     /* Săgeți */
+     #billboard button.slick-arrow {
+          background: transparent;
+          border: 1px solid #E5E3DA;
+          width: 55px;
+          height: 55px;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 10;
+          cursor: pointer;
+     }
 
-@media screen and (max-width: 1366px) {
-  #billboard button.prev.slick-arrow {
-    left: 0;
-  }
+     #billboard button.prev.slick-arrow {
+          left: 25px;
+     }
 
-  #billboard button.next.slick-arrow {
-    right: 0;
-  }
-}
+     #billboard button.next.slick-arrow {
+          right: 25px;
+     }
 
+     #billboard button.slick-arrow:hover {
+          border-color: #74642F;
+          background-color: #E5E3DA;
+     }
+
+     #billboard .slick-arrow i.icon {
+          color: #8C8C8C;
+     }
+
+/* Responsive */
 @media screen and (max-width: 999px) {
-  .banner-content h2.banner-title {
-    font-size: 3.5em;
-  }
+     #billboard .main-slider .slider-item {
+          flex-direction: column-reverse;
+          text-align: center;
+          gap: 25px;
+          min-height: auto;
+     }
 
-  #billboard .main-slider {
-    margin: 70px 0;
-    padding: 0;
-  }
+     #billboard .main-slider .banner-content {
+          width: 100%;
+          padding-left: 0;
+          margin-top: 0 !important;
+     }
 
-  .main-slider .slider-item {
-    flex-wrap: wrap;
-    text-align: center;
-    flex-direction: column-reverse;
-  }
+          #billboard .main-slider .banner-content h2.banner-title {
+               font-size: 38px !important;
+          }
 
-  .main-slider .banner-content {
-    width: 100%;
-    margin-top: 60px;
-    margin-right: 0;
-    margin-bottom: 80px;
-  }
+     #billboard .main-slider .banner-image {
+          width: 70%;
+          height: 330px;
+          margin-right: 0;
+     }
 
-  #billboard .slick-dots {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-  }
+     #billboard button.prev.slick-arrow {
+          left: 0;
+     }
+
+     #billboard button.next.slick-arrow {
+          right: 0;
+     }
 }
 
 /*----- Cient-holder Section
@@ -1959,10 +1996,58 @@ img.post-image {
 /*----- Featured Books Section
 --------------------------------------------------------------*/
 
-#featured-books .product-list {
-  border-bottom: 1px solid #E0E0E0;
-  margin-bottom: 30px;
+/* Newest Books Section */
+#newest-books {
+     margin-top: 20px !important;
+     padding-top: 30px !important;
 }
+
+     #newest-books .newest-header .section-title {
+          margin-bottom: 35px;
+     }
+
+     #newest-books .sort-box {
+          margin-top: -15px;
+     }
+
+     #newest-books .library-stats {
+          margin-top: -10px;
+     }
+
+     #newest-books .newest-product-list {
+          border-bottom: 1px solid #E0E0E0;
+          margin-bottom: 30px;
+     }
+
+     #newest-books .newest-book-card {
+          height: 100%;
+     }
+
+     #newest-books .product-style {
+          background: #EFEEE8;
+          border: 1px solid #EAE8DF;
+          padding: 20px;
+          min-height: 330px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+     }
+
+     #newest-books img.newest-book-image {
+          width: 100%;
+          height: 260px;
+          object-fit: contain;
+          padding: 0;
+          background: transparent;
+          border: none;
+     }
+
+     #newest-books figcaption h3 {
+          font-size: 18px;
+          line-height: 1.3;
+          min-height: 48px;
+          margin-top: 18px;
+     }
 
 /*----- Best Selling Section Section
 --------------------------------------------------------------*/
@@ -2000,50 +2085,32 @@ img.post-image {
 
 /*----- Popular Books Section
 --------------------------------------------------------------*/
-.tab-content {
-  position: relative;
+#books-available {
+     margin-top: 40px;
 }
 
-[data-tab-content] {
-  opacity: 0;
-  visibility: hidden;
-  height: 0;
-  overflow: hidden;
-}
+     #books-available .product-style {
+          background: #EFEEE8;
+          border: 1px solid #EAE8DF;
+          padding: 10px; /* mai mic */
+          min-height: 280px; /* mai mic */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+     }
 
-.active[data-tab-content] {
-  opacity: 1;
-  visibility: visible;
-  height: auto;
-}
+     #books-available img.newest-book-image {
+          width: 100%;
+          height: 320px;
+          object-fit: cover; /* ATENȚIE: poate tăia puțin */
+     }
 
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 55px 0;
-  justify-content: center;
-  list-style: none;
-}
 
-.tabs .tab {
-  font-weight: 600;
-  color: #999;
-  margin-right: 50px;
-  cursor: pointer;
-}
-
-.tabs .tab.active,
-.tabs .tab:hover {
-  color: #111;
-  border-bottom: 2px solid #9A884C;
-}
-
-img.books-image {
-  /*height: 290px;*/
-  margin-right: 10px;
-  margin-bottom: 20px;
-  object-fit: cover;
-}
+     #books-available figcaption h3 {
+          font-size: 18px;
+          line-height: 1.3;
+          margin-top: 15px;
+     }
 
 /*----- Quotation Section
 --------------------------------------------------------------*/
@@ -2442,3 +2509,88 @@ footer#footer {
     width: 100%;
   }
 }
+
+/*Login*/
+.login-box {
+     max-width: 500px; /* mai îngust */
+     margin: 0 auto; /* centrat */
+     padding: 30px !important; /* mai puțin spațiu interior */
+     border-radius: 20px;
+     background: #f9fafb;
+     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.welcome-text {
+     font-size: 14px;
+     color: #888;
+     letter-spacing: 1px;
+}
+
+.form-control {
+     border-radius: 10px;
+     padding: 10px;
+     border: 1px solid #ddd;
+}
+
+     .form-control:focus {
+          border-color: #6c63ff;
+          box-shadow: 0 0 5px rgba(108,99,255,0.3);
+     }
+
+.btn-wrap {
+     margin-top: 20px;
+}
+
+.mb-4 {
+     margin-bottom: 20px !important;
+}
+.register-link {
+     font-size: 14px;
+     color: #777;
+}
+
+.register-btn {
+     margin-left: 5px;
+     color: #c5a47e; /* bej similar cu butonul */
+     font-weight: 600;
+     text-decoration: none;
+}
+
+     .register-btn:hover {
+          color: #a8895f; /* puțin mai închis la hover */
+          text-decoration: underline;
+     }
+
+.login-box {
+     max-width: 500px;
+     margin: 0 auto;
+     padding: 30px !important;
+     border-radius: 20px !important;
+     background: #f9fafb;
+     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.welcome-text {
+     font-size: 14px;
+     color: #aaa;
+     letter-spacing: 2px;
+     text-transform: uppercase;
+}
+
+.register-link {
+     font-size: 14px;
+     color: #777;
+}
+
+.register-btn {
+     margin-left: 5px;
+     color: #c5a47e;
+     font-weight: 600;
+     text-decoration: none;
+}
+
+     .register-btn:hover {
+          color: #a8895f;
+          text-decoration: underline;
+     }
+
+

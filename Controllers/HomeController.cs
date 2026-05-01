@@ -16,6 +16,7 @@ using OnlineLibrary.Command;
 using OnlineLibrary.Memento;
 using OnlineLibrary.Iterator;
 using OnlineLibrary.Data;
+using OnlineLibrary.Repositories;
 
 namespace OnlineLibrary.Controllers
 {
@@ -26,7 +27,6 @@ namespace OnlineLibrary.Controllers
           {
                var service = new LibraryService();
                var books = service.LoadBooks();
-
                var context = new BookCatalogContext();
 
                switch (sortType)
@@ -46,16 +46,22 @@ namespace OnlineLibrary.Controllers
                }
 
                var sortedBooks = context.SortBooks(books);
-
+               var bestBook = sortedBooks.FirstOrDefault();
                var model = new HomeViewModel
                {
                     FeaturedBooks = sortedBooks.Select(b => new BookViewModel
                     {
                          Id = b.Id,
                          Title = b.Title,
+                         Description = b.Description,
+                         ImagePath = b.ImagePath,
+
                          FormatType = b.Format.FormatType,
                          Language = b.Format.Language,
-                         Publisher = b.Format.Publisher
+                         PublishedYear = b.PublishedYear,
+                         CategoryName = b.CategoryName
+
+
                     }).ToList(),
 
                     TotalBooks = books.Count,
@@ -63,11 +69,22 @@ namespace OnlineLibrary.Controllers
                     TotalSharedFormats = books
                        .Select(b => $"{b.Format.FormatType}-{b.Format.Language}-{b.Format.Publisher}")
                        .Distinct()
-                       .Count()
+                       .Count(),
+
+                        BestBook = bestBook != null ? new BookViewModel
+                        {
+                             Id = bestBook.Id,
+                             Title = bestBook.Title,
+                             Description = bestBook.Description,
+                             ImagePath = bestBook.ImagePath,
+                             PublishedYear = bestBook.PublishedYear,
+                             Language = bestBook.Format.Language
+                        } : null
                };
 
                return View(model);
           }
+
           public ActionResult Read(string id)
           {
                IBookAccessService service = new BasicBookAccessService();
@@ -224,14 +241,73 @@ namespace OnlineLibrary.Controllers
           [AllowAnonymous]
           public ActionResult DbBooks()
           {
-               using (var db = new OnlineLibraryDbContext())
+               IBookRepository bookRepository = new BookRepository();
+               var books = bookRepository.GetAll();
+
+               return View(books);
+          }
+
+          [AllowAnonymous]
+          public ActionResult Details(int? id)
+          {
+               if (id == null)
+                    return RedirectToAction("DbBooks");
+
+               IBookRepository bookRepository = new BookRepository();
+               var book = bookRepository.GetById(id.Value);
+
+               if (book == null)
+                    return HttpNotFound();
+
+               return View(book);
+          }
+          [Authorize]
+          public ActionResult Borrow(int id)
+          {
+               if (Session["UserId"] == null)
                {
-                    var books = db.Books.ToList();
-
-                    ViewBag.Count = books.Count; // debug rapid
-
-                    return View(books);
+                    return RedirectToAction("Login", "Account");
                }
+
+               IBookRepository bookRepository = new BookRepository();
+
+               int userId = (int)Session["UserId"];
+
+               bool success = bookRepository.BorrowBook(id, userId);
+
+               if (success)
+                    TempData["Message"] = "Book borrowed successfully!";
+               else
+                    TempData["Message"] = "Book is not available.";
+
+               return RedirectToAction("Details", new { id = id });
+          }
+          [Authorize]
+          public ActionResult MyBorrowings()
+          {
+               if (Session["UserId"] == null)
+                    return RedirectToAction("Login", "Account");
+
+               int userId = (int)Session["UserId"];
+
+               IBookRepository bookRepository = new BookRepository();
+               var borrowings = bookRepository.GetBorrowingsByUserId(userId);
+
+               return View(borrowings);
+          }
+          [Authorize]
+          public ActionResult Return(int id)
+          {
+               IBookRepository bookRepository = new BookRepository();
+
+               bool success = bookRepository.ReturnBook(id);
+
+               if (success)
+                    TempData["Message"] = "Book returned successfully!";
+               else
+                    TempData["Message"] = "Error returning book.";
+
+               return RedirectToAction("MyBorrowings");
           }
      }
      }

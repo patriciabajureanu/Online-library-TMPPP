@@ -1,23 +1,31 @@
-﻿@model List<OnlineLibrary.Models.BookDb>
+﻿@model List<OnlineLibrary.Models.Book>
 
-<h2>Carti din baza de date</h2>
+@{
+     ViewBag.Title = "Books";
+}
 
-<p>Total carti: @ViewBag.Count</p>
+<h2>Books from Database</h2>
 
 <table class="table">
      <thead>
           <tr>
-               <th>Titlu</th>
-               <th>Descriere</th>
-               <th>Disponibile</th>
+               <th>Title</th>
+               <th>Description</th>
+               <th>Total Copies</th>
+               <th>Available Copies</th>
           </tr>
      </thead>
      <tbody>
           @foreach (var book in Model)
           {
                <tr>
-                    <td>@book.Title</td>
+                    <td>
+                         <a href="/Home/Details/@book.Id">
+                              @book.Title
+                         </a>
+                    </td>
                     <td>@book.Description</td>
+                    <td>@book.TotalCopies</td>
                     <td>@book.AvailableCopies</td>
                </tr>
           }

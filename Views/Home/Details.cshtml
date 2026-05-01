@@ -1,0 +1,30 @@
+﻿@model OnlineLibrary.Models.Book
+
+<h2>@Model.Title</h2>
+
+<p><strong>Description:</strong> @Model.Description</p>
+<p><strong>Total Copies:</strong> @Model.TotalCopies</p>
+<p><strong>Available Copies:</strong> @Model.AvailableCopies</p>
+
+<br />
+
+@if (TempData["Message"] != null)
+{
+     <p style="color: green;">@TempData["Message"]</p>
+}
+
+@if (Model.AvailableCopies > 0)
+{
+     <a class="btn btn-primary" href="@Url.Action("Borrow", "Home", new { id = Model.Id })">
+          Borrow Book
+     </a>
+}
+else
+{
+     <p style="color: red;">This book is not available.</p>
+}
+
+<br />
+<br />
+
+<a href="/Home/DbBooks">Back to list</a>

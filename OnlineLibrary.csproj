@@ -517,6 +517,7 @@
     <Compile Include="Builder\Builders\BookBuilder.cs" />
     <Compile Include="Builder\Builders\LibraryDirector.cs" />
     <Compile Include="Builder\Builders\MagazineBuilder.cs" />
+    <Compile Include="Builder\Models\Category.cs" />
     <Compile Include="Command\BorrowBookCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\LibraryInvoker.cs" />
@@ -580,9 +581,15 @@
     <Compile Include="Migrations\202604270739089_InitialCreate.Designer.cs">
       <DependentUpon>202604270739089_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202604301227317_AddDescriptionToBook.cs" />
+    <Compile Include="Migrations\202604301227317_AddDescriptionToBook.Designer.cs">
+      <DependentUpon>202604301227317_AddDescriptionToBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\BookDb.cs" />
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookViewModel.cs" />
+    <Compile Include="Models\Borrowing.cs" />
     <Compile Include="Models\BridgeDemoItemViewModel.cs" />
     <Compile Include="Models\BridgeDemoViewModel.cs" />
     <Compile Include="Models\Catalog.cs" />
@@ -594,6 +601,9 @@
     <Compile Include="Factory\Products\PrintedBook.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProxyDemoViewModel.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
+    <Compile Include="Models\Reservation.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Observer\EmailNotificationListener.cs" />
     <Compile Include="Observer\EventListener.cs" />
@@ -609,6 +619,10 @@
     <Compile Include="Proxy\DocumentCacheProxy.cs" />
     <Compile Include="Proxy\IDocumentAccessService.cs" />
     <Compile Include="Proxy\RareDocumentService.cs" />
+    <Compile Include="Repositories\BookRepository.cs" />
+    <Compile Include="Repositories\IBookRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Singleton\DatabaseManager.cs" />
     <Compile Include="Strategy\BookCatalogContext.cs" />
     <Compile Include="Strategy\IBookSortStrategy.cs" />
@@ -633,6 +647,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -667,9 +682,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Library\Index.cshtml" />
-    <Content Include="Views\Library\Details.cshtml" />
-    <Content Include="Views\Library\Borrow.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
@@ -681,6 +693,9 @@
     <Content Include="Views\Home\IteratorDemo.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Home\DbBooks.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\MyBorrowings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -723,6 +738,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202604270739089_InitialCreate.resx">
       <DependentUpon>202604270739089_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202604301227317_AddDescriptionToBook.resx">
+      <DependentUpon>202604301227317_AddDescriptionToBook.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

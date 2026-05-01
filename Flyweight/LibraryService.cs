@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using OnlineLibrary.Data;
 
 namespace OnlineLibrary.Flyweight
 {
@@ -13,17 +15,36 @@ namespace OnlineLibrary.Flyweight
 
           public List<LibraryBook> LoadBooks()
           {
-               var books = new List<LibraryBook>();
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var booksFromDb = db.Books
+                         .Include("Category")
+                         .ToList();
 
-               books.Add(new LibraryBook("1", "Clean Code", _factory.GetOrCreate("PDF", "English", "Penguin")));
-               books.Add(new LibraryBook("2", "Design Patterns", _factory.GetOrCreate("PDF", "English", "Penguin")));
-               books.Add(new LibraryBook("3", "Refactoring", _factory.GetOrCreate("EPUB", "English", "OReilly")));
-               books.Add(new LibraryBook("4", "C# in Depth", _factory.GetOrCreate("PDF", "English", "Penguin")));
-               books.Add(new LibraryBook("5", "ASP.NET MVC", _factory.GetOrCreate("EPUB", "Romanian", "Humanitas")));
-               books.Add(new LibraryBook("6", "Algorithms", _factory.GetOrCreate("PDF", "English", "Penguin")));
+                    var books = booksFromDb.Select(b =>
+                    {
+                         var book = new LibraryBook(
+                              b.Id.ToString(),
+                              b.Title,
+                              b.Description,
+                              b.CoverImageUrl,
+                              _factory.GetOrCreate(
+                                   "PDF",
+                                   b.Language ?? "Unknown",
+                                   b.PublisherId.HasValue ? b.PublisherId.Value.ToString() : "Unknown"
+                              )
+                         );
 
-               return books;
+                         book.PublishedYear = b.PublishedYear;
+                         book.CategoryName = b.Category != null ? b.Category.Name : "Uncategorized";
+
+                         return book;
+                    }).ToList();
+
+                    return books;
+               }
           }
+
 
           public int GetSharedFormatsCount()
           {

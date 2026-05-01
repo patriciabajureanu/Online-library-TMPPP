@@ -1,0 +1,64 @@
+﻿@model List<OnlineLibrary.Models.Borrowing>
+
+@{
+     ViewBag.Title = "My Borrowed Books";
+}
+
+<h2>My Borrowed Books</h2>
+
+@if (TempData["Message"] != null)
+{
+     <p style="color: green;">@TempData["Message"]</p>
+}
+
+<table class="table">
+     <thead>
+          <tr>
+               <th>Book Id</th>
+               <th>Borrow Date</th>
+               <th>Due Date</th>
+               <th>Return Date</th>
+               <th>Status</th>
+               <th>Action</th>
+          </tr>
+     </thead>
+
+     <tbody>
+          @foreach (var item in Model)
+          {
+               <tr>
+                    <td>@item.BookId</td>
+                    <td>@item.BorrowDate.ToString("dd/MM/yyyy")</td>
+                    <td>@item.DueDate.ToString("dd/MM/yyyy")</td>
+                    <td>
+                         @if (item.ReturnDate.HasValue)
+                         {
+                              @item.ReturnDate.Value.ToString("dd/MM/yyyy")
+                         }
+                         else
+                         {
+                              <span>-</span>
+                         }
+                    </td>
+                    <td>@item.Status</td>
+                    <td>
+                         @if (!item.IsReturned)
+                         {
+                              <a class="btn btn-success"
+                                 href="@Url.Action("Return", "Home", new { id = item.Id })">
+                                   Return
+                              </a>
+                         }
+                         else
+                         {
+                              <span>Returned</span>
+                         }
+                    </td>
+               </tr>
+          }
+     </tbody>
+</table>
+
+<br />
+
+<a href="@Url.Action("DbBooks", "Home")">Back to books</a>
