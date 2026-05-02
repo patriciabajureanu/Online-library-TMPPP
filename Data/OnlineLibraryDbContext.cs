@@ -19,5 +19,6 @@ namespace OnlineLibrary.Data
           public DbSet<Category> Categories { get; set; }
           public DbSet<Review> Reviews { get; set; }
           public DbSet<Loan> Loans { get; set; }
+
      }
 }

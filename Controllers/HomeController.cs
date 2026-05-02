@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using OnlineLibrary.AbstractFactory;
 using OnlineLibrary.Bridge;
+using OnlineLibrary.Builder;
 using OnlineLibrary.Command;
 using OnlineLibrary.Data;
 using OnlineLibrary.Decorator;
@@ -158,28 +159,7 @@ namespace OnlineLibrary.Controllers
                     return RedirectToAction("MyLoans");
                }
           }
-          [HttpPost]
-          [Authorize]
-          [ValidateAntiForgeryToken]
-          public ActionResult CreateBook(string title, string description, string bookType)
-          {
-               using (var db = new OnlineLibraryDbContext())
-               {
-                    // FACTORY METHOD
-                    var creator = LibraryItemCreatorProvider.GetCreator(bookType);
 
-                    var libraryItem = creator.CreateItem(title, description);
-
-                    var book = libraryItem.ToBook();
-
-                    db.Books.Add(book);
-                    db.SaveChanges();
-
-                    TempData["Success"] = "Book created using Factory Method.";
-
-                    return RedirectToAction("Borrow");
-               }
-          }
           public ActionResult Read(string id)
           {
                IBookAccessService service = new BasicBookAccessService();

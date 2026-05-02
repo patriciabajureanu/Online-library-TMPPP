@@ -1,34 +1,31 @@
-﻿using System;
+﻿using OnlineLibrary.Builder;
 using OnlineLibrary.Models;
 
 namespace OnlineLibrary.FactoryMethod
 {
      public class PrintedBook : ILibraryItem
      {
-          public string Title { get; private set; }
-          public string Description { get; private set; }
-          public string BookType { get; private set; }
+          public string Title { get; }
+          public string Author { get; }
+          public string Description { get; }
+          public string BookType { get; }
+          public int Pages { get; }
 
-          public PrintedBook(string title, string description)
+          public PrintedBook(string title, string author, string description, int pages)
           {
                Title = title;
+               Author = author;
                Description = description;
+               Pages = pages;
                BookType = "Printed";
           }
 
           public Book ToBook()
           {
-               return new Book
-               {
-                    Title = Title,
-                    Description = Description,
-                    BookType = BookType,
-                    Language = "English",
-                    PublishedYear = 2024,
-                    TotalCopies = 1,
-                    AvailableCopies = 1,
-                    CreatedAt = DateTime.Now
-               };
+               var builder = new BookBuilder();
+               var director = new BookBuildDirector(builder);
+
+               return director.BuildBook(Title, Author, Description, BookType, Pages);
           }
      }
 }

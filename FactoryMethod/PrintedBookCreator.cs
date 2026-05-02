@@ -2,9 +2,9 @@
 {
      public class PrintedBookCreator : LibraryItemCreator
      {
-          public override ILibraryItem CreateItem(string title, string description)
+          public override ILibraryItem CreateItem(string title, string author, string description, int pages)
           {
-               return new PrintedBook(title, description);
+               return new PrintedBook(title, author, description, pages);
           }
      }
 }

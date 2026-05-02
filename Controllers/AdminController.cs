@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using OnlineLibrary.AbstractFactory;
+using OnlineLibrary.Builder;
 using OnlineLibrary.Data;
 using OnlineLibrary.FactoryMethod;
 using OnlineLibrary.Models;
@@ -19,15 +20,17 @@ namespace OnlineLibrary.Controllers
           [HttpPost]
           [Authorize]
           [ValidateAntiForgeryToken]
-          public ActionResult CreateBook(string title, string description, string bookType)
+          public ActionResult CreateBook(string title, string author, string description, string bookType, int pages)
           {
                using (var db = new OnlineLibraryDbContext())
                {
-                    // 🔥 FACTORY METHOD
+                    // FACTORY METHOD
+                    // Decide CE tip de obiect creezi (Printed / Digital / Audio)
                     var creator = LibraryItemCreatorProvider.GetCreator(bookType);
 
-                    var libraryItem = creator.CreateItem(title, description);
-
+                    var libraryItem = creator.CreateItem(title, author, description, pages);
+                    // BUILDER
+                    // Aici se construiește obiectul Book pas cu pas (Title, Author, Type, Pages, etc.)
                     var book = libraryItem.ToBook();
 
                     db.Books.Add(book);
@@ -38,63 +41,11 @@ namespace OnlineLibrary.Controllers
                     return RedirectToAction("CreateBook");
                }
           }
-          [Authorize]
-          public ActionResult CreateUserLoan()
-          {
-               return View();
-          }
 
-          [HttpPost]
-          [Authorize]
-          [ValidateAntiForgeryToken]
-          public ActionResult CreateUserLoan(string userType, string name, string bookTitle)
-          {
-               using (var db = new OnlineLibraryDbContext())
-               {
-                    // 🔥 ABSTRACT FACTORY
-                    var factory = UserFactoryProvider.GetFactory(userType);
 
-                    var user = factory.CreateUser(name);
-                    var loanType = factory.CreateLoan(bookTitle);
+          
 
-                    // 🔍 găsește cartea în DB
-                    var book = db.Books.FirstOrDefault(b => b.Title == bookTitle);
 
-                    if (book == null)
-                    {
-                         TempData["Error"] = "Book not found.";
-                         return RedirectToAction("CreateUserLoan");
-                    }
-
-                    if (book.AvailableCopies <= 0)
-                    {
-                         TempData["Error"] = "No copies available.";
-                         return RedirectToAction("CreateUserLoan");
-                    }
-
-                    // 🧠 creezi Loan REAL
-                    var loan = new Loan
-                    {
-                         BookId = book.Id,
-                         UserEmail = user.GetName(), // sau User.Identity.Name dacă vrei
-                         UserType = user.GetUserType(),
-                         BorrowDate = DateTime.Now,
-                         DueDate = DateTime.Now.AddDays(loanType.GetLoanDays()),
-                         ReturnDate = null,
-                         IsReturned = false
-                    };
-
-                    db.Loans.Add(loan);
-
-                    book.AvailableCopies--;
-
-                    db.SaveChanges();
-
-                    TempData["Success"] = $"{user.GetUserType()} loan created successfully!";
-
-                    return RedirectToAction("CreateUserLoan");
-               }
-          }
      }
 
 }

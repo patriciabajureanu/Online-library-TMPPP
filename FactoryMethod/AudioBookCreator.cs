@@ -1,12 +1,10 @@
-﻿using OnlineLibrary.FactoryMethod;
-
-namespace OnlineLibrary.FactoryMethod
+﻿namespace OnlineLibrary.FactoryMethod
 {
      public class AudioBookCreator : LibraryItemCreator
      {
-          public override ILibraryItem CreateItem(string title, string description)
+          public override ILibraryItem CreateItem(string title, string author, string description, int pages)
           {
-               return new AudioBook(title, description);
+               return new AudioBook(title, author, description, pages);
           }
      }
 }
