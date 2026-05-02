@@ -24,7 +24,7 @@ namespace OnlineLibrary.Models
 
           public string CoverImageUrl { get; set; }
 
-          public string PdfUrl { get; set; }
+          public string FilePath { get; set; }
 
           public int? CategoryId { get; set; }
 

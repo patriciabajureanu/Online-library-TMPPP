@@ -11,19 +11,19 @@ namespace OnlineLibrary.Adapter.Services
                _reader = reader;
           }
 
-          public void ReadBook(string filePath)
+          public string ReadBook(string filePath)
           {
-               _reader.OpenBook(filePath);
+               return _reader.OpenBook(filePath);
           }
 
-          public void NavigateToPage(int page)
+          public string NavigateToPage(int page)
           {
-               _reader.GoToPage(page);
+               return _reader.GoToPage(page);
           }
 
-          public void Close()
+          public string CloseBook()
           {
-               _reader.CloseBook();
+               return _reader.CloseBook();
           }
      }
 }

@@ -535,7 +535,6 @@
     <Compile Include="Controllers\DecoratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibraryController.cs" />
-    <Compile Include="Controllers\ReaderController.cs" />
     <Compile Include="Controllers\SingletonController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\OnlineLibraryDbContext.cs" />

@@ -1,5 +1,5 @@
-﻿using OnlineLibrary.Adapter.Interfaces;
-using OnlineLibrary.Adapter.Adaptee;
+﻿using OnlineLibrary.Adapter.Adaptee;
+using OnlineLibrary.Adapter.Interfaces;
 
 namespace OnlineLibrary.Adapter.Adapters
 {
@@ -12,19 +12,19 @@ namespace OnlineLibrary.Adapter.Adapters
                _pdfReader = pdfReader;
           }
 
-          public void OpenBook(string filePath)
+          public string OpenBook(string filePath)
           {
-               _pdfReader.LoadDocument(filePath);
+               return _pdfReader.LoadDocument(filePath);
           }
 
-          public void GoToPage(int page)
+          public string GoToPage(int page)
           {
-               _pdfReader.JumpTo(page);
+               return _pdfReader.JumpTo(page);
           }
 
-          public void CloseBook()
+          public string CloseBook()
           {
-               _pdfReader.Exit();
+               return _pdfReader.Exit();
           }
      }
 }

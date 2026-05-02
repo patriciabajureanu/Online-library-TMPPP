@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineLibrary.AbstractFactory;
+using OnlineLibrary.Adapter.Adaptee;
+using OnlineLibrary.Adapter.Adapters;
+using OnlineLibrary.Adapter.Services;
 using OnlineLibrary.Bridge;
 using OnlineLibrary.Builder;
 using OnlineLibrary.Command;
@@ -212,19 +215,36 @@ namespace OnlineLibrary.Controllers
                }
           }
 
-          public ActionResult Read(string id)
+          public ActionResult Read(int id, int page = 1)
           {
-               IBookAccessService service = new BasicBookAccessService();
-               service = new LoggingDecorator(service);
-               service = new CachingDecorator(service);
-               service = new AuthorizationDecorator(service);
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var book = db.Books.FirstOrDefault(b => b.Id == id);
 
-               var content = service.GetBookContent(id);
+                    if (book == null)
+                    {
+                         return HttpNotFound();
+                    }
 
-               ViewBag.BookId = id;
-               ViewBag.Content = content;
+                    if (string.IsNullOrEmpty(book.FilePath))
+                    {
+                         TempData["Error"] = "This book does not have a PDF file attached.";
+                         return RedirectToAction("Index");
+                    }
 
-               return View();
+                    var externalPdfReader = new ExternalPdfReader();
+                    var adapter = new PdfReaderAdapter(externalPdfReader);
+                    var libraryReaderService = new LibraryReaderService(adapter);
+
+                    ViewBag.BookTitle = book.Title;
+                    ViewBag.FilePath = book.FilePath;
+
+                    ViewBag.OpenResult = libraryReaderService.ReadBook(book.FilePath);
+                    ViewBag.PageResult = libraryReaderService.NavigateToPage(page);
+                    ViewBag.CloseResult = libraryReaderService.CloseBook();
+
+                    return View();
+               }
           }
           public ActionResult BridgeDemo()
           {
