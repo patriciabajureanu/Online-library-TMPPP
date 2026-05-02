@@ -17,9 +17,11 @@ using OnlineLibrary.Models;
 using OnlineLibrary.Observer;
 using OnlineLibrary.Patterns.Bridge;
 using OnlineLibrary.Patterns.Proxy;
+using OnlineLibrary.Prototype;
 using OnlineLibrary.Proxy;
 using OnlineLibrary.Repositories;
 using OnlineLibrary.Strategy;
+using Rotativa;
 
 namespace OnlineLibrary.Controllers
 {
@@ -133,7 +135,23 @@ namespace OnlineLibrary.Controllers
                     }
 
                     // ABSTRACT FACTORY
-                    var factory = UserFactoryProvider.GetFactory(userType);
+                    IUserRepository userRepository = new UserRepository();
+
+                    var currentEmail = User.Identity.Name;
+                    var loggedUser = userRepository.GetByEmail(currentEmail);
+
+                    if (loggedUser == null)
+                    {
+                         TempData["Error"] = "User not found. Please login again.";
+                         return RedirectToAction("Login", "Account");
+                    }
+
+                    var role = loggedUser.Role;
+
+                    Session["Role"] = role; // îl refacem și în sesiune
+
+                    var factory = UserFactoryProvider.GetFactory(role);
+
 
                     var user = factory.CreateUser(User.Identity.Name);
                     var loanType = factory.CreateLoan(book.Title);
@@ -157,6 +175,40 @@ namespace OnlineLibrary.Controllers
 
                     TempData["Success"] = "Book borrowed successfully!";
                     return RedirectToAction("MyLoans");
+               }
+          }
+
+          public ActionResult DownloadPrototypeReport()
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var books = db.Books.ToList();
+
+                    var masterReport = new AnalyticalReport
+                    {
+                         Title = "Online Library Inventory Report",
+                         HeaderColor = "Gold",
+                         ChartType = "Table",
+                         IncludeDataRaw = true
+                    };
+
+                    masterReport.Sections.Add("Generated at: " + DateTime.Now);
+                    masterReport.Sections.Add("Total books: " + books.Count);
+                    masterReport.Sections.Add("Available copies: " + books.Sum(b => b.AvailableCopies));
+                    masterReport.Sections.Add("Borrowed copies: " + books.Sum(b => b.TotalCopies - b.AvailableCopies));
+
+                    var clonedReport = (AnalyticalReport)masterReport.Clone();
+                    clonedReport.Title = "Downloaded Prototype Report";
+
+                    ViewBag.Report = clonedReport;
+                    ViewBag.Books = books;
+
+                    return new ViewAsPdf("PrototypeReportPdf")
+                    {
+                         FileName = "OnlineLibrary_Prototype_Report.pdf",
+                         PageSize = Rotativa.Options.Size.A4,
+                         PageOrientation = Rotativa.Options.Orientation.Portrait
+                    };
                }
           }
 

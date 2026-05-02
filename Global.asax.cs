@@ -4,6 +4,7 @@ using OnlineLibrary.Adapter.Adaptee;
 using OnlineLibrary.Adapter.Adapters;
 using OnlineLibrary.Adapter.Interfaces;
 using OnlineLibrary.Adapter.Services;
+using Rotativa;
 
 namespace OnlineLibrary
 {

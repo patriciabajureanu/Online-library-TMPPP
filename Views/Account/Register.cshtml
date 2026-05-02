@@ -54,7 +54,21 @@
                                    })
                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                               </div>
+                              <div class="mb-4">
+                                   @Html.LabelFor(m => m.Role, new { @class = "mb-2" })
 
+                                   @Html.DropDownListFor(m => m.Role,
+                                        new SelectList(new[]
+                                        {
+                                             "Student",
+                                             "Teacher",
+                                             "Admin"
+                                        }),
+                                        "Select role",
+                                        new { @class = "form-control" })
+
+                                   @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" })
+                              </div>
                               <div class="btn-wrap align-center">
                                    <button type="submit" class="btn btn-outline-accent btn-accent-arrow">
                                         Register <i class="icon icon-ns-arrow-right"></i>

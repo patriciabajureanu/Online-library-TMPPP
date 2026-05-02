@@ -1,0 +1,94 @@
+﻿@{
+     Layout = null;
+     var report = ViewBag.Report;
+     var books = ViewBag.Books;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <style>
+          body {
+               font-family: Arial;
+               color: #333;
+               margin: 30px;
+          }
+
+          h1 {
+               color: #b88a00;
+               text-align: center;
+          }
+
+          .subtitle {
+               text-align: center;
+               margin-bottom: 30px;
+          }
+
+          table {
+               width: 100%;
+               border-collapse: collapse;
+               margin-top: 20px;
+          }
+
+          th {
+               background-color: #b88a00;
+               color: white;
+               padding: 8px;
+               border: 1px solid #ccc;
+          }
+
+          td {
+               padding: 8px;
+               border: 1px solid #ccc;
+          }
+
+          .summary {
+               margin-top: 20px;
+               padding: 15px;
+               border: 1px solid #b88a00;
+               background-color: #fff8dc;
+          }
+     </style>
+</head>
+<body>
+     <h1>@report.Title</h1>
+     <div class="subtitle">Generated with Prototype Pattern</div>
+
+     <div class="summary">
+          <h3>Report Summary</h3>
+          <ul>
+               @foreach (var item in report.Sections)
+               {
+                    <li>@item</li>
+               }
+          </ul>
+     </div>
+
+     <h3>Books Inventory</h3>
+
+     <table>
+          <thead>
+               <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Total Copies</th>
+                    <th>Available Copies</th>
+                    <th>Borrowed Copies</th>
+               </tr>
+          </thead>
+          <tbody>
+               @foreach (var book in books)
+               {
+                    <tr>
+                         <td>@book.Id</td>
+                         <td>@book.Title</td>
+                         <td>@book.TotalCopies</td>
+                         <td>@book.AvailableCopies</td>
+                         <td>@(book.TotalCopies - book.AvailableCopies)</td>
+                    </tr>
+               }
+          </tbody>
+     </table>
+</body>
+</html>

@@ -34,7 +34,7 @@ namespace OnlineLibrary.Controllers
                     Username = model.Username,
                     Email = model.Email,
                     Password = model.Password,
-                    Role = "User"
+                    Role = model.Role 
                };
 
                userRepository.Register(newUser);
@@ -44,8 +44,9 @@ namespace OnlineLibrary.Controllers
                FormsAuthentication.SetAuthCookie(savedUser.Username, false);
                Session["UserId"] = savedUser.Id;
                Session["Username"] = savedUser.Username;
+               Session["Role"] = savedUser.Role;
 
-               return RedirectToAction("DbBooks", "Home");
+               return RedirectToAction("Index", "Home");
           }
 
           [HttpGet]
@@ -69,6 +70,7 @@ namespace OnlineLibrary.Controllers
                     FormsAuthentication.SetAuthCookie(user.Email, false);
                     Session["UserId"] = user.Id;
                     Session["Username"] = user.Username;
+                    Session["Role"] = user.Role;
 
                     return RedirectToAction("Index", "Home");
                }
