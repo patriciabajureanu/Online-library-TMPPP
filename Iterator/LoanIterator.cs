@@ -1,4 +1,6 @@
-﻿namespace OnlineLibrary.Iterator
+﻿using OnlineLibrary.Models;
+
+namespace OnlineLibrary.Iterator
 {
      public class LoanIterator : IIterator
      {
@@ -17,6 +19,9 @@
 
           public Loan GetNext()
           {
+               if (!HasMore())
+                    return null;
+
                return _collection.GetLoans()[_currentPosition++];
           }
      }

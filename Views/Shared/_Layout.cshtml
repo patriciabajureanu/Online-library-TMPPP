@@ -46,11 +46,11 @@
                                                   </li>
 
                                                   <li class="menu-item">
-                                                       <a href="@Url.Action("Index", "Borrow")">Borrow</a>
+                                                       <a href="@Url.Action("Borrow", "Home")">Borrow</a>
                                                   </li>
 
                                                   <li class="menu-item">
-                                                       <a href="@Url.Action("MyBorrows", "Borrow")">My Loans</a>
+                                                       <a href="@Url.Action("MyLoans", "Home")">My Loans</a>
                                                   </li>
 
                                                   @if (User.Identity.IsAuthenticated && User.Identity.Name == "patricia.bajureanu@gmail.com")

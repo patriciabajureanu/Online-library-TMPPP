@@ -1,0 +1,86 @@
+﻿@model IEnumerable<OnlineLibrary.Models.Loan>
+
+@{
+     ViewBag.Title = "My Loans";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="my-loans" class="bookshelf py-5 my-5">
+     <div class="container">
+
+          <div class="section-header align-center">
+               <div class="title">
+                    <span>Your borrowed books</span>
+               </div>
+               <h2 class="section-title">My Loans</h2>
+          </div>
+
+          @if (!Model.Any())
+          {
+               <div class="text-center">
+                    <p>You have no borrowed books yet.</p>
+
+                    <a href="@Url.Action("Borrow", "Home")" class="btn borrow-btn">
+                         Borrow a Book
+                    </a>
+               </div>
+          }
+          else
+          {
+               <div class="product-list">
+                    <div class="row">
+
+                         @foreach (var loan in Model)
+                         {
+                              <div class="col-md-3 mb-4">
+                                   <div class="product-item borrow-book-card">
+
+                                        <figure class="product-style">
+                                             <img src="@(loan.Book == null || string.IsNullOrEmpty(loan.Book.CoverImageUrl) ? Url.Content("~/Content/Images/default.png") : loan.Book.CoverImageUrl)"
+                                                  alt="@(loan.Book == null ? "Book" : loan.Book.Title)"
+                                                  class="product-item borrow-book-image">
+                                        </figure>
+
+                                        <figcaption>
+                                             <h3>@(loan.Book == null ? "Unknown Book" : loan.Book.Title)</h3>
+
+                                             <div>
+                                                  <strong>Borrowed:</strong>
+                                                  @loan.BorrowDate.ToString("dd.MM.yyyy")
+                                             </div>
+
+                                             <div>
+                                                  <strong>Status:</strong>
+                                                  @if (!loan.IsReturned)
+                                                  {
+                                                       using (Html.BeginForm("ReturnBook", "Home", FormMethod.Post))
+                                                       {
+                                                            @Html.AntiForgeryToken()
+                                                            <input type="hidden" name="id" value="@loan.Id" />
+
+                                                            <button type="submit" class="borrow-card-btn return-card-btn">
+                                                                 Return Book
+                                                            </button>
+                                                       }
+                                                  }
+                                             </div>
+
+                                             @if (loan.ReturnDate != null)
+                                             {
+                                                  <div>
+                                                       <strong>Returned:</strong>
+                                                       @loan.ReturnDate.Value.ToString("dd.MM.yyyy")
+                                                  </div>
+                                             }
+                                        </figcaption>
+
+                                   </div>
+                              </div>
+                         }
+
+                    </div>
+               </div>
+          }
+
+     </div>
+</section>

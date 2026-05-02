@@ -84,7 +84,70 @@ namespace OnlineLibrary.Controllers
 
                return View(model);
           }
+          [Authorize]
+          public ActionResult Borrow()
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var books = db.Books.ToList();
+                    return View(books);
+               }
+          }
+          [Authorize]
+          public ActionResult BorrowBook(int id)
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var book = db.Books.FirstOrDefault(b => b.Id == id);
 
+                    if (book == null)
+                    {
+                         return HttpNotFound();
+                    }
+
+                    return View(book);
+               }
+          }
+
+          [HttpPost]
+          [Authorize]
+          [ValidateAntiForgeryToken]
+          public ActionResult ConfirmBorrowBook(int id)
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var book = db.Books.FirstOrDefault(b => b.Id == id);
+
+                    if (book == null)
+                    {
+                         return HttpNotFound();
+                    }
+
+                    if (book.AvailableCopies <= 0)
+                    {
+                         TempData["Error"] = "This book is not available.";
+                         return RedirectToAction("BorrowBook", new { id = id });
+                    }
+
+                    var loan = new Loan
+                    {
+                         BookId = book.Id,
+                         UserEmail = User.Identity.Name,
+                         BorrowDate = DateTime.Now,
+                         ReturnDate = null,
+                         IsReturned = false
+                    };
+
+                    db.Loans.Add(loan);
+
+                    book.AvailableCopies--;
+
+                    db.SaveChanges();
+
+                    TempData["Success"] = "Book borrowed successfully!";
+                    return RedirectToAction("Borrow");
+               }
+          }
           public ActionResult Read(string id)
           {
                IBookAccessService service = new BasicBookAccessService();
@@ -218,13 +281,40 @@ namespace OnlineLibrary.Controllers
 
                return View();
           }
+
           public ActionResult IteratorDemo()
           {
                var collection = new UserLoanCollection();
 
-               collection.AddLoan(new Loan { Id = "1", UserId = "U1", BookTitle = "Clean Code", BorrowDate = DateTime.Now, DueDate = DateTime.Now.AddDays(7) });
-               collection.AddLoan(new Loan { Id = "2", UserId = "U1", BookTitle = "Design Patterns", BorrowDate = DateTime.Now, DueDate = DateTime.Now.AddDays(5) });
-               collection.AddLoan(new Loan { Id = "3", UserId = "U2", BookTitle = "Refactoring", BorrowDate = DateTime.Now, DueDate = DateTime.Now.AddDays(10) });
+               collection.AddLoan(new Loan
+               {
+                    Id = 1,
+                    BookId = 1,
+                    UserEmail = "user1@test.com",
+                    BorrowDate = DateTime.Now,
+                    ReturnDate = null,
+                    IsReturned = false
+               });
+
+               collection.AddLoan(new Loan
+               {
+                    Id = 2,
+                    BookId = 2,
+                    UserEmail = "user1@test.com",
+                    BorrowDate = DateTime.Now,
+                    ReturnDate = null,
+                    IsReturned = false
+               });
+
+               collection.AddLoan(new Loan
+               {
+                    Id = 3,
+                    BookId = 3,
+                    UserEmail = "user2@test.com",
+                    BorrowDate = DateTime.Now,
+                    ReturnDate = null,
+                    IsReturned = false
+               });
 
                var iterator = collection.CreateIterator();
 
@@ -236,6 +326,55 @@ namespace OnlineLibrary.Controllers
                }
 
                return View(result);
+          }
+          [Authorize]
+          public ActionResult MyLoans()
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var userEmail = User.Identity.Name;
+
+                    var loans = db.Loans
+                        .Include("Book")
+                        .Where(l => l.UserEmail == userEmail)
+                        .OrderByDescending(l => l.BorrowDate)
+                        .ToList();
+
+                    return View(loans);
+               }
+          }
+          [HttpPost]
+          [Authorize]
+          [ValidateAntiForgeryToken]
+          public ActionResult ReturnBook(int id)
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var userEmail = User.Identity.Name;
+
+                    var loan = db.Loans
+                        .Include("Book")
+                        .FirstOrDefault(l => l.Id == id && l.UserEmail == userEmail && !l.IsReturned);
+
+                    if (loan == null)
+                    {
+                         TempData["Error"] = "Loan not found or already returned.";
+                         return RedirectToAction("MyLoans");
+                    }
+
+                    loan.IsReturned = true;
+                    loan.ReturnDate = DateTime.Now;
+
+                    if (loan.Book != null)
+                    {
+                         loan.Book.AvailableCopies++;
+                    }
+
+                    db.SaveChanges();
+
+                    TempData["Success"] = "Book returned successfully!";
+                    return RedirectToAction("MyLoans");
+               }
           }
 
           [AllowAnonymous]
@@ -261,53 +400,7 @@ namespace OnlineLibrary.Controllers
 
                return View(book);
           }
-          [Authorize]
-          public ActionResult Borrow(int id)
-          {
-               if (Session["UserId"] == null)
-               {
-                    return RedirectToAction("Login", "Account");
-               }
-
-               IBookRepository bookRepository = new BookRepository();
-
-               int userId = (int)Session["UserId"];
-
-               bool success = bookRepository.BorrowBook(id, userId);
-
-               if (success)
-                    TempData["Message"] = "Book borrowed successfully!";
-               else
-                    TempData["Message"] = "Book is not available.";
-
-               return RedirectToAction("Details", new { id = id });
-          }
-          [Authorize]
-          public ActionResult MyBorrowings()
-          {
-               if (Session["UserId"] == null)
-                    return RedirectToAction("Login", "Account");
-
-               int userId = (int)Session["UserId"];
-
-               IBookRepository bookRepository = new BookRepository();
-               var borrowings = bookRepository.GetBorrowingsByUserId(userId);
-
-               return View(borrowings);
-          }
-          [Authorize]
-          public ActionResult Return(int id)
-          {
-               IBookRepository bookRepository = new BookRepository();
-
-               bool success = bookRepository.ReturnBook(id);
-
-               if (success)
-                    TempData["Message"] = "Book returned successfully!";
-               else
-                    TempData["Message"] = "Error returning book.";
-
-               return RedirectToAction("MyBorrowings");
-          }
+          
+          
      }
      }

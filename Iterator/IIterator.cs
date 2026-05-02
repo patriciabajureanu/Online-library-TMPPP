@@ -1,4 +1,6 @@
-﻿namespace OnlineLibrary.Iterator
+﻿using OnlineLibrary.Models;
+
+namespace OnlineLibrary.Iterator
 {
      public interface IIterator
      {
