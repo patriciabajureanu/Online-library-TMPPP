@@ -1,0 +1,53 @@
+﻿@{
+     ViewBag.Title = "Admin - Create Book";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="py-5 my-5">
+     <div class="container">
+
+          <div class="section-header align-center">
+               <div class="title">
+                    <span>Admin Panel</span>
+               </div>
+               <h2 class="section-title">Create New Book</h2>
+          </div>
+
+          @using (Html.BeginForm("CreateBook", "Admin", FormMethod.Post))
+          {
+               @Html.AntiForgeryToken()
+
+               <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="form-control" required />
+               </div>
+
+               <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" class="form-control" required></textarea>
+               </div>
+
+               <div class="form-group">
+                    <label>Book Type</label>
+                    <select name="bookType" class="form-control" required>
+                         <option value="Printed">Printed Book</option>
+                         <option value="Digital">Digital Book</option>
+                         <option value="Audio">Audio Book</option>
+                         <option value="Magazine">Magazine</option> <!-- nou -->
+                    </select>
+               </div>
+
+               <button type="submit" class="btn borrow-btn">
+                    Create Book
+               </button>
+          }
+
+          @if (TempData["Success"] != null)
+          {
+               <div class="alert alert-success mt-4 text-center">
+                    @TempData["Success"]
+               </div>
+          }
+
+     </div>
+</section>

@@ -529,6 +529,7 @@
     <Compile Include="Composite\Genre.cs" />
     <Compile Include="Composite\LibraryComponent.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\DecoratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -551,10 +552,11 @@
     <Compile Include="Facade\Subsystems\NotificationService.cs" />
     <Compile Include="Facade\Subsystems\UserRepository.cs" />
     <Compile Include="Facade\Subsystems\UserValidator.cs" />
-    <Compile Include="Factory\Creators\AudioBookCreator.cs" />
-    <Compile Include="Factory\Creators\DigitalBookCreator.cs" />
-    <Compile Include="Factory\Creators\LibraryItemCreator.cs" />
-    <Compile Include="Factory\Creators\PrintedBookCreator.cs" />
+    <Compile Include="FactoryMethod\AudioBookCreator.cs" />
+    <Compile Include="FactoryMethod\DigitalBookCreator.cs" />
+    <Compile Include="FactoryMethod\LibraryItemCreator.cs" />
+    <Compile Include="FactoryMethod\LibraryItemCreatorProvider.cs" />
+    <Compile Include="FactoryMethod\PrintedBookCreator.cs" />
     <Compile Include="Flyweight\BookFormat.cs" />
     <Compile Include="Flyweight\BookFormatFactory.cs" />
     <Compile Include="Flyweight\IBookFormat.cs" />
@@ -566,8 +568,8 @@
     <Compile Include="Interfaces\IAuthentication.cs" />
     <Compile Include="Interfaces\ILibrary.cs" />
     <Compile Include="Builder\Interfaces\ILibraryBuilder.cs" />
-    <Compile Include="Factory\Interfaces\ILibraryItem.cs" />
-    <Compile Include="Factory\Products\AudioBook.cs" />
+    <Compile Include="FactoryMethod\ILibraryItem.cs" />
+    <Compile Include="FactoryMethod\AudioBook.cs" />
     <Compile Include="Builder\Models\Book.cs" />
     <Compile Include="Iterator\IIterableCollection.cs" />
     <Compile Include="Iterator\IIterator.cs" />
@@ -593,12 +595,12 @@
     <Compile Include="Models\BridgeDemoItemViewModel.cs" />
     <Compile Include="Models\BridgeDemoViewModel.cs" />
     <Compile Include="Models\Catalog.cs" />
-    <Compile Include="Factory\Products\DigitalBook.cs" />
+    <Compile Include="FactoryMethod\DigitalBook.cs" />
     <Compile Include="Models\FinePayment.cs" />
     <Compile Include="Models\FlyweightViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Builder\Models\Magazine.cs" />
-    <Compile Include="Factory\Products\PrintedBook.cs" />
+    <Compile Include="FactoryMethod\PrintedBook.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProxyDemoViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
@@ -629,6 +631,7 @@
     <Compile Include="Strategy\SortByFormatStrategy.cs" />
     <Compile Include="Strategy\SortByTitleStrategy.cs" />
     <Compile Include="Strategy\SortByIdStrategy.cs" />
+    <Content Include="Views\Admin\CreateBook.cshtml" />
     <None Include="Views\Home\Borrow.cshtml" />
     <Content Include="Views\Home\BorrowBook.cshtml" />
     <Content Include="Views\Home\MyLoans.cshtml" />

@@ -4,19 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineLibrary.Bridge;
+using OnlineLibrary.Command;
+using OnlineLibrary.Data;
 using OnlineLibrary.Decorator;
+using OnlineLibrary.FactoryMethod;
 using OnlineLibrary.Flyweight;
+using OnlineLibrary.Iterator;
+using OnlineLibrary.Memento;
 using OnlineLibrary.Models;
+using OnlineLibrary.Observer;
 using OnlineLibrary.Patterns.Bridge;
 using OnlineLibrary.Patterns.Proxy;
 using OnlineLibrary.Proxy;
-using OnlineLibrary.Strategy;
-using OnlineLibrary.Observer;
-using OnlineLibrary.Command;
-using OnlineLibrary.Memento;
-using OnlineLibrary.Iterator;
-using OnlineLibrary.Data;
 using OnlineLibrary.Repositories;
+using OnlineLibrary.Strategy;
 
 namespace OnlineLibrary.Controllers
 {
@@ -145,6 +146,28 @@ namespace OnlineLibrary.Controllers
                     db.SaveChanges();
 
                     TempData["Success"] = "Book borrowed successfully!";
+                    return RedirectToAction("Borrow");
+               }
+          }
+          [HttpPost]
+          [Authorize]
+          [ValidateAntiForgeryToken]
+          public ActionResult CreateBook(string title, string description, string bookType)
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    // FACTORY METHOD
+                    var creator = LibraryItemCreatorProvider.GetCreator(bookType);
+
+                    var libraryItem = creator.CreateItem(title, description);
+
+                    var book = libraryItem.ToBook();
+
+                    db.Books.Add(book);
+                    db.SaveChanges();
+
+                    TempData["Success"] = "Book created using Factory Method.";
+
                     return RedirectToAction("Borrow");
                }
           }

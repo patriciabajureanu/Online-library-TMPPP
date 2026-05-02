@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineLibrary.FactoryMethod;
-using OnlineLibrary.FactoryMethod.Creators;
-using OnlineLibrary.FactoryMethod.Interfaces;
 
 namespace OnlineLibrary.Controllers
 {
@@ -10,26 +8,11 @@ namespace OnlineLibrary.Controllers
           [HttpPost]
           public IActionResult Create(string bookType, string title)
           {
-               LibraryItemCreator creator;
+               var creator = LibraryItemCreatorProvider.GetCreator(bookType);
 
-               switch (bookType)
-               {
-                    case "Printed":
-                         creator = new PrintedBookCreator();
-                         break;
-                    case "Digital":
-                         creator = new DigitalBookCreator();
-                         break;
-                    case "Audio":
-                         creator = new AudioBookCreator();
-                         break;
-                    default:
-                         creator = new PrintedBookCreator();
-                         break;
-               }
+               ILibraryItem book = creator.CreateItem(title, "Default description");
 
-               ILibraryItem book = creator.CreateItem(title);
-               ViewBag.BookDescription = book.GetDescription();
+               ViewBag.BookDescription = book.Description;
 
                return View("~/Views/Home/Index.cshtml");
           }

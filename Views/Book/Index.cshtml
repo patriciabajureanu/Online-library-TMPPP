@@ -1,4 +1,4 @@
-﻿@model List<OnlineLibrary.Interfaces.ILibraryItem>
+﻿@model List<OnlineLibrary.FactoryMethod.ILibraryItem>
 
 <h2>Library Books</h2>
 
@@ -7,14 +7,16 @@
           <tr>
                <th>Title</th>
                <th>Description</th>
+               <th>Type</th>
           </tr>
      </thead>
      <tbody>
           @foreach (var book in Model)
           {
                <tr>
-                    <td>@book.GetTitle()</td>
-                    <td>@book.GetDescription()</td>
+                    <td>@book.Title</td>
+                    <td>@book.Description</td>
+                    <td>@book.BookType</td>
                </tr>
           }
      </tbody>
