@@ -490,15 +490,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\Factories\ProfessorFactory.cs" />
-    <Compile Include="Abstract\Factories\StudentFactory.cs" />
-    <Compile Include="Abstract\Interfaces\IUserFactory.cs" />
-    <Compile Include="Abstract\Interfaces\ILoan.cs" />
-    <Compile Include="Abstract\Interfaces\IUser.cs" />
-    <Compile Include="Abstract\Products\Professor.cs" />
-    <Compile Include="Abstract\Products\ProfessorLoan.cs" />
-    <Compile Include="Abstract\Products\StudentLoan.cs" />
-    <Compile Include="Abstract\Products\Student.cs" />
+    <Compile Include="AbstractFactory\ProfessorFactory.cs" />
+    <Compile Include="AbstractFactory\StudentFactory.cs" />
+    <Compile Include="AbstractFactory\IUserFactory.cs" />
+    <Compile Include="AbstractFactory\ILoan.cs" />
+    <Compile Include="AbstractFactory\IUser.cs" />
+    <Compile Include="AbstractFactory\Professor.cs" />
+    <Compile Include="AbstractFactory\ProfessorLoan.cs" />
+    <Compile Include="AbstractFactory\StudentLoan.cs" />
+    <Compile Include="AbstractFactory\Student.cs" />
+    <Compile Include="AbstractFactory\UserFactoryProvider.cs" />
     <Compile Include="Adapter\Adapter\PdfReaderAdapter.cs" />
     <Compile Include="Adapter\Interfaces\IEBookReader.cs" />
     <Compile Include="Adapter\Adaptee\ExternalPdfReader.cs" />
@@ -632,6 +633,7 @@
     <Compile Include="Strategy\SortByTitleStrategy.cs" />
     <Compile Include="Strategy\SortByIdStrategy.cs" />
     <Content Include="Views\Admin\CreateBook.cshtml" />
+    <Content Include="Views\Admin\CreateUserLoan.cshtml" />
     <None Include="Views\Home\Borrow.cshtml" />
     <Content Include="Views\Home\BorrowBook.cshtml" />
     <Content Include="Views\Home\MyLoans.cshtml" />

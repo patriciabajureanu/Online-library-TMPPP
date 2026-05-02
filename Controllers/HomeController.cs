@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnlineLibrary.AbstractFactory;
 using OnlineLibrary.Bridge;
 using OnlineLibrary.Command;
 using OnlineLibrary.Data;
@@ -113,7 +114,7 @@ namespace OnlineLibrary.Controllers
           [HttpPost]
           [Authorize]
           [ValidateAntiForgeryToken]
-          public ActionResult ConfirmBorrowBook(int id)
+          public ActionResult ConfirmBorrowBook(int id, string userType)
           {
                using (var db = new OnlineLibraryDbContext())
                {
@@ -130,11 +131,19 @@ namespace OnlineLibrary.Controllers
                          return RedirectToAction("BorrowBook", new { id = id });
                     }
 
+                    // ABSTRACT FACTORY
+                    var factory = UserFactoryProvider.GetFactory(userType);
+
+                    var user = factory.CreateUser(User.Identity.Name);
+                    var loanType = factory.CreateLoan(book.Title);
+
                     var loan = new Loan
                     {
                          BookId = book.Id,
-                         UserEmail = User.Identity.Name,
+                         UserEmail = user.GetName(),
+                         UserType = user.GetUserType(),
                          BorrowDate = DateTime.Now,
+                         DueDate = DateTime.Now.AddDays(loanType.GetLoanDays()),
                          ReturnDate = null,
                          IsReturned = false
                     };
@@ -146,7 +155,7 @@ namespace OnlineLibrary.Controllers
                     db.SaveChanges();
 
                     TempData["Success"] = "Book borrowed successfully!";
-                    return RedirectToAction("Borrow");
+                    return RedirectToAction("MyLoans");
                }
           }
           [HttpPost]

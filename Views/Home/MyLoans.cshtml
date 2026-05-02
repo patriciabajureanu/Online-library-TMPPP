@@ -50,18 +50,27 @@
                                              </div>
 
                                              <div>
-                                                  <strong>Status:</strong>
-                                                  @if (!loan.IsReturned)
-                                                  {
-                                                       using (Html.BeginForm("ReturnBook", "Home", FormMethod.Post))
-                                                       {
-                                                            @Html.AntiForgeryToken()
-                                                            <input type="hidden" name="id" value="@loan.Id" />
+                                                  <strong>User Type:</strong>
+                                                  @(string.IsNullOrEmpty(loan.UserType) ? "Unknown" : loan.UserType)
+                                             </div>
 
-                                                            <button type="submit" class="borrow-card-btn return-card-btn">
-                                                                 Return Book
-                                                            </button>
-                                                       }
+                                             @if (loan.DueDate != null)
+                                             {
+                                                  <div>
+                                                       <strong>Due Date:</strong>
+                                                       @loan.DueDate.Value.ToString("dd.MM.yyyy")
+                                                  </div>
+                                             }
+
+                                             <div>
+                                                  <strong>Status:</strong>
+                                                  @if (loan.IsReturned)
+                                                  {
+                                                       <span class="text-success">Returned</span>
+                                                  }
+                                                  else
+                                                  {
+                                                       <span class="text-warning">Active</span>
                                                   }
                                              </div>
 
@@ -71,6 +80,19 @@
                                                        <strong>Returned:</strong>
                                                        @loan.ReturnDate.Value.ToString("dd.MM.yyyy")
                                                   </div>
+                                             }
+
+                                             @if (!loan.IsReturned)
+                                             {
+                                                  using (Html.BeginForm("ReturnBook", "Home", FormMethod.Post))
+                                                  {
+                                                       @Html.AntiForgeryToken()
+                                                       <input type="hidden" name="id" value="@loan.Id" />
+
+                                                       <button type="submit" class="borrow-card-btn return-card-btn">
+                                                            Return Book
+                                                       </button>
+                                                  }
                                              }
                                         </figcaption>
 

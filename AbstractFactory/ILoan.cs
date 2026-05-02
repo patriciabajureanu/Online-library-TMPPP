@@ -1,7 +1,8 @@
-﻿namespace OnlineLibrary.Abstract.Interfaces
+﻿namespace OnlineLibrary.AbstractFactory
 {
      public interface ILoan
      {
+          int GetLoanDays();
           string GetDetails();
      }
 }

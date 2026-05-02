@@ -18,5 +18,7 @@ namespace OnlineLibrary.Models
           public DateTime? ReturnDate { get; set; }
 
           public bool IsReturned { get; set; }
+          public string UserType { get; set; }
+          public DateTime? DueDate { get; set; }
      }
 }

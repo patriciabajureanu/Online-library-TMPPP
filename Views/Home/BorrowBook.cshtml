@@ -42,7 +42,6 @@
                                    <div><strong>Language:</strong> @Model.Language</div>
                                    <div><strong>Published Year:</strong> @Model.PublishedYear</div>
                                    <div><strong>Available Copies:</strong> @Model.AvailableCopies</div>
-
                                    <div class="mt-4">
                                         @if (Model.AvailableCopies > 0)
                                         {
@@ -51,10 +50,18 @@
                                                   @Html.AntiForgeryToken()
                                                   @Html.HiddenFor(m => m.Id)
 
-                                        <button type="submit" class="btn borrow-btn">
-                                             <span>Confirm Borrow</span>
-                                             <i class="icon icon-ns-arrow-right"></i>
-                                        </button>
+                                                  <div class="form-group mt-3">
+                                                       <label>User Type</label>
+                                                       <select name="userType" class="form-control" required>
+                                                            <option value="Student">Student</option>
+                                                            <option value="Professor">Professor</option>
+                                                       </select>
+                                                  </div>
+
+                                                  <button type="submit" class="btn borrow-btn">
+                                                       <span>Confirm Borrow</span>
+                                                       <i class="icon icon-ns-arrow-right"></i>
+                                                  </button>
                                              }
                                         }
                                         else
@@ -64,9 +71,9 @@
                                              </button>
                                         }
 
-                                   <a href="@Url.Action("Borrow", "Home")" class="btn borrow-btn back-btn">
-                                        <span>Back</span>
-                                   </a>
+                                        <a href="@Url.Action("Borrow", "Home")" class="btn borrow-btn back-btn">
+                                             <span>Back</span>
+                                        </a>
                                    </div>
 
                               </div>

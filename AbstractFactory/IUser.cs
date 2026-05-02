@@ -1,4 +1,4 @@
-﻿namespace OnlineLibrary.Abstract.Interfaces
+﻿namespace OnlineLibrary.AbstractFactory
 {
      public interface IUser
      {
