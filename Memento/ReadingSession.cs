@@ -2,21 +2,27 @@
 {
      public class ReadingSession
      {
-          private string _state;
+          public int CurrentPage { get; private set; }
+          public string Theme { get; private set; }
+          public string FontSize { get; private set; }
 
-          public void SetState(string state)
+          public void SetState(int currentPage, string theme, string fontSize)
           {
-               _state = state;
+               CurrentPage = currentPage;
+               Theme = theme;
+               FontSize = fontSize;
           }
 
           public ReadingSnapshot CreateSnapshot()
           {
-               return new ReadingSnapshot(_state);
+               return new ReadingSnapshot(CurrentPage, Theme, FontSize);
           }
 
-          public string GetState()
+          public void Restore(ReadingSnapshot snapshot)
           {
-               return _state;
+               CurrentPage = snapshot.CurrentPage;
+               Theme = snapshot.Theme;
+               FontSize = snapshot.FontSize;
           }
      }
 }

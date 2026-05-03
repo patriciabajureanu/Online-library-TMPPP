@@ -67,7 +67,7 @@ namespace OnlineLibrary.Controllers
 
                if (user != null && user.Password == model.Password)
                {
-                    FormsAuthentication.SetAuthCookie(user.Email, false);
+                    FormsAuthentication.SetAuthCookie(model.Email, false);
                     Session["UserId"] = user.Id;
                     Session["Username"] = user.Username;
                     Session["Role"] = user.Role;

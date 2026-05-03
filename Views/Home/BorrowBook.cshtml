@@ -45,7 +45,7 @@
                                    <div class="mt-4 d-flex gap-3 flex-wrap">
                                         @if (Model.AvailableCopies > 0)
                                         {
-                                             using (Html.BeginForm("ConfirmBorrowBook", "Home", FormMethod.Post))
+                                            using (Html.BeginForm("BorrowBookConfirm", "Home", FormMethod.Post))
                                              {
                                                   @Html.AntiForgeryToken()
                                                   @Html.HiddenFor(m => m.Id)

@@ -1,9 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System.Data.Entity;
+using System.Web.Mvc;
 using System.Web.Routing;
 using OnlineLibrary.Adapter.Adaptee;
 using OnlineLibrary.Adapter.Adapters;
 using OnlineLibrary.Adapter.Interfaces;
 using OnlineLibrary.Adapter.Services;
+using OnlineLibrary.Data;
 using Rotativa;
 
 namespace OnlineLibrary
@@ -12,6 +14,7 @@ namespace OnlineLibrary
      {
           protected void Application_Start()
           {
+               Database.SetInitializer<OnlineLibraryDbContext>(null);
                // MVC standard
                AreaRegistration.RegisterAllAreas();
                RouteConfig.RegisterRoutes(RouteTable.Routes);

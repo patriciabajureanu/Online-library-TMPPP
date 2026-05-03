@@ -8,15 +8,14 @@ using OnlineLibrary.Adapter.Adaptee;
 using OnlineLibrary.Adapter.Adapters;
 using OnlineLibrary.Adapter.Services;
 using OnlineLibrary.Bridge;
-using OnlineLibrary.Bridge;
 using OnlineLibrary.Builder;
 using OnlineLibrary.Command;
 using OnlineLibrary.Composite;
 using OnlineLibrary.Data;
 using OnlineLibrary.Decorator;
+using OnlineLibrary.Facade;
 using OnlineLibrary.FactoryMethod;
 using OnlineLibrary.Flyweight;
-using OnlineLibrary.Iterator;
 using OnlineLibrary.Iterator;
 using OnlineLibrary.Memento;
 using OnlineLibrary.Models;
@@ -116,6 +115,7 @@ namespace OnlineLibrary.Controllers
           }
 
           [Authorize]
+          [HttpGet]
           public ActionResult BorrowBook(int id)
           {
                using (var db = new OnlineLibraryDbContext())
@@ -123,12 +123,23 @@ namespace OnlineLibrary.Controllers
                     var book = db.Books.FirstOrDefault(b => b.Id == id);
 
                     if (book == null)
-                    {
                          return HttpNotFound();
-                    }
 
                     return View(book);
                }
+          }
+          [Authorize]
+          [HttpPost]
+          public ActionResult BorrowBookConfirm(int id)
+          {
+               string userId = User.Identity.Name;
+
+               var facade = new LibraryFacade();
+               var result = facade.BorrowBook(userId, id);
+
+               TempData["Success"] = "📚 Book borrowed successfully!";
+
+               return RedirectToAction("MyLoans");
           }
           [HttpPost]
           [Authorize]
@@ -143,8 +154,7 @@ namespace OnlineLibrary.Controllers
                var invoker = new LibraryInvoker();
                invoker.ExecuteCommand(command);
 
-               TempData["Success"] = "Book reserved successfully!";
-               TempData["ObserverMessage"] = "Observer notified for reservation.";
+               TempData["Success"] = "📌 Reservation successful!";
 
                return RedirectToAction("MyLoans");
           }
@@ -181,35 +191,7 @@ namespace OnlineLibrary.Controllers
                return RedirectToAction("MyReservations");
           }
 
-          [HttpPost]
-          [Authorize]
-          [ValidateAntiForgeryToken]
-          public ActionResult ConfirmBorrowBook(int id, string userType)
-          {
-               var currentEmail = User.Identity.Name;
 
-               IUserRepository userRepository = new UserRepository();
-               var loggedUser = userRepository.GetByEmail(currentEmail);
-
-               if (loggedUser == null)
-               {
-                    TempData["Error"] = "User not found. Please login again.";
-                    return RedirectToAction("Login", "Account");
-               }
-
-               Session["Role"] = loggedUser.Role;
-
-               var manager = new LibraryManager();
-               var command = new BorrowBookCommand(manager, id, currentEmail, loggedUser.Role);
-
-               var invoker = new LibraryInvoker();
-               invoker.ExecuteCommand(command);
-
-               TempData["Success"] = "Book borrowed successfully!";
-               TempData["ObserverMessage"] = "Book borrowed successfully! Email sent and notification created.";
-
-               return RedirectToAction("MyLoans");
-          }
           public ActionResult DownloadPrototypeReport()
           {
                using (var db = new OnlineLibraryDbContext())
@@ -243,7 +225,7 @@ namespace OnlineLibrary.Controllers
                     };
                }
           }
-
+          [Authorize]
           public ActionResult Read(int id, int page = 1)
           {
                using (var db = new OnlineLibraryDbContext())
@@ -267,11 +249,41 @@ namespace OnlineLibrary.Controllers
 
                     ViewBag.BookTitle = book.Title;
                     ViewBag.FilePath = book.FilePath;
+                    ViewBag.BookId = book.Id;
+                    ViewBag.TotalPages = book.Pages > 0 ? book.Pages : 100;
 
                     ViewBag.OpenResult = libraryReaderService.ReadBook(book.FilePath);
                     ViewBag.PageResult = libraryReaderService.NavigateToPage(page);
                     ViewBag.CloseResult = libraryReaderService.CloseBook();
+                    var userEmail = User.Identity.Name;
 
+                    var sessionKey = Session.SessionID;
+
+                    var progress = db.ReadingProgresses
+                        .FirstOrDefault(p => p.BookId == id
+                                          && p.UserEmail == userEmail
+                                          && p.SessionKey == sessionKey);
+
+                    if (progress != null)
+                    {
+                         ViewBag.CurrentPage = progress.CurrentPage;
+                         ViewBag.Theme = progress.Theme;
+                         ViewBag.FontSize = progress.FontSize;
+
+                         ViewBag.ProgressPercent = ViewBag.TotalPages > 0
+                              ? (progress.CurrentPage * 100 / ViewBag.TotalPages)
+                              : 0;
+                    }
+                    else
+                    {
+                         ViewBag.CurrentPage = page;
+                         ViewBag.Theme = "Light";
+                         ViewBag.FontSize = "Medium";
+
+                         ViewBag.ProgressPercent = ViewBag.TotalPages > 0
+                              ? (page * 100 / ViewBag.TotalPages)
+                              : 0;
+                    }
                     return View();
                }
           }
@@ -378,6 +390,54 @@ namespace OnlineLibrary.Controllers
                     }
                }
           }
+
+          [HttpPost]
+          [Authorize]
+          [ValidateAntiForgeryToken]
+          public ActionResult SaveReadingProgress(int bookId, int currentPage, string theme, string fontSize)
+          {
+               var userEmail = User.Identity.Name;
+
+               var session = new ReadingSession();
+               var history = new ReadingHistory();
+
+               session.SetState(currentPage, theme, fontSize);
+               history.MakeBackup(session);
+
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var progress = db.ReadingProgresses
+                        .FirstOrDefault(p => p.BookId == bookId && p.UserEmail == userEmail);
+
+                    if (progress == null)
+                    {
+                         progress = new ReadingProgress
+                         {
+                              UserEmail = userEmail,
+                              BookId = bookId,
+                              CurrentPage = session.CurrentPage,
+                              Theme = session.Theme,
+                              FontSize = session.FontSize,
+                              SavedAt = DateTime.Now
+                         };
+
+                         db.ReadingProgresses.Add(progress);
+                    }
+                    else
+                    {
+                         progress.CurrentPage = session.CurrentPage;
+                         progress.Theme = session.Theme;
+                         progress.FontSize = session.FontSize;
+                         progress.SavedAt = DateTime.Now;
+                    }
+
+                    db.SaveChanges();
+               }
+
+               TempData["Success"] = "Reading progress saved successfully!";
+               return RedirectToAction("Read", new { id = bookId, page = currentPage });
+          }
+
           public ActionResult ProxyDemo()
           {
                string documentId = "DOC-101";
@@ -398,32 +458,83 @@ namespace OnlineLibrary.Controllers
 
                return View(model);
           }
-          
-          
-          public ActionResult MementoDemo()
+
+          [HttpPost]
+          [Authorize]
+          public JsonResult AutoSaveReadingProgress(int bookId, int currentPage, string theme, string fontSize)
           {
-               var session = new ReadingSession();
-               var history = new ReadingHistory();
+               var userEmail = User.Identity.Name;
+               var sessionKey = Session.SessionID;
 
-               session.SetState("Book: Clean Code | Page: 25 | Theme: Light");
-               history.MakeBackup(session);
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var progress = db.ReadingProgresses
+                        .FirstOrDefault(p => p.BookId == bookId
+                                          && p.UserEmail == userEmail
+                                          && p.SessionKey == sessionKey);
 
-               string savedState = session.GetState();
+                    if (progress == null)
+                    {
+                         progress = new ReadingProgress
+                         {
+                              UserEmail = userEmail,
+                              BookId = bookId,
+                              CurrentPage = currentPage,
+                              PreviousPage = currentPage,
+                              Theme = theme,
+                              FontSize = fontSize,
+                              SessionKey = sessionKey,
+                              SavedAt = DateTime.Now
+                         };
 
-               session.SetState("Book: Clean Code | Page: 80 | Theme: Dark");
-               string changedState = session.GetState();
+                         db.ReadingProgresses.Add(progress);
+                    }
+                    else
+                    {
+                         progress.PreviousPage = progress.CurrentPage;
+                         progress.CurrentPage = currentPage;
+                         progress.Theme = theme;
+                         progress.FontSize = fontSize;
+                         progress.SavedAt = DateTime.Now;
+                    }
 
-               history.Undo(session);
-               string restoredState = session.GetState();
+                    db.SaveChanges();
+               }
 
-               ViewBag.SavedState = savedState;
-               ViewBag.ChangedState = changedState;
-               ViewBag.RestoredState = restoredState;
+               return Json(new { success = true });
+          }
+          [HttpPost]
+          [Authorize]
+          [ValidateAntiForgeryToken]
+          public ActionResult UndoReadingProgress(int bookId)
+          {
+               var userEmail = User.Identity.Name;
+               var sessionKey = Session.SessionID;
 
-               return View();
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var progress = db.ReadingProgresses
+                        .FirstOrDefault(p => p.BookId == bookId
+                                          && p.UserEmail == userEmail
+                                          && p.SessionKey == sessionKey);
+
+                    if (progress != null)
+                    {
+                         progress.CurrentPage = progress.PreviousPage;
+                         progress.SavedAt = DateTime.Now;
+                         db.SaveChanges();
+
+                         TempData["Success"] = "Reading progress restored.";
+                         return RedirectToAction("Read", new { id = bookId, page = progress.CurrentPage });
+                    }
+               }
+
+               TempData["Error"] = "No previous reading progress found.";
+               return RedirectToAction("Read", new { id = bookId });
           }
 
-         
+
+
           [Authorize]
           public ActionResult MyLoans()
           {

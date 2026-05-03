@@ -67,7 +67,7 @@
                                                   }
 
                                                   <li class="menu-item">
-                                                       <a href="@Url.Action("Logout", "Account")">Logout</a>
+                                                       <a href="@Url.Action("Logout", "Account")">Login</a>
                                                   </li>
 
                                              </ul>
@@ -144,6 +144,17 @@
           function closeAlert() {
                document.getElementById("observer-alert").style.display = "none";
           }
+     </script>
+     <script>
+          function closeToast() {
+               var el = document.getElementById("success-alert");
+               if (el) el.style.display = "none";
+          }
+
+          // auto-hide după 4 secunde
+          setTimeout(function () {
+               closeToast();
+          }, 4000);
      </script>
      @RenderSection("Scripts", required: false)
 </body>

@@ -1,46 +1,69 @@
-﻿using OnlineLibrary.Facade.Subsystems;
+﻿using Microsoft.Ajax.Utilities;
+using OnlineLibrary.Command;
+using OnlineLibrary.Data;
+using OnlineLibrary.Facade;
+using OnlineLibrary.Models;
+using OnlineLibrary.Observer; // dacă folosești notificări
 
 namespace OnlineLibrary.Facade
 {
      public class LibraryFacade
      {
-          private readonly UserValidator _validator;
-          private readonly UserRepository _repository;
-          private readonly BookCatalog _catalog;
+          private readonly UserRepository _userRepository;
+          private readonly UserValidator _userValidator;
+          private readonly BookCatalog _bookCatalog;
           private readonly LoanService _loanService;
-          private readonly NotificationService _notification;
-          private readonly AuditLogger _audit;
+          private readonly NotificationService _notificationService;
+          private readonly AuditLogger _auditLogger;
 
-          public LibraryFacade(
-              UserValidator validator,
-              UserRepository repository,
-              BookCatalog catalog,
-              LoanService loanService,
-              NotificationService notification,
-              AuditLogger audit)
+          public LibraryFacade()
           {
-               _validator = validator;
-               _repository = repository;
-               _catalog = catalog;
-               _loanService = loanService;
-               _notification = notification;
-               _audit = audit;
+               _userRepository = new UserRepository();
+               _userValidator = new UserValidator();
+               _bookCatalog = new BookCatalog();
+               _loanService = new LoanService();
+               _notificationService = new NotificationService();
+               _auditLogger = new AuditLogger();
           }
 
-          public string BorrowBook(string userId, string bookId)
+          public string BorrowBook(string userId, int bookId)
           {
-               if (!_validator.Validate(userId))
+               // 1. Validare user
+               if (!_userValidator.Validate(userId))
                     return "User invalid";
 
-               if (!_catalog.CheckAvailability(bookId))
+               // 2. Get user
+               var user = _userRepository.GetUser(userId);
+
+               if (user == null)
+                    return "User not found";
+
+               // 3. Verificare carte
+               if (!_bookCatalog.CheckAvailability(bookId))
                     return "Book not available";
 
-               string loanId = _loanService.CreateLoan(userId, bookId);
+               // 4. Executare Command (CORECT)
+               var manager = new LibraryManager();
 
-               _notification.SendConfirmation(userId, $"Book {bookId} borrowed successfully! Loan ID: {loanId}");
-               _audit.LogAction(userId, $"Borrowed book {bookId} with loan {loanId}");
+               var command = new BorrowBookCommand(
+                   manager,
+                   bookId,
+                   userId,
+                   user.Role   // rol REAL
+               );
 
-               return $"Success! Loan ID: {loanId}";
+               var invoker = new LibraryInvoker();
+               invoker.ExecuteCommand(command);
+
+               // 5. Notificare
+               var book = _bookCatalog.GetBook(bookId);
+
+               _notificationService.SendBorrowEmail(userId, book.Title);
+
+               // 6. Logging
+               _auditLogger.LogAction(userId, $"Borrowed book {bookId}");
+
+               return "Borrow successful";
           }
      }
 }

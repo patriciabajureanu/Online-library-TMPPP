@@ -11,11 +11,11 @@
      </div>
 }
 
-@if (TempData["ObserverMessage"] != null)
+@if (TempData["Success"] != null)
 {
-     <div id="observer-alert" class="custom-alert">
-          <span>@TempData["ObserverMessage"]</span>
-          <button onclick="closeAlert()">×</button>
+     <div id="success-alert" class="custom-toast">
+          <span>@TempData["Success"]</span>
+          <button onclick="closeToast()">×</button>
      </div>
 }
 <section id="my-loans" class="bookshelf py-5 my-5">
@@ -75,22 +75,22 @@
                                                   </div>
                                              }
 
-                                        <div>
-                                             <strong>Status:</strong>
+                                             <div>
+                                                  <strong>Status:</strong>
 
-                                             @if (loan.IsReturned)
-                                             {
-                                                  <span class="text-success">Returned</span>
-                                             }
-                                             else if (loan.DueDate.HasValue && loan.DueDate.Value < DateTime.Now)
-                                             {
-                                                  <span class="text-danger">OVERDUE</span>
-                                             }
-                                             else
-                                             {
-                                                  <span class="text-warning">Active</span>
-                                             }
-                                        </div>
+                                                  @if (loan.IsReturned)
+                                                  {
+                                                       <span class="text-success">Returned</span>
+                                                  }
+                                                  else if (loan.DueDate.HasValue && loan.DueDate.Value < DateTime.Now)
+                                                  {
+                                                       <span class="text-danger">OVERDUE</span>
+                                                  }
+                                                  else
+                                                  {
+                                                       <span class="text-warning">Active</span>
+                                                  }
+                                             </div>
 
                                              @if (loan.ReturnDate != null)
                                              {

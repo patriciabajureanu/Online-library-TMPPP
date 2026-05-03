@@ -1,20 +1,22 @@
-﻿namespace OnlineLibrary.Memento
+﻿using System.Collections.Generic;
+
+namespace OnlineLibrary.Memento
 {
      public class ReadingHistory
      {
-          private ReadingSnapshot _backup;
+          private readonly Stack<ReadingSnapshot> _history = new Stack<ReadingSnapshot>();
 
           public void MakeBackup(ReadingSession session)
           {
-               _backup = session.CreateSnapshot();
+               _history.Push(session.CreateSnapshot());
           }
 
-          public void Undo(ReadingSession session)
+          public ReadingSnapshot Undo()
           {
-               if (_backup != null)
-               {
-                    session.SetState(_backup.Restore());
-               }
+               if (_history.Count == 0)
+                    return null;
+
+               return _history.Pop();
           }
      }
 }

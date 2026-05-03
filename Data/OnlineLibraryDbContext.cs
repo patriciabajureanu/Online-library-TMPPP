@@ -20,5 +20,6 @@ namespace OnlineLibrary.Data
           public DbSet<Review> Reviews { get; set; }
           public DbSet<Loan> Loans { get; set; }
           public DbSet<Notification> Notifications { get; set; }
+          public DbSet<ReadingProgress> ReadingProgresses { get; set; }
      }
 }

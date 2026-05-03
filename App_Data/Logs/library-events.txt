@@ -15,3 +15,16 @@
 03.05.2026 15:07:48 | Event: reserve | Book: The Pragmatic Programmer | User: bajureanu.patricia@gmail.com
 03.05.2026 15:08:56 | Event: return | Book: Head First Design Patterns | User: bajureanu.patricia@gmail.com
 03.05.2026 15:19:01 | Event: reserve | Book: Refactoring | User: bajureanu.patricia@gmail.com
+03.05.2026 16:16:11 | Event: borrow | Book: C# in Depth | User: bajureanu.patricia@gmail.com
+03.05.2026 16:16:20 | Event: return | Book: C# in Depth | User: bajureanu.patricia@gmail.com
+03.05.2026 16:21:18 | Event: borrow | Book: Head First Design Patterns | User: bajureanu.patricia@gmail.com
+03.05.2026 16:22:08 | Event: return | Book: Design Patterns | User: bajureanu.patricia@gmail.com
+03.05.2026 16:22:18 | Event: reserve | Book: Head First Design Patterns | User: bajureanu.patricia@gmail.com
+03.05.2026 16:24:49 | Event: borrow | Book: Introduction to Algorithms | User: bajureanu.patricia@gmail.com
+03.05.2026 16:25:02 | Event: return | Book: Head First Design Patterns | User: bajureanu.patricia@gmail.com
+03.05.2026 16:25:26 | Event: return | Book: C# in Depth | User: bajureanu.patricia@gmail.com
+03.05.2026 16:25:34 | Event: reserve | Book: You Don’t Know JS | User: bajureanu.patricia@gmail.com
+03.05.2026 16:35:19 | Event: borrow | Book: You Don’t Know JS | User: bajureanu.patricia@gmail.com
+03.05.2026 16:35:34 | Event: reserve | Book: Design Patterns | User: bajureanu.patricia@gmail.com
+03.05.2026 16:36:22 | Event: return | Book: Introduction to Algorithms | User: bajureanu.patricia@gmail.com
+03.05.2026 16:44:22 | Event: borrow | Book: Clean Code | User: bajureanu.patricia@gmail.com

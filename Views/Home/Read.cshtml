@@ -3,14 +3,189 @@
      Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="py-5 my-5">
+<section id="read-page" class="py-5 my-5 @(ViewBag.Theme == "Dark" ? "read-dark" : "read-light")">
      <div class="container">
           <h2>@ViewBag.BookTitle</h2>
 
-          <iframe src="@Url.Content(ViewBag.FilePath)"
-                  width="100%"
-                  height="700px"
-                  style="border: 1px solid #ccc;">
+          <iframe id="pdfViewer"
+                  src="@Url.Content(ViewBag.FilePath)#page=@ViewBag.CurrentPage"
+                  style="width:100%; height:700px; border:1px solid #ccc;">
           </iframe>
+
+          <div class="reading-settings-box mt-4 p-4">
+
+               <h4>Reading Progress</h4>
+
+               <input type="hidden" id="bookId" value="@ViewBag.BookId" />
+               <input type="hidden" id="currentPage" value="@ViewBag.CurrentPage" />
+
+               <div class="progress mb-3">
+                    <div id="readingProgressBar"
+                         class="progress-bar"
+                         style="width:@(ViewBag.ProgressPercent + "%");">
+                         @(ViewBag.ProgressPercent)%
+                    </div>
+               </div>
+
+               <div class="row">
+                    <div class="col-md-4">
+                         <label>Page</label>
+                         <div class="form-control">
+                              <span id="pageLabel">@ViewBag.CurrentPage</span> / @ViewBag.TotalPages
+                         </div>
+                    </div>
+
+                    <div class="col-md-4">
+                         <label>Theme</label>
+                         <select id="theme" class="form-control">
+                              <option value="Light" @(ViewBag.Theme == "Light" ? "selected" : "")>Light</option>
+                              <option value="Dark" @(ViewBag.Theme == "Dark" ? "selected" : "")>Dark</option>
+                         </select>
+                    </div>
+
+                    <div class="col-md-4">
+                         <label>Font Size</label>
+                         <select id="fontSize" class="form-control">
+                              <option value="Small" @(ViewBag.FontSize == "Small" ? "selected" : "")>Small</option>
+                              <option value="Medium" @(ViewBag.FontSize == "Medium" ? "selected" : "")>Medium</option>
+                              <option value="Large" @(ViewBag.FontSize == "Large" ? "selected" : "")>Large</option>
+                         </select>
+                    </div>
+               </div>
+
+               <div class="mt-4 d-flex gap-3">
+                    <button type="button" class="btn borrow-btn back-btn" onclick="changePage(-1)">
+                         Previous Page
+                    </button>
+
+                    <button type="button" class="btn borrow-btn" onclick="changePage(1)">
+                         Next Page
+                    </button>
+
+                    @using (Html.BeginForm("UndoReadingProgress", "Home", FormMethod.Post))
+                    {
+                         @Html.AntiForgeryToken()
+                         <input type="hidden" name="bookId" value="@ViewBag.BookId" />
+
+                         <button type="submit" class="btn borrow-btn back-btn">
+                              Undo Previous Page
+                         </button>
+                    }
+
+                    <span id="autosaveStatus" class="text-muted"></span>
+               </div>
+          </div>
+
+          @if (TempData["Success"] != null)
+          {
+               <div id="progress-toast" class="custom-toast">
+                    <span>@TempData["Success"]</span>
+                    <button onclick="closeToast()">×</button>
+               </div>
+          }
+
+          @if (TempData["Error"] != null)
+          {
+               <div id="progress-toast" class="custom-toast error-toast">
+                    <span>@TempData["Error"]</span>
+                    <button onclick="closeToast()">×</button>
+               </div>
+          }
+
      </div>
 </section>
+
+<script>
+     var totalPages = parseInt("@ViewBag.TotalPages");
+     var filePath = "@Url.Content(ViewBag.FilePath)";
+
+     function changePage(step) {
+          var currentPageInput = document.getElementById("currentPage");
+          var currentPage = parseInt(currentPageInput.value);
+
+          currentPage += step;
+
+          if (currentPage < 1) currentPage = 1;
+          if (currentPage > totalPages) currentPage = totalPages;
+
+          currentPageInput.value = currentPage;
+          document.getElementById("pageLabel").innerText = currentPage;
+
+          document.getElementById("pdfViewer").src = filePath + "#page=" + currentPage;
+
+          updateProgressBar();
+          autoSaveProgress();
+     }
+
+     function autoSaveProgress() {
+          var bookId = document.getElementById("bookId").value;
+          var currentPage = document.getElementById("currentPage").value;
+          var theme = document.getElementById("theme").value;
+          var fontSize = document.getElementById("fontSize").value;
+
+          $.ajax({
+               url: '@Url.Action("AutoSaveReadingProgress", "Home")',
+               type: 'POST',
+               data: {
+                    bookId: bookId,
+                    currentPage: currentPage,
+                    theme: theme,
+                    fontSize: fontSize
+               },
+               success: function () {
+                    document.getElementById("autosaveStatus").innerText = "Auto-saved";
+
+                    setTimeout(function () {
+                         document.getElementById("autosaveStatus").innerText = "";
+                    }, 2000);
+               }
+          });
+     }
+
+     function updateProgressBar() {
+          var currentPage = parseInt(document.getElementById("currentPage").value);
+          var percent = Math.round((currentPage / totalPages) * 100);
+
+          if (percent > 100) percent = 100;
+          if (percent < 0) percent = 0;
+
+          var bar = document.getElementById("readingProgressBar");
+          bar.style.width = percent + "%";
+          bar.innerText = percent + "%";
+     }
+
+     document.getElementById("theme").addEventListener("change", autoSaveProgress);
+     document.getElementById("fontSize").addEventListener("change", autoSaveProgress);
+
+     setInterval(autoSaveProgress, 15000);
+     updateProgressBar();
+
+     function applyReaderSettings() {
+          var section = document.getElementById("read-page");
+          var iframe = document.getElementById("pdfViewer");
+
+          var theme = document.getElementById("theme").value;
+          var fontSize = document.getElementById("fontSize").value;
+
+          // THEME
+          section.classList.remove("read-light", "read-dark");
+          section.classList.add(theme === "Dark" ? "read-dark" : "read-light");
+
+          // FONT SIZE = ZOOM SIMULATION
+          if (fontSize === "Small") {
+               iframe.style.transform = "scale(0.85)";
+          }
+          else if (fontSize === "Large") {
+               iframe.style.transform = "scale(1.2)";
+          }
+          else {
+               iframe.style.transform = "scale(1)";
+          }
+          iframe.style.transformOrigin = "top center";
+
+          autoSaveProgress();
+     }
+
+     document.getElementById("theme").addEventListener("change", applyReaderSettings);
+     document.getElementById("fontSize").addEventListener("change", applyReaderSettings);
+</script>

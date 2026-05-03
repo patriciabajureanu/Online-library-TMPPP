@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OnlineLibrary.Facade.Subsystems
+namespace OnlineLibrary.Facade
 { 
           public class UserValidator
           {

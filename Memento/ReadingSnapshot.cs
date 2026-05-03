@@ -2,16 +2,15 @@
 {
      public class ReadingSnapshot
      {
-          private readonly string _state;
+          public int CurrentPage { get; private set; }
+          public string Theme { get; private set; }
+          public string FontSize { get; private set; }
 
-          public ReadingSnapshot(string state)
+          public ReadingSnapshot(int currentPage, string theme, string fontSize)
           {
-               _state = state;
-          }
-
-          public string Restore()
-          {
-               return _state;
+               CurrentPage = currentPage;
+               Theme = theme;
+               FontSize = fontSize;
           }
      }
 }

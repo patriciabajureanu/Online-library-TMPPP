@@ -534,7 +534,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DecoratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SingletonController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\OnlineLibraryDbContext.cs" />
     <Compile Include="Decorator\AuthorizationDecorator.cs" />
@@ -544,12 +543,12 @@
     <Compile Include="Decorator\IBookAccessService.cs" />
     <Compile Include="Decorator\LoggingDecorator.cs" />
     <Compile Include="Facade\LibraryFacade.cs" />
-    <Compile Include="Facade\Subsystems\AuditLogger.cs" />
-    <Compile Include="Facade\Subsystems\BookCatalog.cs" />
-    <Compile Include="Facade\Subsystems\LoanService.cs" />
-    <Compile Include="Facade\Subsystems\NotificationService.cs" />
-    <Compile Include="Facade\Subsystems\UserRepository.cs" />
-    <Compile Include="Facade\Subsystems\UserValidator.cs" />
+    <Compile Include="Facade\AuditLogger.cs" />
+    <Compile Include="Facade\BookCatalog.cs" />
+    <Compile Include="Facade\LoanService.cs" />
+    <Compile Include="Facade\NotificationService.cs" />
+    <Compile Include="Facade\UserRepository.cs" />
+    <Compile Include="Facade\UserValidator.cs" />
     <Compile Include="FactoryMethod\AudioBookCreator.cs" />
     <Compile Include="FactoryMethod\DigitalBookCreator.cs" />
     <Compile Include="FactoryMethod\LibraryItemCreator.cs" />
@@ -600,6 +599,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\ProxyDemoViewModel.cs" />
+    <Compile Include="Models\ReadingProgress.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\Review.cs" />
@@ -622,7 +622,7 @@
     <Compile Include="Repositories\IBookRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="Singleton\DatabaseManager.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Strategy\BookCatalogContext.cs" />
     <Compile Include="Strategy\IBookSortStrategy.cs" />
     <Compile Include="Strategy\SortByFormatStrategy.cs" />
@@ -639,6 +639,7 @@
     <Content Include="Views\Home\MyLoans.cshtml" />
     <Content Include="Views\Home\PrototypeReportPdf.cshtml" />
     <Content Include="Views\Home\MyReservations.cshtml" />
+    <Content Include="Views\Home\TestSingleton.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
