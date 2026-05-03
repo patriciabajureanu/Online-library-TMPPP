@@ -189,6 +189,11 @@ namespace OnlineLibrary.Controllers
                     db.SaveChanges();
 
                     TempData["Success"] = "Book borrowed successfully!";
+                    //Observer
+                    var eventService = new LibraryEventService();
+                    eventService.BorrowBook(book.Id, book.Title, User.Identity.Name);
+
+                    TempData["ObserverMessage"] = "Book borrowed successfully! Email sent and notification created.";
                     return RedirectToAction("MyLoans");
                }
           }
@@ -381,16 +386,7 @@ namespace OnlineLibrary.Controllers
 
                return View(model);
           }
-          public ActionResult ObserverDemo(string id = "1")
-          {
-               var service = new LibraryEventService();
-
-               ViewBag.BorrowResult = service.BorrowBook(id);
-               ViewBag.ReturnResult = service.ReturnBook(id);
-               ViewBag.ReserveResult = service.ReserveBook(id);
-
-               return View();
-          }
+          
           public ActionResult CommandDemo(string id = "1")
           {
                var manager = new LibraryManager();
@@ -524,6 +520,10 @@ namespace OnlineLibrary.Controllers
                     db.SaveChanges();
 
                     TempData["Success"] = "Book returned successfully!";
+                    var eventService = new LibraryEventService();
+                    eventService.ReturnBook(loan.BookId, loan.Book.Title, User.Identity.Name);
+
+                    TempData["ObserverMessage"] = "Observer: email, SMS and log were notified for returned book.";
                     return RedirectToAction("MyLoans");
                }
           }

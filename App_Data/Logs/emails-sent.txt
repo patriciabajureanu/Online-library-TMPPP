@@ -1,0 +1,1 @@
+03.05.2026 14:07:27 | EMAIL sent to student@gmail.com | Event: borrow | BookId: 1

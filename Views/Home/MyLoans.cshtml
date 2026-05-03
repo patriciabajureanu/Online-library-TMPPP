@@ -10,6 +10,14 @@
           @TempData["BridgeMessage"]
      </div>
 }
+
+@if (TempData["ObserverMessage"] != null)
+{
+     <div id="observer-alert" class="custom-alert">
+          <span>@TempData["ObserverMessage"]</span>
+          <button onclick="closeAlert()">×</button>
+     </div>
+}
 <section id="my-loans" class="bookshelf py-5 my-5">
      <div class="container">
 
@@ -112,6 +120,7 @@
 
                                                   </div>
                                              }
+
 
                                              @if (!loan.IsReturned)
                                              {

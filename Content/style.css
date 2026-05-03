@@ -2850,3 +2850,36 @@ footer#footer {
           background-color: #a3836b;
           color: #fff;
      }
+
+/*----- Borrow Notification
+--------------------------------------------------------------*/
+.custom-alert {
+     position: relative; /* IMPORTANT */
+     margin: 20px auto;
+     padding: 15px 50px 15px 20px;
+     background-color: #f3f2ec;
+     border: 1px solid #d8d2bd;
+     border-radius: 10px;
+     color: #333;
+     max-width: 600px;
+     text-align: center;
+     display: flex;
+     align-items: center; /* 🔥 centrează vertical TOT */
+     justify-content: center;
+}
+
+     .custom-alert button {
+          position: absolute;
+          right: 15px;
+          top: 50%;
+          transform: translateY(-105%);
+          border: none;
+          background: transparent; /* 🔥 elimină pătratul maro */
+          font-size: 22px;
+          cursor: pointer;
+          color: #888;
+          width: auto;
+          height: auto;
+          padding: 0;
+     }
+          

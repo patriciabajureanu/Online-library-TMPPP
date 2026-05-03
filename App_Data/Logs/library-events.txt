@@ -1,0 +1,13 @@
+03.05.2026 14:07:27 | Event: borrow | BookId: 1 | User: student@gmail.com
+03.05.2026 14:20:52 | Event: borrow | BookId: 3 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:24:55 | Event: borrow | BookId: 6 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:28:23 | Event: borrow | BookId: 6 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:28:39 | Event: return | BookId: 6 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:29:33 | Event: return | BookId: 6 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:30:38 | Event: borrow | BookId: 4 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:31:01 | Event: return | BookId: 4 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:31:52 | Event: borrow | BookId: 7 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:32:42 | Event: return | BookId: 7 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:33:02 | Event: borrow | BookId: 10 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:33:21 | Event: return | BookId: 10 | User: bajureanu.patricia@gmail.com
+03.05.2026 14:42:48 | Event: borrow | Book: C# in Depth | User: bajureanu.patricia@gmail.com

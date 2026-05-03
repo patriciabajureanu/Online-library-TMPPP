@@ -31,7 +31,8 @@
                                    <div class="main-logo">
                                         <a href="@Url.Action("Index", "Home")">
                                              <img src="~/Content/Images/main-logo.png" alt="logo">
-                                        </a>                                   </div>
+                                        </a>
+                                   </div>
 
                               </div>
 
@@ -85,7 +86,7 @@
 
      @RenderBody()
 
-    
+
 
 
 
@@ -134,7 +135,11 @@
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
      <script src="@Url.Content("~/Scripts/plugins.js")"></script>
      <script src="@Url.Content("~/Scripts/script.js")"></script>
-
+     <script>
+          function closeAlert() {
+               document.getElementById("observer-alert").style.display = "none";
+          }
+     </script>
      @RenderSection("Scripts", required: false)
 </body>
 </html>

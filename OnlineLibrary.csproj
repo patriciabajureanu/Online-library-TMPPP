@@ -598,13 +598,14 @@
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="FactoryMethod\PrintedBook.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\ProxyDemoViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Observer\EmailNotificationListener.cs" />
-    <Compile Include="Observer\EventListener.cs" />
+    <Compile Include="Observer\IEventListener.cs" />
     <Compile Include="Observer\EventManager.cs" />
     <Compile Include="Observer\LibraryEventService.cs" />
     <Compile Include="Observer\LoggingListener.cs" />
@@ -704,7 +705,7 @@
     <Content Include="Views\Home\MyBorrowings.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Logs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

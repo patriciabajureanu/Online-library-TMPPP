@@ -4,23 +4,27 @@ namespace OnlineLibrary.Observer
 {
      public class EventManager
      {
-          private readonly List<EventListener> _listeners = new List<EventListener>();
+          private readonly Dictionary<string, List<IEventListener>> _listeners =
+               new Dictionary<string, List<IEventListener>>();
 
-          public void Subscribe(EventListener listener)
+          public void Subscribe(string eventType, IEventListener listener)
           {
-               _listeners.Add(listener);
-          }
-
-          public void Unsubscribe(EventListener listener)
-          {
-               _listeners.Remove(listener);
-          }
-
-          public void Notify(string bookId)
-          {
-               foreach (var listener in _listeners)
+               if (!_listeners.ContainsKey(eventType))
                {
-                    listener.Update(bookId);
+                    _listeners[eventType] = new List<IEventListener>();
+               }
+
+               _listeners[eventType].Add(listener);
+          }
+
+          public void Notify(string eventType, int bookId, string bookTitle, string username)
+          {
+               if (!_listeners.ContainsKey(eventType))
+                    return;
+
+               foreach (var listener in _listeners[eventType])
+               {
+                    listener.Update(eventType, bookId, bookTitle, username);
                }
           }
      }

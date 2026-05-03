@@ -8,27 +8,32 @@
           {
                _events = new EventManager();
 
-               _events.Subscribe(new EmailNotificationListener());
-               _events.Subscribe(new SmsNotificationListener());
-               _events.Subscribe(new LoggingListener());
+               _events.Subscribe("borrow", new EmailNotificationListener());
+               _events.Subscribe("borrow", new SmsNotificationListener());
+               _events.Subscribe("borrow", new LoggingListener());
+
+               _events.Subscribe("return", new EmailNotificationListener());
+               _events.Subscribe("return", new SmsNotificationListener());
+               _events.Subscribe("return", new LoggingListener());
+
+               _events.Subscribe("reserve", new EmailNotificationListener());
+               _events.Subscribe("reserve", new SmsNotificationListener());
+               _events.Subscribe("reserve", new LoggingListener());
           }
 
-          public string BorrowBook(string bookId)
+          public void BorrowBook(int bookId, string bookTitle, string username)
           {
-               _events.Notify(bookId);
-               return $"Book {bookId} was borrowed successfully.";
+               _events.Notify("borrow", bookId, bookTitle, username);
           }
 
-          public string ReturnBook(string bookId)
+          public void ReturnBook(int bookId, string bookTitle, string username)
           {
-               _events.Notify(bookId);
-               return $"Book {bookId} was returned successfully.";
+               _events.Notify("return", bookId, bookTitle, username);
           }
 
-          public string ReserveBook(string bookId)
+          public void ReserveBook(int bookId, string bookTitle, string username)
           {
-               _events.Notify(bookId);
-               return $"Book {bookId} was reserved successfully.";
+               _events.Notify("reserve", bookId, bookTitle, username);
           }
      }
 }
