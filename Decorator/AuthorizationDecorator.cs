@@ -2,18 +2,17 @@
 {
      public class AuthorizationDecorator : BookAccessDecorator
      {
-          public AuthorizationDecorator(IBookAccessService inner) : base(inner)
+          private readonly bool _hasAccess;
+
+          public AuthorizationDecorator(IBookAccessService inner, bool hasAccess) : base(inner)
           {
+               _hasAccess = hasAccess;
           }
 
           public override string GetBookContent(string bookId)
           {
-               bool isAuthorized = true;
-
-               if (!isAuthorized)
-               {
-                    return "Access denied: You are not authorized to read this book.";
-               }
+               if (!_hasAccess)
+                    return "Access denied. You must borrow this book first.";
 
                return base.GetBookContent(bookId);
           }

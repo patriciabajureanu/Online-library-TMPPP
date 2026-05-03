@@ -28,3 +28,4 @@
 03.05.2026 16:35:34 | Event: reserve | Book: Design Patterns | User: bajureanu.patricia@gmail.com
 03.05.2026 16:36:22 | Event: return | Book: Introduction to Algorithms | User: bajureanu.patricia@gmail.com
 03.05.2026 16:44:22 | Event: borrow | Book: Clean Code | User: bajureanu.patricia@gmail.com
+03.05.2026 23:17:11 | Event: borrow | Book: C# in Depth | User: bajureanu.patricia@gmail.com

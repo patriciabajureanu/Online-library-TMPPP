@@ -1,6 +1,8 @@
-﻿using Microsoft.Ajax.Utilities;
+﻿using System.Linq;
+using Microsoft.Ajax.Utilities;
 using OnlineLibrary.Command;
 using OnlineLibrary.Data;
+using OnlineLibrary.Decorator;
 using OnlineLibrary.Facade;
 using OnlineLibrary.Models;
 using OnlineLibrary.Observer; // dacă folosești notificări
@@ -64,6 +66,26 @@ namespace OnlineLibrary.Facade
                _auditLogger.LogAction(userId, $"Borrowed book {bookId}");
 
                return "Borrow successful";
+          }
+          public string GetBookContent(string userEmail, int bookId)
+          {
+               bool hasAccess;
+
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    hasAccess = db.Loans.Any(l =>
+                        l.BookId == bookId &&
+                        l.UserEmail == userEmail &&
+                        !l.IsReturned);
+               }
+
+               IBookAccessService service = new BasicBookAccessService();
+
+               service = new CachingDecorator(service);
+               service = new AuthorizationDecorator(service, hasAccess);
+               service = new LoggingDecorator(service, userEmail);
+
+               return service.GetBookContent(bookId.ToString());
           }
      }
 }

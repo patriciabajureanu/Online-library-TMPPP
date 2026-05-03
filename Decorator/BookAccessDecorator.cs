@@ -2,16 +2,16 @@
 {
      public abstract class BookAccessDecorator : IBookAccessService
      {
-          protected readonly IBookAccessService inner;
+          protected readonly IBookAccessService _inner;
 
           protected BookAccessDecorator(IBookAccessService inner)
           {
-               this.inner = inner;
+               _inner = inner;
           }
 
           public virtual string GetBookContent(string bookId)
           {
-               return inner.GetBookContent(bookId);
+               return _inner.GetBookContent(bookId);
           }
      }
 }

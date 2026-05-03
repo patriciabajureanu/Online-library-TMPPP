@@ -242,6 +242,8 @@ namespace OnlineLibrary.Controllers
                          TempData["Error"] = "This book does not have a PDF file attached.";
                          return RedirectToAction("Index");
                     }
+                    var facade = new LibraryFacade();
+                    ViewBag.DecoratorResult = facade.GetBookContent(User.Identity.Name, id);
 
                     var externalPdfReader = new ExternalPdfReader();
                     var adapter = new PdfReaderAdapter(externalPdfReader);

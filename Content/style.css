@@ -2999,3 +2999,13 @@ footer#footer {
      .read-dark h4 {
           color: #f5f5f5;
      }
+
+.read-btn {
+     background-color: #4a6fa5;
+     color: #fff;
+     border: none;
+}
+
+     .read-btn:hover {
+          background-color: #3b5c8a;
+     }
