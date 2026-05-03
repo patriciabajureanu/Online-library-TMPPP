@@ -1,23 +1,32 @@
-﻿using OnlineLibrary.Proxy;
+﻿using OnlineLibrary.Data;
+using System.Linq;
 
-namespace OnlineLibrary.Patterns.Proxy
+namespace OnlineLibrary.Proxy
 {
      public class AccessControlProxy : IDocumentAccessService
      {
           private readonly IDocumentAccessService _realService;
-          private readonly bool _hasMembership;
+          private readonly string _userEmail;
 
-          public AccessControlProxy(IDocumentAccessService realService, bool hasMembership)
+          public AccessControlProxy(IDocumentAccessService realService, string userEmail)
           {
                _realService = realService;
-               _hasMembership = hasMembership;
+               _userEmail = userEmail;
           }
 
           public string GetDocument(string documentId)
           {
-               if (!_hasMembership)
+               int bookId = int.Parse(documentId);
+
+               using (var db = new OnlineLibraryDbContext())
                {
-                    return "Access denied. The user does not have membership.";
+                    bool hasLoan = db.Loans.Any(l =>
+                        l.BookId == bookId &&
+                        l.UserEmail == _userEmail &&
+                        !l.IsReturned);
+
+                    if (!hasLoan)
+                         return "Access denied. You must borrow this document first.";
                }
 
                return _realService.GetDocument(documentId);
@@ -25,11 +34,6 @@ namespace OnlineLibrary.Patterns.Proxy
 
           public string GetDocumentMetadata(string documentId)
           {
-               if (!_hasMembership)
-               {
-                    return "Access denied to metadata. The user does not have membership.";
-               }
-
                return _realService.GetDocumentMetadata(documentId);
           }
      }

@@ -4,39 +4,39 @@ namespace OnlineLibrary.Proxy
 {
      public class DocumentCacheProxy : IDocumentAccessService
      {
-          private readonly IDocumentAccessService realService;
-          private readonly Dictionary<string, string> cache;
+          private readonly IDocumentAccessService _realService;
+
+          private static readonly Dictionary<string, string> _documentCache =
+              new Dictionary<string, string>();
+
+          private static readonly Dictionary<string, string> _metadataCache =
+              new Dictionary<string, string>();
 
           public DocumentCacheProxy(IDocumentAccessService realService)
           {
-               this.realService = realService;
-               this.cache = new Dictionary<string, string>();
+               _realService = realService;
           }
 
           public string GetDocument(string documentId)
           {
-               string key = "doc_" + documentId;
+               if (_documentCache.ContainsKey(documentId))
+                    return "[CACHE] " + _documentCache[documentId];
 
-               if (!cache.ContainsKey(key))
-               {
-                    cache[key] = realService.GetDocument(documentId);
-                    return "[Loaded from service] " + cache[key];
-               }
+               var document = _realService.GetDocument(documentId);
+               _documentCache[documentId] = document;
 
-               return "[Loaded from cache] " + cache[key];
+               return document;
           }
 
           public string GetDocumentMetadata(string documentId)
           {
-               string key = "meta_" + documentId;
+               if (_metadataCache.ContainsKey(documentId))
+                    return "[CACHE] " + _metadataCache[documentId];
 
-               if (!cache.ContainsKey(key))
-               {
-                    cache[key] = realService.GetDocumentMetadata(documentId);
-                    return "[Loaded metadata from service] " + cache[key];
-               }
+               var metadata = _realService.GetDocumentMetadata(documentId);
+               _metadataCache[documentId] = metadata;
 
-               return "[Loaded metadata from cache] " + cache[key];
+               return metadata;
           }
      }
 }

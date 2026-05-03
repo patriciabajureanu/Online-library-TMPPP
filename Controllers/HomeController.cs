@@ -20,9 +20,8 @@ using OnlineLibrary.Iterator;
 using OnlineLibrary.Memento;
 using OnlineLibrary.Models;
 using OnlineLibrary.Observer;
-using OnlineLibrary.Patterns.Proxy;
-using OnlineLibrary.Prototype;
 using OnlineLibrary.Proxy;
+using OnlineLibrary.Prototype;
 using OnlineLibrary.Repositories;
 using OnlineLibrary.Strategy;
 using Rotativa;
@@ -244,7 +243,6 @@ namespace OnlineLibrary.Controllers
                     }
                     var facade = new LibraryFacade();
                     ViewBag.DecoratorResult = facade.GetBookContent(User.Identity.Name, id);
-
                     var externalPdfReader = new ExternalPdfReader();
                     var adapter = new PdfReaderAdapter(externalPdfReader);
                     var libraryReaderService = new LibraryReaderService(adapter);
@@ -355,15 +353,29 @@ namespace OnlineLibrary.Controllers
 
                     if (book == null)
                     {
-                         TempData["BridgeMessage"] = "Book not found.";
+                         TempData["Error"] = "...";
                          return RedirectToAction("MyLoans");
+                    }
+
+                    // PROXY PATTERN - Access control + cache
+                    IDocumentAccessService proxyService = new RareDocumentService();
+
+                    proxyService = new AccessControlProxy(proxyService, User.Identity.Name);
+                    proxyService = new DocumentCacheProxy(proxyService);
+
+                    var proxyResult = proxyService.GetDocument(id.ToString());
+
+                    if (proxyResult.Contains("Access denied"))
+                    {
+                         TempData["Error"] = proxyResult;
+                         return RedirectToAction("Index");
                     }
 
                     string virtualPath = book.FilePath;
 
                     if (string.IsNullOrEmpty(virtualPath))
                     {
-                         TempData["BridgeMessage"] = "This book does not have a PDF file.";
+                         TempData["Error"] = "...";
                          return RedirectToAction("MyLoans");
                     }
 
@@ -371,23 +383,26 @@ namespace OnlineLibrary.Controllers
 
                     if (!System.IO.File.Exists(physicalPath))
                     {
-                         TempData["BridgeMessage"] = "PDF file not found: " + virtualPath;
+                         TempData["Error"] = "...";
                          return RedirectToAction("MyLoans");
                     }
 
                     switch (deliveryType)
                     {
                          case "download":
+                              TempData["BridgeMessage"] = proxyResult;
                               return File(physicalPath, "application/pdf", book.Title + ".pdf");
 
                          case "streaming":
-                              return RedirectToAction("Read", new { id = book.Id.ToString() });
+                              TempData["BridgeMessage"] = proxyResult;
+                              return RedirectToAction("Read", new { id = book.Id });
 
                          case "cloud":
+                              TempData["BridgeMessage"] = proxyResult;
                               return Redirect(Url.Content(virtualPath));
 
                          default:
-                              TempData["BridgeMessage"] = "Unknown delivery method.";
+                              TempData["Error"] = "...";
                               return RedirectToAction("MyLoans");
                     }
                }
@@ -440,26 +455,7 @@ namespace OnlineLibrary.Controllers
                return RedirectToAction("Read", new { id = bookId, page = currentPage });
           }
 
-          public ActionResult ProxyDemo()
-          {
-               string documentId = "DOC-101";
-               bool hasMembership = true;
 
-               IDocumentAccessService service = new RareDocumentService();
-               service = new AccessControlProxy(service, hasMembership);
-               service = new DocumentCacheProxy(service);
-
-               var model = new ProxyDemoViewModel
-               {
-                    DocumentId = documentId,
-                    HasMembership = hasMembership,
-                    MetadataResult = service.GetDocumentMetadata(documentId),
-                    DocumentResult = service.GetDocument(documentId),
-                    CachedDocumentResult = service.GetDocument(documentId)
-               };
-
-               return View(model);
-          }
 
           [HttpPost]
           [Authorize]

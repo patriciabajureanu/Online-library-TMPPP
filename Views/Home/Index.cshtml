@@ -4,6 +4,21 @@
      ViewBag.Title = "Home";
      Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (TempData["Success"] != null)
+{
+     <div id="success-toast" class="custom-toast">
+          <span>@TempData["Success"]</span>
+          <button onclick="closeToast()">×</button>
+     </div>
+}
+
+@if (TempData["Error"] != null)
+{
+     <div id="error-toast" class="custom-toast error-toast">
+          <span>@TempData["Error"]</span>
+          <button onclick="closeToast()">×</button>
+     </div>
+}
 
 <section id="billboard">
 
@@ -107,6 +122,19 @@
                                                   <div><strong>Format:</strong> @book.FormatType</div>
                                                   <div><strong>Language:</strong> @book.Language</div>
                                                   <div><strong>Published Year:</strong> @book.PublishedYear</div>
+
+                                                  <!-- 🔽 BUTON MIC DOWNLOAD -->
+                                                  <div class="mt-3 text-center">
+                                                       <a href="@Url.Action("AccessLoanResource", "Home", new {
+                                resourceType = "ebook",
+                                deliveryType = "download",
+                                id = book.Id
+                         })"
+                                                          class="btn btn-sm btn-outline-dark">
+                                                            Download
+                                                       </a>
+                                                  </div>
+
                                              </figcaption>
 
                                         </div>
@@ -232,45 +260,13 @@
    class="btn btn-warning">
      Download Report PDF
 </a>
+<script>
+     function closeToast() {
+          document.getElementById("success-toast")?.remove();
+          document.getElementById("error-toast")?.remove();
+     }
 
-<a href="@Url.Action("CompositeDemo", "Home")"
-   class="btn btn-outline-accent btn-accent-arrow">
-     Composite Demo
-</a>
-
-<a href="@Url.Action("BridgeDemo", "Home")" class="btn btn-outline-accent btn-accent-arrow">
-     Bridge Demo
-</a>
-<a href="@Url.Action("ProxyDemo", "Home")" class="btn btn-outline-accent btn-accent-arrow">
-     Proxy Demo
-</a>
-<div class="text-center mt-4">
-     <h5>Observer Actions</h5>
-
-     <a href="@Url.Action("ObserverDemo", "Home", new { id = "1" })"
-        class="btn btn-sm btn-outline-dark">
-          Borrow Book
-     </a>
-
-     <a href="@Url.Action("ObserverDemo", "Home", new { id = "2" })"
-        class="btn btn-sm btn-outline-dark">
-          Return Book
-     </a>
-
-     <a href="@Url.Action("ObserverDemo", "Home", new { id = "3" })"
-        class="btn btn-sm btn-outline-dark">
-          Reserve Book
-     </a>
-</div>
-<a href="@Url.Action("CommandDemo", "Home", new { id = "1" })"
-   class="btn btn-outline-accent btn-accent-arrow">
-     Command Demo
-</a>
-<a href="@Url.Action("MementoDemo", "Home")"
-   class="btn btn-outline-accent btn-accent-arrow">
-     Memento Demo
-</a>
-<a href="@Url.Action("IteratorDemo", "Home")"
-   class="btn btn-outline-accent btn-accent-arrow">
-     Iterator Demo
-</a>
+     setTimeout(function () {
+          closeToast();
+     }, 4000);
+</script>

@@ -5,3 +5,6 @@
 [5/3/2026 11:25:23 PM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Book content loaded: C# in Depth
 [5/3/2026 11:27:28 PM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Book content loaded: C# in Depth
 [5/3/2026 11:30:13 PM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
+[5/3/2026 11:53:55 PM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Book content loaded: C# in Depth
+[5/4/2026 12:00:00 AM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Book content loaded: C# in Depth
+[5/4/2026 12:08:02 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
