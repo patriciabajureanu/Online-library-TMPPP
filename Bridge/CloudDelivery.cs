@@ -4,7 +4,7 @@
      {
           public string Deliver(string content, string resourceId)
           {
-               return $"[Cloud] Resource {resourceId}: {content}";
+               return "Resource " + resourceId + " is available in cloud: " + content;
           }
      }
 }

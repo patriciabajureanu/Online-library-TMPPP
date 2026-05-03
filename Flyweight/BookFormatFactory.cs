@@ -2,25 +2,26 @@
 
 namespace OnlineLibrary.Flyweight
 {
-     public class BookFormatFactory
+     public static class BookFormatFactory
      {
-          private readonly Dictionary<string, IBookFormat> _cache = new Dictionary<string, IBookFormat>();
+          private static readonly Dictionary<string, BookFormatFlyweight> _formats =
+               new Dictionary<string, BookFormatFlyweight>();
 
-          public IBookFormat GetOrCreate(string formatType, string language, string publisher)
+          public static BookFormatFlyweight GetOrCreate(string formatType, string language, string publisher)
           {
                string key = $"{formatType}_{language}_{publisher}";
 
-               if (!_cache.ContainsKey(key))
+               if (!_formats.ContainsKey(key))
                {
-                    _cache[key] = new BookFormat(formatType, language, publisher);
+                    _formats[key] = new BookFormatFlyweight(formatType, language, publisher);
                }
 
-               return _cache[key];
+               return _formats[key];
           }
 
-          public int CacheSize()
+          public static int CacheSize()
           {
-               return _cache.Count;
+               return _formats.Count;
           }
      }
 }

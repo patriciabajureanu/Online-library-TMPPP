@@ -24,8 +24,7 @@ namespace OnlineLibrary.Models
 
           public string CoverImageUrl { get; set; }
 
-          public string PdfUrl { get; set; }
-
+          public string FilePath { get; set; }
           public int? CategoryId { get; set; }
 
           public virtual Category Category { get; set; }
@@ -34,5 +33,7 @@ namespace OnlineLibrary.Models
 
           public DateTime? CreatedAt { get; set; }
           public string BookType { get; set; }
+          public int? AuthorId { get; set; }
+          public int Pages { get; set; }
      }
 }

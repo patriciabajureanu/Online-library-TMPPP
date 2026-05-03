@@ -51,6 +51,7 @@
           </div>
      </div>
 </section>
+
 <section id="newest-books" class="py-4 my-4">
      <div class="container">
           <div class="row">
@@ -104,11 +105,18 @@
                               }
                          </div>
                     </div>
+                    <div class="text-center mt-4">
+                         <a href="@Url.Action("CompositeDemo", "Home")"
+                            class="btn btn-outline-accent btn-accent-arrow px-4 py-2">
+                              View All by Category <i class="icon icon-ns-arrow-right"></i>
+                         </a>
+                    </div>
 
                </div>
           </div>
      </div>
 </section>
+
 
 <section id="best-selling" class="leaf-pattern-overlay">
      <div class="corner-pattern-overlay"></div>
@@ -214,6 +222,11 @@
 <a href="@Url.Action("DownloadPrototypeReport", "Home")"
    class="btn btn-warning">
      Download Report PDF
+</a>
+
+<a href="@Url.Action("CompositeDemo", "Home")"
+   class="btn btn-outline-accent btn-accent-arrow">
+     Composite Demo
 </a>
 
 <a href="@Url.Action("BridgeDemo", "Home")" class="btn btn-outline-accent btn-accent-arrow">

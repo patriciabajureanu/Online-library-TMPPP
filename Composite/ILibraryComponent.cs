@@ -1,8 +1,8 @@
 ﻿namespace OnlineLibrary.Composite
 {
-     public interface LibraryComponent
+     public interface ILibraryComponent
      {
-          void Display(int depth = 0);
+          string Display(int depth = 0);
           int GetTotalBooks();
      }
 }

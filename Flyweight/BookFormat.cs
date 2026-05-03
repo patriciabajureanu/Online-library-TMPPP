@@ -1,12 +1,12 @@
 ﻿namespace OnlineLibrary.Flyweight
 {
-     public class BookFormat : IBookFormat
+     public class BookFormatFlyweight
      {
-          public string FormatType { get; private set; }
-          public string Language { get; private set; }
-          public string Publisher { get; private set; }
+          public string FormatType { get; }
+          public string Language { get; }
+          public string Publisher { get; }
 
-          public BookFormat(string formatType, string language, string publisher)
+          public BookFormatFlyweight(string formatType, string language, string publisher)
           {
                FormatType = formatType;
                Language = language;

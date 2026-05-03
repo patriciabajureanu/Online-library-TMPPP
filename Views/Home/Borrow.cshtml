@@ -8,72 +8,92 @@
 <section id="borrow-books" class="bookshelf py-5 my-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+             <div class="col-md-12">
 
-                <div class="section-header align-center">
-                    <div class="title">
-                        <span>Choose a book from our library</span>
-                    </div>
-                    <h2 class="section-title">Borrow a Book</h2>
-                </div>
+                  <div class="section-header align-center">
+                       <div class="title">
+                            <span>Choose a book from our library</span>
+                       </div>
+                       <h2 class="section-title">Borrow a Book</h2>
+                  </div>
+                  <div class="row mb-4 justify-content-center">
+                       <div class="col-md-6">
+                            <div class="flyweight-box text-center p-4">
 
-                <div class="product-list" data-aos="fade-up">
-                    <div class="row">
+                                 <h5 class="mb-3">Library Overview</h5>
 
-                        @foreach (var book in Model)
-                        {
-                            <div class="col-md-3 mb-4">
-                                <div class="product-item borrow-book-card">
+                                 <div class="d-flex justify-content-around">
+                                      <div>
+                                           <h3>@ViewBag.TotalBooks</h3>
+                                           <p>Total Books</p>
+                                      </div>
 
-                                    <figure class="product-style">
-                                        <img src="@(string.IsNullOrEmpty(book.CoverImageUrl) ? Url.Content("~/Content/Images/default.png") : book.CoverImageUrl)"
-                                             alt="@book.Title"
-                                             class="product-item borrow-book-image">
+                                      <div>
+                                           <h3>@ViewBag.TotalSharedFormats</h3>
+                                           <p>Shared Formats</p>
+                                      </div>
+                                 </div>
 
-                                        @if (book.AvailableCopies > 0)
-{
-    <a href="@Url.Action("BorrowBook", "Home", new { id = book.Id })"
-   class="borrow-card-btn">
-    Borrow Book
-</a>
-}
-else
-{
-    <button class="borrow-card-btn borrow-card-btn-disabled" disabled>
-    Not Available
-</button>
-}
-
-                                    </figure>
-
-                                    <figcaption>
-                                        <h3>@book.Title</h3>
-                                         <div><strong>Type:</strong> @book.BookType</div>
-                                        <div>
-                                            <strong>Available:</strong> @book.AvailableCopies / @book.TotalCopies
-                                        </div>
-
-                                        <div>
-                                            <strong>Status:</strong>
-                                            @if (book.AvailableCopies > 0)
-                                            {
-                                                <span class="text-success">Available</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="text-danger">Unavailable</span>
-                                            }
-                                        </div>
-                                    </figcaption>
-
-                                </div>
                             </div>
-                        }
+                       </div>
+                  </div>
+                  <div class="product-list" data-aos="fade-up">
+                       <div class="row">
 
-                    </div>
-                </div>
+                            @foreach (var book in Model)
+                            {
+                                 <div class="col-md-3 mb-4">
+                                      <div class="product-item borrow-book-card">
 
-            </div>
+                                           <figure class="product-style">
+                                                <img src="@(string.IsNullOrEmpty(book.CoverImageUrl) ? Url.Content("~/Content/Images/default.png") : book.CoverImageUrl)"
+                                                     alt="@book.Title"
+                                                     class="product-item borrow-book-image">
+
+                                                @if (book.AvailableCopies > 0)
+                                                {
+                                                     <a href="@Url.Action("BorrowBook", "Home", new { id = book.Id })"
+                                                        class="borrow-card-btn">
+                                                          Borrow Book
+                                                     </a>
+                                                }
+                                                else
+                                                {
+                                                     <button class="borrow-card-btn borrow-card-btn-disabled" disabled>
+                                                          Not Available
+                                                     </button>
+                                                }
+
+                                           </figure>
+
+                                           <figcaption>
+                                                <h3>@book.Title</h3>
+                                                <div><strong>Type:</strong> @book.BookType</div>
+                                                <div>
+                                                     <strong>Available:</strong> @book.AvailableCopies / @book.TotalCopies
+                                                </div>
+
+                                                <div>
+                                                     <strong>Status:</strong>
+                                                     @if (book.AvailableCopies > 0)
+                                                     {
+                                                          <span class="text-success">Available</span>
+                                                     }
+                                                     else
+                                                     {
+                                                          <span class="text-danger">Unavailable</span>
+                                                     }
+                                                </div>
+                                           </figcaption>
+
+                                      </div>
+                                 </div>
+                            }
+
+                       </div>
+                  </div>
+
+             </div>
         </div>
     </div>
 </section>

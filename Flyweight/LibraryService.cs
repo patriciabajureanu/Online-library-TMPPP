@@ -6,13 +6,6 @@ namespace OnlineLibrary.Flyweight
 {
      public class LibraryService
      {
-          private readonly BookFormatFactory _factory;
-
-          public LibraryService()
-          {
-               _factory = new BookFormatFactory();
-          }
-
           public List<LibraryBook> LoadBooks()
           {
                using (var db = new OnlineLibraryDbContext())
@@ -24,11 +17,11 @@ namespace OnlineLibrary.Flyweight
                     var books = booksFromDb.Select(b =>
                     {
                          var book = new LibraryBook(
-                              b.Id.ToString(),
+                              b.Id,
                               b.Title,
                               b.Description,
                               b.CoverImageUrl,
-                              _factory.GetOrCreate(
+                              BookFormatFactory.GetOrCreate(
                                    "PDF",
                                    b.Language ?? "Unknown",
                                    b.PublisherId.HasValue ? b.PublisherId.Value.ToString() : "Unknown"
@@ -45,11 +38,9 @@ namespace OnlineLibrary.Flyweight
                }
           }
 
-
           public int GetSharedFormatsCount()
           {
-               LoadBooks();
-               return _factory.CacheSize();
+               return BookFormatFactory.CacheSize();
           }
      }
 }

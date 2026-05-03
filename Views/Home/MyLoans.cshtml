@@ -4,7 +4,12 @@
      ViewBag.Title = "My Loans";
      Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@if (TempData["BridgeMessage"] != null)
+{
+     <div class="bridge-message text-center mb-4">
+          @TempData["BridgeMessage"]
+     </div>
+}
 <section id="my-loans" class="bookshelf py-5 my-5">
      <div class="container">
 
@@ -82,6 +87,32 @@
                                                   </div>
                                              }
 
+                                             @if (!loan.IsReturned && loan.Book != null)
+                                             {
+                                                  var resourceType = string.IsNullOrEmpty(loan.Book.BookType)
+                                                       ? "ebook"
+                                                       : loan.Book.BookType.ToLower();
+
+                                                  <div class="bridge-actions mt-3">
+
+                                                       <a href="@Url.Action("AccessLoanResource", "Home", new { resourceType = resourceType, deliveryType = "download", id = loan.Book.Id })"
+                                                          class="bridge-btn">
+                                                            Download
+                                                       </a>
+
+                                                       <a href="@Url.Action("AccessLoanResource", "Home", new { resourceType = resourceType, deliveryType = "streaming", id = loan.Book.Id })"
+                                                          class="bridge-btn">
+                                                            Stream
+                                                       </a>
+
+                                                       <a href="@Url.Action("AccessLoanResource", "Home", new { resourceType = resourceType, deliveryType = "cloud", id = loan.Book.Id })"
+                                                          class="bridge-btn">
+                                                            Cloud
+                                                       </a>
+
+                                                  </div>
+                                             }
+
                                              @if (!loan.IsReturned)
                                              {
                                                   using (Html.BeginForm("ReturnBook", "Home", FormMethod.Post))
@@ -94,6 +125,7 @@
                                                        </button>
                                                   }
                                              }
+
                                         </figcaption>
 
                                    </div>

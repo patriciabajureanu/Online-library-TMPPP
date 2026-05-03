@@ -4,7 +4,7 @@
      {
           public string Deliver(string content, string resourceId)
           {
-               return $"[Streaming] Resource {resourceId}: {content}";
+               return "Resource " + resourceId + " is now streaming online: " + content;
           }
      }
 }

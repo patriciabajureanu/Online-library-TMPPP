@@ -1,22 +1,20 @@
-﻿using System;
-
-namespace OnlineLibrary.Adapter.Adaptee
+﻿namespace OnlineLibrary.Adapter.Adaptee
 {
      public class ExternalPdfReader
      {
-          public void LoadDocument(string path)
+          public string LoadDocument(string path)
           {
-               Console.WriteLine($"[PDF SDK] Loading document: {path}");
+               return "External PDF Reader loaded document: " + path;
           }
 
-          public void JumpTo(int pageNumber)
+          public string JumpTo(int pageNumber)
           {
-               Console.WriteLine($"[PDF SDK] Jumping to page {pageNumber}");
+               return "External PDF Reader jumped to page: " + pageNumber;
           }
 
-          public void Exit()
+          public string Exit()
           {
-               Console.WriteLine("[PDF SDK] Closing document");
+               return "External PDF Reader closed the document.";
           }
      }
 }

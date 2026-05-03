@@ -2736,3 +2736,77 @@ footer#footer {
           background: #c5a880;
           color: #fff;
      }
+
+
+/*----- Composite
+--------------------------------------------------------------*/
+.library-tree {
+     margin-top: 20px;
+}
+
+.category-node {
+     border-left: 4px solid #d4a017;
+     padding-left: 20px;
+}
+
+.author-node {
+     margin-top: 15px;
+     padding-left: 15px;
+     border-left: 2px solid #ccc;
+}
+
+.book-node {
+     background: #f8f8f8;
+     padding: 10px 15px;
+     border-radius: 8px;
+}
+
+/*----- Flyweight
+--------------------------------------------------------------*/
+.flyweight-box {
+     background-color: #f3f2ec;
+     border: 1px solid #e0e0e0;
+     border-radius: 12px;
+     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+     .flyweight-box h3 {
+          color: #222;
+     }
+
+     .flyweight-box p {
+          font-size: 14px;
+          color: #777;
+     }
+/*----- Bridge
+--------------------------------------------------------------*/
+.bridge-message {
+     background-color: #f3f2ec;
+     border: 1px solid #d8d2bd;
+     padding: 15px;
+     border-radius: 12px;
+     color: #333;
+     font-weight: 500;
+}
+
+.bridge-actions {
+     display: flex;
+     justify-content: center;
+     gap: 8px;
+     flex-wrap: wrap;
+}
+
+.bridge-btn {
+     padding: 7px 12px;
+     border-radius: 20px;
+     background-color: #c5a992;
+     color: #fff;
+     font-size: 13px;
+     text-decoration: none;
+     transition: 0.3s;
+}
+
+     .bridge-btn:hover {
+          background-color: #a3836b;
+          color: #fff;
+     }

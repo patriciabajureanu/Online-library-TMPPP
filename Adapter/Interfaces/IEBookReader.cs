@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace OnlineLibrary.Adapter.Interfaces
+﻿namespace OnlineLibrary.Adapter.Interfaces
 {
      public interface IEBookReader
      {
-          void OpenBook(string filePath);
-          void GoToPage(int page);
-          void CloseBook();
+          string OpenBook(string filePath);
+          string GoToPage(int page);
+          string CloseBook();
      }
 }

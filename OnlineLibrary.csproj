@@ -526,16 +526,14 @@
     <Compile Include="Command\LibraryManager.cs" />
     <Compile Include="Command\ReserveBookCommand.cs" />
     <Compile Include="Command\ReturnBookCommand.cs" />
-    <Compile Include="Composite\Book.cs" />
-    <Compile Include="Composite\Author.cs" />
-    <Compile Include="Composite\Genre.cs" />
-    <Compile Include="Composite\LibraryComponent.cs" />
+    <Compile Include="Composite\BookComponent.cs" />
+    <Compile Include="Composite\AuthorComponent.cs" />
+    <Compile Include="Composite\CategoryComponent.cs" />
+    <Compile Include="Composite\ILibraryComponent.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DecoratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LibraryController.cs" />
-    <Compile Include="Controllers\ReaderController.cs" />
     <Compile Include="Controllers\SingletonController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\OnlineLibraryDbContext.cs" />
@@ -597,7 +595,6 @@
     <Compile Include="FactoryMethod\DigitalBook.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\FinePayment.cs" />
-    <Compile Include="Models\FlyweightViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="FactoryMethod\PrintedBook.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -640,6 +637,7 @@
     <Content Include="Views\Home\BorrowBook.cshtml" />
     <Content Include="Views\Home\MyLoans.cshtml" />
     <Content Include="Views\Home\PrototypeReportPdf.cshtml" />
+    <Content Include="Views\Home\CompositeDemo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />

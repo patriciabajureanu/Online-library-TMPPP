@@ -8,7 +8,7 @@ namespace OnlineLibrary.Strategy
      {
           public List<LibraryBook> Sort(List<LibraryBook> books)
           {
-               return books.OrderBy(b => b.Format.FormatType).ToList();
+               return books.OrderBy(b => b.FormatType).ToList();
           }
      }
 }

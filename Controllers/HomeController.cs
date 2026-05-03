@@ -4,9 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineLibrary.AbstractFactory;
+using OnlineLibrary.Adapter.Adaptee;
+using OnlineLibrary.Adapter.Adapters;
+using OnlineLibrary.Adapter.Services;
+using OnlineLibrary.Bridge;
 using OnlineLibrary.Bridge;
 using OnlineLibrary.Builder;
 using OnlineLibrary.Command;
+using OnlineLibrary.Composite;
 using OnlineLibrary.Data;
 using OnlineLibrary.Decorator;
 using OnlineLibrary.FactoryMethod;
@@ -15,7 +20,6 @@ using OnlineLibrary.Iterator;
 using OnlineLibrary.Memento;
 using OnlineLibrary.Models;
 using OnlineLibrary.Observer;
-using OnlineLibrary.Patterns.Bridge;
 using OnlineLibrary.Patterns.Proxy;
 using OnlineLibrary.Prototype;
 using OnlineLibrary.Proxy;
@@ -61,30 +65,32 @@ namespace OnlineLibrary.Controllers
                          Description = b.Description,
                          ImagePath = b.ImagePath,
 
-                         FormatType = b.Format.FormatType,
-                         Language = b.Format.Language,
+                         FormatType = b.FormatType,
+                         Language = b.Language,
+                         Publisher = b.Publisher,
+
                          PublishedYear = b.PublishedYear,
                          CategoryName = b.CategoryName
-
-
                     }).ToList(),
 
                     TotalBooks = books.Count,
 
-                    TotalSharedFormats = books
-                       .Select(b => $"{b.Format.FormatType}-{b.Format.Language}-{b.Format.Publisher}")
-                       .Distinct()
-                       .Count(),
+                    TotalSharedFormats = service.GetSharedFormatsCount(),
 
-                        BestBook = bestBook != null ? new BookViewModel
-                        {
-                             Id = bestBook.Id,
-                             Title = bestBook.Title,
-                             Description = bestBook.Description,
-                             ImagePath = bestBook.ImagePath,
-                             PublishedYear = bestBook.PublishedYear,
-                             Language = bestBook.Format.Language
-                        } : null
+                    BestBook = bestBook != null ? new BookViewModel
+                    {
+                         Id = bestBook.Id,
+                         Title = bestBook.Title,
+                         Description = bestBook.Description,
+                         ImagePath = bestBook.ImagePath,
+
+                         FormatType = bestBook.FormatType,
+                         Language = bestBook.Language,
+                         Publisher = bestBook.Publisher,
+
+                         PublishedYear = bestBook.PublishedYear,
+                         CategoryName = bestBook.CategoryName
+                    } : null
                };
 
                return View(model);
@@ -95,6 +101,15 @@ namespace OnlineLibrary.Controllers
                using (var db = new OnlineLibraryDbContext())
                {
                     var books = db.Books.ToList();
+
+                    ViewBag.TotalBooks = books.Count;
+
+                    ViewBag.TotalSharedFormats = books
+                         .Select(b => "PDF-" + (b.Language ?? "Unknown") + "-" +
+                              (b.PublisherId.HasValue ? b.PublisherId.Value.ToString() : "Unknown"))
+                         .Distinct()
+                         .Count();
+
                     return View(books);
                }
           }
@@ -212,67 +227,139 @@ namespace OnlineLibrary.Controllers
                }
           }
 
-          public ActionResult Read(string id)
+          public ActionResult Read(int id, int page = 1)
           {
-               IBookAccessService service = new BasicBookAccessService();
-               service = new LoggingDecorator(service);
-               service = new CachingDecorator(service);
-               service = new AuthorizationDecorator(service);
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var book = db.Books.FirstOrDefault(b => b.Id == id);
 
-               var content = service.GetBookContent(id);
+                    if (book == null)
+                    {
+                         return HttpNotFound();
+                    }
 
-               ViewBag.BookId = id;
-               ViewBag.Content = content;
+                    if (string.IsNullOrEmpty(book.FilePath))
+                    {
+                         TempData["Error"] = "This book does not have a PDF file attached.";
+                         return RedirectToAction("Index");
+                    }
 
-               return View();
+                    var externalPdfReader = new ExternalPdfReader();
+                    var adapter = new PdfReaderAdapter(externalPdfReader);
+                    var libraryReaderService = new LibraryReaderService(adapter);
+
+                    ViewBag.BookTitle = book.Title;
+                    ViewBag.FilePath = book.FilePath;
+
+                    ViewBag.OpenResult = libraryReaderService.ReadBook(book.FilePath);
+                    ViewBag.PageResult = libraryReaderService.NavigateToPage(page);
+                    ViewBag.CloseResult = libraryReaderService.CloseBook();
+
+                    return View();
+               }
           }
-          public ActionResult BridgeDemo()
+          public ActionResult CompositeDemo()
           {
-               var items = new List<BridgeDemoItemViewModel>();
-
-               LibraryResource ebookDownload = new EbookResource(new DownloadDelivery());
-               LibraryResource ebookStreaming = new EbookResource(new StreamingDelivery());
-               LibraryResource audiobookStreaming = new AudiobookResource(new StreamingDelivery());
-               LibraryResource magazineCloud = new MagazineResource(new CloudDelivery());
-
-               items.Add(new BridgeDemoItemViewModel
+               using (var db = new OnlineLibraryDbContext())
                {
-                    ResourceType = "Ebook",
-                    DeliveryType = "Download",
-                    ResourceId = "E001",
-                    Result = ebookDownload.Access("E001")
-               });
+                    var categories = db.Categories.ToList();
+                    var authors = db.Authors.ToList();
+                    var books = db.Books.ToList();
 
-               items.Add(new BridgeDemoItemViewModel
+                    var categoryComponents = new List<CategoryComponent>();
+
+                    foreach (var category in categories)
+                    {
+                         var categoryComponent = new CategoryComponent(category.Name);
+
+                         var booksInCategory = books
+                              .Where(b => b.CategoryId == category.Id)
+                              .ToList();
+
+                         var authorIds = booksInCategory
+                              .Where(b => b.AuthorId != null)
+                              .Select(b => b.AuthorId.Value)
+                              .Distinct()
+                              .ToList();
+
+                         foreach (var authorId in authorIds)
+                         {
+                              var author = authors.FirstOrDefault(a => a.Id == authorId);
+
+                              if (author == null)
+                                   continue;
+
+                              var authorComponent = new AuthorComponent(author.FullName);
+
+                              var authorBooks = booksInCategory
+                                   .Where(b => b.AuthorId == author.Id)
+                                   .ToList();
+
+                              foreach (var book in authorBooks)
+                              {
+                                   var pages = book.Pages > 0 ? book.Pages : 100;
+
+                                   authorComponent.Add(
+                                        new BookComponent(book.Title, pages)
+                                   );
+                              }
+
+                              categoryComponent.Add(authorComponent);
+                         }
+
+                         categoryComponents.Add(categoryComponent);
+                    }
+
+                    ViewBag.Categories = categoryComponents;
+
+                    return View();
+               }
+          }
+          [Authorize]
+          public ActionResult AccessLoanResource(string resourceType, string deliveryType, int id)
+          {
+               using (var db = new OnlineLibraryDbContext())
                {
-                    ResourceType = "Ebook",
-                    DeliveryType = "Streaming",
-                    ResourceId = "E002",
-                    Result = ebookStreaming.Access("E002")
-               });
+                    var book = db.Books.FirstOrDefault(b => b.Id == id);
 
-               items.Add(new BridgeDemoItemViewModel
-               {
-                    ResourceType = "Audiobook",
-                    DeliveryType = "Streaming",
-                    ResourceId = "A001",
-                    Result = audiobookStreaming.Access("A001")
-               });
+                    if (book == null)
+                    {
+                         TempData["BridgeMessage"] = "Book not found.";
+                         return RedirectToAction("MyLoans");
+                    }
 
-               items.Add(new BridgeDemoItemViewModel
-               {
-                    ResourceType = "Magazine",
-                    DeliveryType = "Cloud",
-                    ResourceId = "M001",
-                    Result = magazineCloud.Access("M001")
-               });
+                    string virtualPath = book.FilePath;
 
-               var model = new BridgeDemoViewModel
-               {
-                    Items = items
-               };
+                    if (string.IsNullOrEmpty(virtualPath))
+                    {
+                         TempData["BridgeMessage"] = "This book does not have a PDF file.";
+                         return RedirectToAction("MyLoans");
+                    }
 
-               return View(model);
+                    string physicalPath = Server.MapPath(virtualPath);
+
+                    if (!System.IO.File.Exists(physicalPath))
+                    {
+                         TempData["BridgeMessage"] = "PDF file not found: " + virtualPath;
+                         return RedirectToAction("MyLoans");
+                    }
+
+                    switch (deliveryType)
+                    {
+                         case "download":
+                              return File(physicalPath, "application/pdf", book.Title + ".pdf");
+
+                         case "streaming":
+                              return RedirectToAction("Read", new { id = book.Id.ToString() });
+
+                         case "cloud":
+                              return Redirect(Url.Content(virtualPath));
+
+                         default:
+                              TempData["BridgeMessage"] = "Unknown delivery method.";
+                              return RedirectToAction("MyLoans");
+                    }
+               }
           }
           public ActionResult ProxyDemo()
           {

@@ -4,7 +4,7 @@
      {
           public string Deliver(string content, string resourceId)
           {
-               return $"[Download] Resource {resourceId}: {content}";
+               return "Resource " + resourceId + " is ready for download: " + content;
           }
      }
 }

@@ -2,11 +2,11 @@
 {
      public abstract class LibraryResource
      {
-          protected IContentDelivery delivery;
+          protected readonly IContentDelivery _delivery;
 
           protected LibraryResource(IContentDelivery delivery)
           {
-               this.delivery = delivery;
+               _delivery = delivery;
           }
 
           public abstract string Access(string resourceId);
