@@ -2049,6 +2049,46 @@ img.post-image {
           margin-top: 18px;
      }
 
+.sort-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 15px;
+}
+
+.sort-label {
+     font-weight: 600;
+     color: #555;
+}
+
+.sort-buttons {
+     display: flex;
+     gap: 10px;
+}
+
+.sort-btn {
+     padding: 6px 14px;
+     border-radius: 20px;
+     background-color: #f3f2ec;
+     border: 1px solid #ddd;
+     color: #333;
+     font-size: 14px;
+     text-decoration: none;
+     transition: all 0.25s ease;
+}
+
+     .sort-btn:hover {
+          background-color: #c5a992;
+          color: #fff;
+          border-color: #c5a992;
+     }
+
+     /* buton activ */
+     .sort-btn.active {
+          background-color: #c5a992;
+          color: #fff;
+          border-color: #c5a992;
+     }
 /*----- Best Selling Section Section
 --------------------------------------------------------------*/
 #best-selling {

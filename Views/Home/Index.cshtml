@@ -64,20 +64,29 @@
 
                          <h2 class="section-title">Newest Books</h2>
 
-                         <div class="text-center mb-4 sort-box">
-                              <span><strong>Sort by:</strong></span>
+                         <div class="sort-container text-center mb-4">
 
-                              <a href="@Url.Action("Index", "Home", new { sortType = "title" })" class="btn btn-sm btn-outline-dark">
-                                   Title
-                              </a>
+                              <span class="sort-label">Sort by:</span>
 
-                              <a href="@Url.Action("Index", "Home", new { sortType = "id" })" class="btn btn-sm btn-outline-dark">
-                                   Newest
-                              </a>
+                              <div class="sort-buttons">
 
-                              <a href="@Url.Action("Index", "Home", new { sortType = "format" })" class="btn btn-sm btn-outline-dark">
-                                   Format
-                              </a>
+                                   <a href="@Url.Action("Index", "Home", new { sortType = "title" })"
+                                      class="sort-btn @(Request["sortType"] == "title" ? "active" : "")">
+                                        Title
+                                   </a>
+
+                                   <a href="@Url.Action("Index", "Home", new { sortType = "id" })"
+                                      class="sort-btn @(Request["sortType"] == "id" ? "active" : "")">
+                                        Newest
+                                   </a>
+
+                                   <a href="@Url.Action("Index", "Home", new { sortType = "format" })"
+                                      class="sort-btn @(Request["sortType"] == "format" ? "active" : "")">
+                                        Format
+                                   </a>
+
+                              </div>
+
                          </div>
                     </div>
                     <div class="product-list newest-product-list" data-aos="fade-up">
