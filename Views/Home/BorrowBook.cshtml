@@ -42,7 +42,7 @@
                                    <div><strong>Language:</strong> @Model.Language</div>
                                    <div><strong>Published Year:</strong> @Model.PublishedYear</div>
                                    <div><strong>Available Copies:</strong> @Model.AvailableCopies</div>
-                                   <div class="mt-4">
+                                   <div class="mt-4 d-flex gap-3 flex-wrap">
                                         @if (Model.AvailableCopies > 0)
                                         {
                                              using (Html.BeginForm("ConfirmBorrowBook", "Home", FormMethod.Post))
@@ -50,10 +50,10 @@
                                                   @Html.AntiForgeryToken()
                                                   @Html.HiddenFor(m => m.Id)
 
-                                              
+
 
                                                   <button type="submit" class="btn borrow-btn">
-                                                       <span>Confirm Borrow</span>
+                                                       <span>Borrow Book</span>
                                                        <i class="icon icon-ns-arrow-right"></i>
                                                   </button>
                                              }
@@ -64,7 +64,16 @@
                                                   Not Available
                                              </button>
                                         }
+                                        @using (Html.BeginForm("ReserveBook", "Home", FormMethod.Post))
+                                        {
+                                             @Html.AntiForgeryToken()
+                                             @Html.HiddenFor(m => m.Id)
 
+                                             <button type="submit" class="btn borrow-btn reserve-btn">
+                                                  <span>Reserve Book</span>
+                                                  <i class="icon icon-ns-arrow-right"></i>
+                                             </button>
+                                        }
                                         <a href="@Url.Action("Borrow", "Home")" class="btn borrow-btn back-btn">
                                              <span>Back</span>
                                         </a>

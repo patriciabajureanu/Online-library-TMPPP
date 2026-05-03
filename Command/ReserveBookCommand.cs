@@ -3,24 +3,24 @@
      public class ReserveBookCommand : ICommand
      {
           private readonly LibraryManager _receiver;
-          private readonly string _bookId;
+          private readonly int _bookId;
+          private readonly string _userEmail;
 
-          public string Result { get; private set; }
-
-          public ReserveBookCommand(LibraryManager receiver, string bookId)
+          public ReserveBookCommand(LibraryManager receiver, int bookId, string userEmail)
           {
                _receiver = receiver;
                _bookId = bookId;
+               _userEmail = userEmail;
           }
 
           public void Execute()
           {
-               Result = _receiver.ReserveBook(_bookId);
+               _receiver.ReserveBook(_bookId, _userEmail);
           }
 
           public void Undo()
           {
-               Result = $"Undo: reserve action for book {_bookId} was cancelled.";
+               _receiver.CancelReservation(_bookId, _userEmail);
           }
      }
 }

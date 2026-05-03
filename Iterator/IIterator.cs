@@ -1,10 +1,8 @@
-﻿using OnlineLibrary.Models;
-
-namespace OnlineLibrary.Iterator
+﻿namespace OnlineLibrary.Iterator
 {
-     public interface IIterator
+     public interface IIterator<T>
      {
-          Loan GetNext();
           bool HasMore();
+          T GetNext();
      }
 }

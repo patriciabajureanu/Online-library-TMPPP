@@ -75,17 +75,22 @@
                                                   </div>
                                              }
 
-                                             <div>
-                                                  <strong>Status:</strong>
-                                                  @if (loan.IsReturned)
-                                                  {
-                                                       <span class="text-success">Returned</span>
-                                                  }
-                                                  else
-                                                  {
-                                                       <span class="text-warning">Active</span>
-                                                  }
-                                             </div>
+                                        <div>
+                                             <strong>Status:</strong>
+
+                                             @if (loan.IsReturned)
+                                             {
+                                                  <span class="text-success">Returned</span>
+                                             }
+                                             else if (loan.DueDate.HasValue && loan.DueDate.Value < DateTime.Now)
+                                             {
+                                                  <span class="text-danger">OVERDUE</span>
+                                             }
+                                             else
+                                             {
+                                                  <span class="text-warning">Active</span>
+                                             }
+                                        </div>
 
                                              @if (loan.ReturnDate != null)
                                              {

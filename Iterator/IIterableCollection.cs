@@ -1,7 +1,7 @@
 ﻿namespace OnlineLibrary.Iterator
 {
-     public interface IIterableCollection
+     public interface IIterableCollection<T>
      {
-          IIterator CreateIterator();
+          IIterator<T> CreateIterator();
      }
 }

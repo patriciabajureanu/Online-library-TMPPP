@@ -17,6 +17,7 @@ using OnlineLibrary.Decorator;
 using OnlineLibrary.FactoryMethod;
 using OnlineLibrary.Flyweight;
 using OnlineLibrary.Iterator;
+using OnlineLibrary.Iterator;
 using OnlineLibrary.Memento;
 using OnlineLibrary.Models;
 using OnlineLibrary.Observer;
@@ -113,6 +114,7 @@ namespace OnlineLibrary.Controllers
                     return View(books);
                }
           }
+
           [Authorize]
           public ActionResult BorrowBook(int id)
           {
@@ -128,76 +130,86 @@ namespace OnlineLibrary.Controllers
                     return View(book);
                }
           }
+          [HttpPost]
+          [Authorize]
+          [ValidateAntiForgeryToken]
+          public ActionResult ReserveBook(int id)
+          {
+               var userEmail = User.Identity.Name;
+
+               var manager = new LibraryManager();
+               var command = new ReserveBookCommand(manager, id, userEmail);
+
+               var invoker = new LibraryInvoker();
+               invoker.ExecuteCommand(command);
+
+               TempData["Success"] = "Book reserved successfully!";
+               TempData["ObserverMessage"] = "Observer notified for reservation.";
+
+               return RedirectToAction("MyLoans");
+          }
+          [Authorize]
+          public ActionResult MyReservations()
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var userEmail = User.Identity.Name;
+
+                    var reservations = db.Reservations
+                         .Include("Book")
+                         .Where(r => r.UserEmail == userEmail)
+                         .OrderByDescending(r => r.ReservedAt)
+                         .ToList();
+
+                    return View(reservations);
+               }
+          }
+          [HttpPost]
+          [Authorize]
+          [ValidateAntiForgeryToken]
+          public ActionResult CancelReservation(int id)
+          {
+               var userEmail = User.Identity.Name;
+
+               var manager = new LibraryManager();
+               var command = new ReserveBookCommand(manager, id, userEmail);
+
+               command.Undo();
+
+               TempData["Success"] = "Reservation cancelled successfully.";
+
+               return RedirectToAction("MyReservations");
+          }
 
           [HttpPost]
           [Authorize]
           [ValidateAntiForgeryToken]
           public ActionResult ConfirmBorrowBook(int id, string userType)
           {
-               using (var db = new OnlineLibraryDbContext())
+               var currentEmail = User.Identity.Name;
+
+               IUserRepository userRepository = new UserRepository();
+               var loggedUser = userRepository.GetByEmail(currentEmail);
+
+               if (loggedUser == null)
                {
-                    var book = db.Books.FirstOrDefault(b => b.Id == id);
-
-                    if (book == null)
-                    {
-                         return HttpNotFound();
-                    }
-
-                    if (book.AvailableCopies <= 0)
-                    {
-                         TempData["Error"] = "This book is not available.";
-                         return RedirectToAction("BorrowBook", new { id = id });
-                    }
-
-                    // ABSTRACT FACTORY
-                    IUserRepository userRepository = new UserRepository();
-
-                    var currentEmail = User.Identity.Name;
-                    var loggedUser = userRepository.GetByEmail(currentEmail);
-
-                    if (loggedUser == null)
-                    {
-                         TempData["Error"] = "User not found. Please login again.";
-                         return RedirectToAction("Login", "Account");
-                    }
-
-                    var role = loggedUser.Role;
-
-                    Session["Role"] = role; // îl refacem și în sesiune
-
-                    var factory = UserFactoryProvider.GetFactory(role);
-
-
-                    var user = factory.CreateUser(User.Identity.Name);
-                    var loanType = factory.CreateLoan(book.Title);
-
-                    var loan = new Loan
-                    {
-                         BookId = book.Id,
-                         UserEmail = user.GetName(),
-                         UserType = user.GetUserType(),
-                         BorrowDate = DateTime.Now,
-                         DueDate = DateTime.Now.AddDays(loanType.GetLoanDays()),
-                         ReturnDate = null,
-                         IsReturned = false
-                    };
-
-                    db.Loans.Add(loan);
-
-                    book.AvailableCopies--;
-
-                    db.SaveChanges();
-
-                    TempData["Success"] = "Book borrowed successfully!";
-                    //Observer
-                    var eventService = new LibraryEventService();
-                    eventService.BorrowBook(book.Id, book.Title, User.Identity.Name);
-
-                    TempData["ObserverMessage"] = "Book borrowed successfully! Email sent and notification created.";
-                    return RedirectToAction("MyLoans");
+                    TempData["Error"] = "User not found. Please login again.";
+                    return RedirectToAction("Login", "Account");
                }
-          }
 
+               Session["Role"] = loggedUser.Role;
+
+               var manager = new LibraryManager();
+               var command = new BorrowBookCommand(manager, id, currentEmail, loggedUser.Role);
+
+               var invoker = new LibraryInvoker();
+               invoker.ExecuteCommand(command);
+
+               TempData["Success"] = "Book borrowed successfully!";
+               TempData["ObserverMessage"] = "Book borrowed successfully! Email sent and notification created.";
+
+               return RedirectToAction("MyLoans");
+          }
           public ActionResult DownloadPrototypeReport()
           {
                using (var db = new OnlineLibraryDbContext())
@@ -387,25 +399,7 @@ namespace OnlineLibrary.Controllers
                return View(model);
           }
           
-          public ActionResult CommandDemo(string id = "1")
-          {
-               var manager = new LibraryManager();
-               var invoker = new LibraryInvoker();
-
-               var borrowCommand = new BorrowBookCommand(manager, id);
-               invoker.ExecuteCommand(borrowCommand);
-
-               var reserveCommand = new ReserveBookCommand(manager, id);
-               invoker.ExecuteCommand(reserveCommand);
-
-               invoker.UndoLastCommand();
-
-               ViewBag.BorrowResult = borrowCommand.Result;
-               ViewBag.ReserveResult = reserveCommand.Result;
-
-               return View();
-
-          }
+          
           public ActionResult MementoDemo()
           {
                var session = new ReadingSession();
@@ -429,51 +423,7 @@ namespace OnlineLibrary.Controllers
                return View();
           }
 
-          public ActionResult IteratorDemo()
-          {
-               var collection = new UserLoanCollection();
-
-               collection.AddLoan(new Loan
-               {
-                    Id = 1,
-                    BookId = 1,
-                    UserEmail = "user1@test.com",
-                    BorrowDate = DateTime.Now,
-                    ReturnDate = null,
-                    IsReturned = false
-               });
-
-               collection.AddLoan(new Loan
-               {
-                    Id = 2,
-                    BookId = 2,
-                    UserEmail = "user1@test.com",
-                    BorrowDate = DateTime.Now,
-                    ReturnDate = null,
-                    IsReturned = false
-               });
-
-               collection.AddLoan(new Loan
-               {
-                    Id = 3,
-                    BookId = 3,
-                    UserEmail = "user2@test.com",
-                    BorrowDate = DateTime.Now,
-                    ReturnDate = null,
-                    IsReturned = false
-               });
-
-               var iterator = collection.CreateIterator();
-
-               var result = new List<Loan>();
-
-               while (iterator.HasMore())
-               {
-                    result.Add(iterator.GetNext());
-               }
-
-               return View(result);
-          }
+         
           [Authorize]
           public ActionResult MyLoans()
           {
@@ -481,11 +431,29 @@ namespace OnlineLibrary.Controllers
                {
                     var userEmail = User.Identity.Name;
 
-                    var loans = db.Loans
+                    var loansFromDb = db.Loans
                         .Include("Book")
                         .Where(l => l.UserEmail == userEmail)
                         .OrderByDescending(l => l.BorrowDate)
                         .ToList();
+
+                    var collection = new UserLoanCollection(loansFromDb);
+                    var iterator = collection.CreateIterator();
+
+                    var loans = new List<Loan>();
+
+                    while (iterator.HasMore())
+                    {
+                         var loan = iterator.GetNext();
+
+                         if (!loan.IsReturned && loan.DueDate.HasValue && loan.DueDate.Value < DateTime.Now)
+                         {
+
+                              ViewBag.HasOverdueLoans = true;
+                         }
+
+                         loans.Add(loan);
+                    }
 
                     return View(loans);
                }
@@ -495,37 +463,19 @@ namespace OnlineLibrary.Controllers
           [ValidateAntiForgeryToken]
           public ActionResult ReturnBook(int id)
           {
-               using (var db = new OnlineLibraryDbContext())
-               {
-                    var userEmail = User.Identity.Name;
+               var userEmail = User.Identity.Name;
 
-                    var loan = db.Loans
-                        .Include("Book")
-                        .FirstOrDefault(l => l.Id == id && l.UserEmail == userEmail && !l.IsReturned);
+               var manager = new LibraryManager();
+               //Command
+               var command = new ReturnBookCommand(manager, id, userEmail);
 
-                    if (loan == null)
-                    {
-                         TempData["Error"] = "Loan not found or already returned.";
-                         return RedirectToAction("MyLoans");
-                    }
+               var invoker = new LibraryInvoker();
+               invoker.ExecuteCommand(command);
 
-                    loan.IsReturned = true;
-                    loan.ReturnDate = DateTime.Now;
+               TempData["Success"] = "Book returned successfully!";
+               TempData["ObserverMessage"] = "Observer: email, SMS and log were notified for returned book.";
 
-                    if (loan.Book != null)
-                    {
-                         loan.Book.AvailableCopies++;
-                    }
-
-                    db.SaveChanges();
-
-                    TempData["Success"] = "Book returned successfully!";
-                    var eventService = new LibraryEventService();
-                    eventService.ReturnBook(loan.BookId, loan.Book.Title, User.Identity.Name);
-
-                    TempData["ObserverMessage"] = "Observer: email, SMS and log were notified for returned book.";
-                    return RedirectToAction("MyLoans");
-               }
+               return RedirectToAction("MyLoans");
           }
 
           [AllowAnonymous]

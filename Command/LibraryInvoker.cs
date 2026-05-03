@@ -16,7 +16,7 @@ namespace OnlineLibrary.Command
           {
                if (_history.Count > 0)
                {
-                    var command = _history.Pop();
+                    ICommand command = _history.Pop();
                     command.Undo();
                }
           }

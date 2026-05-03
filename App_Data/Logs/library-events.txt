@@ -11,3 +11,7 @@
 03.05.2026 14:33:02 | Event: borrow | BookId: 10 | User: bajureanu.patricia@gmail.com
 03.05.2026 14:33:21 | Event: return | BookId: 10 | User: bajureanu.patricia@gmail.com
 03.05.2026 14:42:48 | Event: borrow | Book: C# in Depth | User: bajureanu.patricia@gmail.com
+03.05.2026 15:04:21 | Event: borrow | Book: Head First Design Patterns | User: bajureanu.patricia@gmail.com
+03.05.2026 15:07:48 | Event: reserve | Book: The Pragmatic Programmer | User: bajureanu.patricia@gmail.com
+03.05.2026 15:08:56 | Event: return | Book: Head First Design Patterns | User: bajureanu.patricia@gmail.com
+03.05.2026 15:19:01 | Event: reserve | Book: Refactoring | User: bajureanu.patricia@gmail.com

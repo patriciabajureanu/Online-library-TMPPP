@@ -54,6 +54,11 @@
                                                        <a href="@Url.Action("MyLoans", "Home")">My Loans</a>
                                                   </li>
 
+                                                  <li class="menu-item">
+                                                       <a href="@Url.Action("MyReservations", "Home")">
+                                                            My Reservations
+                                                       </a>
+                                                  </li>
                                                   @if (User.Identity.IsAuthenticated && User.Identity.Name == "patricia.bajureanu@gmail.com")
                                                   {
                                                        <li class="menu-item">

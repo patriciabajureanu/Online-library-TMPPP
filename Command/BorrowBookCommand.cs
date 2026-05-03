@@ -3,24 +3,26 @@
      public class BorrowBookCommand : ICommand
      {
           private readonly LibraryManager _receiver;
-          private readonly string _bookId;
+          private readonly int _bookId;
+          private readonly string _userEmail;
+          private readonly string _role;
 
-          public string Result { get; private set; }
-
-          public BorrowBookCommand(LibraryManager receiver, string bookId)
+          public BorrowBookCommand(LibraryManager receiver, int bookId, string userEmail, string role)
           {
                _receiver = receiver;
                _bookId = bookId;
+               _userEmail = userEmail;
+               _role = role;
           }
 
           public void Execute()
           {
-               Result = _receiver.BorrowBook(_bookId);
+               _receiver.BorrowBook(_bookId, _userEmail, _role);
           }
 
           public void Undo()
           {
-               Result = $"Undo: borrow action for book {_bookId} was cancelled.";
+               _receiver.UndoBorrowBook(_bookId, _userEmail);
           }
      }
 }

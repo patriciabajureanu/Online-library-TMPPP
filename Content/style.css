@@ -2882,4 +2882,19 @@ footer#footer {
           height: auto;
           padding: 0;
      }
-          
+
+/*----- Reserve
+--------------------------------------------------------------*/
+
+.reserve-btn {
+     background-color: #a67c52; /* maro cald */
+     color: #fff;
+     border: none;
+     transition: all 0.3s ease;
+}
+
+     .reserve-btn:hover {
+          background-color: #8b6844;
+          color: #fff;
+          transform: translateY(-2px);
+     }

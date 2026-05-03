@@ -3,13 +3,13 @@ using OnlineLibrary.Models;
 
 namespace OnlineLibrary.Iterator
 {
-     public class UserLoanCollection : IIterableCollection
+     public class UserLoanCollection : IIterableCollection<Loan>
      {
-          private List<Loan> _loans = new List<Loan>();
+          private readonly List<Loan> _loans;
 
-          public void AddLoan(Loan loan)
+          public UserLoanCollection(List<Loan> loans)
           {
-               _loans.Add(loan);
+               _loans = loans;
           }
 
           public List<Loan> GetLoans()
@@ -17,7 +17,7 @@ namespace OnlineLibrary.Iterator
                return _loans;
           }
 
-          public IIterator CreateIterator()
+          public IIterator<Loan> CreateIterator()
           {
                return new LoanIterator(this);
           }

@@ -3,24 +3,24 @@
      public class ReturnBookCommand : ICommand
      {
           private readonly LibraryManager _receiver;
-          private readonly string _bookId;
+          private readonly int _loanId;
+          private readonly string _userEmail;
 
-          public string Result { get; private set; }
-
-          public ReturnBookCommand(LibraryManager receiver, string bookId)
+          public ReturnBookCommand(LibraryManager receiver, int loanId, string userEmail)
           {
                _receiver = receiver;
-               _bookId = bookId;
+               _loanId = loanId;
+               _userEmail = userEmail;
           }
 
           public void Execute()
           {
-               Result = _receiver.ReturnBook(_bookId);
+               _receiver.ReturnBook(_loanId, _userEmail);
           }
 
           public void Undo()
           {
-               Result = $"Undo: return action for book {_bookId} was cancelled.";
+               _receiver.UndoReturnBook(_loanId, _userEmail);
           }
      }
 }
