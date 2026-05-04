@@ -1,0 +1,42 @@
+﻿@{
+     ViewBag.Title = "Template Method";
+}
+
+<div class="container mt-5">
+     <h2 class="mb-4">Template Method - Library Report Generator</h2>
+
+     <div class="card shadow-sm p-4">
+          <p>
+               Report is generated from real database books.
+          </p>
+
+          <ol>
+               <li>FetchData - reads books, authors and categories from DB</li>
+               <li>FormatReport - prepares report content</li>
+               <li>ExportReport - exports as PDF or CSV</li>
+          </ol>
+
+          <div class="mb-3">
+               <a href="@Url.Action("TemplateMethod", "Home", new { type = "pdf" })"
+                  class="btn btn-outline-primary">
+                    Generate PDF Report
+               </a>
+
+               <a href="@Url.Action("TemplateMethod", "Home", new { type = "csv" })"
+                  class="btn btn-outline-success">
+                    Generate CSV Report
+               </a>
+          </div>
+
+          @if (ViewBag.FilePath != null)
+          {
+               <div class="alert alert-success mt-3">
+                    @ViewBag.Type report generated successfully from database.
+               </div>
+
+               <a href="@ViewBag.FilePath" class="btn btn-warning" download>
+                    Download Report
+               </a>
+          }
+     </div>
+</div>

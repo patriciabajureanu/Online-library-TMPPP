@@ -18,6 +18,7 @@ using OnlineLibrary.Facade;
 using OnlineLibrary.FactoryMethod;
 using OnlineLibrary.Flyweight;
 using OnlineLibrary.Iterator;
+using OnlineLibrary.Mediator;
 using OnlineLibrary.Memento;
 using OnlineLibrary.Models;
 using OnlineLibrary.Observer;
@@ -26,6 +27,7 @@ using OnlineLibrary.Proxy;
 using OnlineLibrary.Repositories;
 using OnlineLibrary.State;
 using OnlineLibrary.Strategy;
+using OnlineLibrary.TemplateMethod;
 using Rotativa;
 
 namespace OnlineLibrary.Controllers
@@ -641,30 +643,87 @@ namespace OnlineLibrary.Controllers
           }
           public ActionResult State()
           {
-               var membership = new LibraryMembership(User.Identity.IsAuthenticated
-                   ? User.Identity.Name
-                   : "guest@library.com");
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    string email = User.Identity.IsAuthenticated
+                        ? User.Identity.Name
+                        : "guest@library.com";
 
-               var actions = new List<string>();
+                    var membership = new LibraryMembership(email, db);
 
-               actions.Add("Initial state: " + membership.GetStateName());
+                    var actions = new List<string>();
 
-               actions.Add(membership.Suspend());
-               actions.Add("Current state: " + membership.GetStateName());
+                    actions.Add("Initial state: " + membership.GetStateName());
 
-               actions.Add(membership.Activate());
-               actions.Add("Current state: " + membership.GetStateName());
+                    actions.Add(membership.Suspend());
+                    actions.Add("Current state: " + membership.GetStateName());
 
-               actions.Add(membership.Expire());
-               actions.Add("Current state: " + membership.GetStateName());
+                    actions.Add(membership.Activate());
+                    actions.Add("Current state: " + membership.GetStateName());
 
-               actions.Add(membership.Renew());
-               actions.Add("Current state: " + membership.GetStateName());
+                    ViewBag.Membership = membership;
+                    ViewBag.Actions = actions;
 
-               ViewBag.Membership = membership;
-               ViewBag.Actions = actions;
+                    return View();
+               }
+          }
+          public ActionResult Mediator(string searchText = "", string category = "")
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var books = db.Books
+                    .Include("Category")
+                    .ToList();
 
-               return View();
+                    var mediator = new LibraryMediator(books);
+
+                    var search = new SearchComponent(mediator);
+                    var filter = new FilterComponent(mediator);
+                    var results = new ResultsComponent();
+
+                    mediator.Search = search;
+                    mediator.Filter = filter;
+                    mediator.Results = results;
+
+                    if (!string.IsNullOrEmpty(searchText))
+                    {
+                         search.Search(searchText);
+                    }
+                    else if (!string.IsNullOrEmpty(category))
+                    {
+                         filter.SelectFilter(category);
+                    }
+                    else
+                    {
+                         results.UpdateResults(books);
+                    }
+
+                    ViewBag.Results = results.CurrentResults;
+                    ViewBag.Categories = db.Categories.Select(c => c.Name).ToList();
+
+                    return View();
+               }
+          }
+          public ActionResult TemplateMethod(string type = "pdf")
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    string reportId = DateTime.Now.ToString("yyyyMMddHHmmss");
+
+                    LibraryReportGenerator generator;
+
+                    if (type == "csv")
+                         generator = new CsvLibraryReportGenerator(db);
+                    else
+                         generator = new PdfLibraryReportGenerator(db);
+
+                    string filePath = generator.GenerateReport(reportId);
+
+                    ViewBag.Type = type.ToUpper();
+                    ViewBag.FilePath = filePath;
+
+                    return View();
+               }
           }
      }
      }

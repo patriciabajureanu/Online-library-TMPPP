@@ -8,7 +8,7 @@ namespace OnlineLibrary.State
 
           public override string Renew()
           {
-               Membership.ExpirationDate = DateTime.Now.AddMonths(1);
+               // nu mai folosim expiration date
                Membership.ChangeState(new ActiveState(Membership));
                return "Expired membership renewed and activated.";
           }

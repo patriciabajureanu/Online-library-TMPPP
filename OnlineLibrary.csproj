@@ -49,11 +49,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.5, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.5\lib\net461\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNetCore.Antiforgery, Version=2.3.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNetCore.Antiforgery.2.3.0\lib\netstandard2.0\Microsoft.AspNetCore.Antiforgery.dll</HintPath>
@@ -578,6 +584,11 @@
     <Compile Include="Iterator\Loan.cs" />
     <Compile Include="Iterator\LoanIterator.cs" />
     <Compile Include="Iterator\UserLoanCollection.cs" />
+    <Compile Include="Mediator\FilterComponent.cs" />
+    <Compile Include="Mediator\IMediator.cs" />
+    <Compile Include="Mediator\LibraryMediator.cs" />
+    <Compile Include="Mediator\ResultsComponent.cs" />
+    <Compile Include="Mediator\SearchComponent.cs" />
     <Compile Include="Memento\ReadingHistory.cs" />
     <Compile Include="Memento\ReadingSession.cs" />
     <Compile Include="Memento\ReadingSnapshot.cs" />
@@ -639,6 +650,9 @@
     <Compile Include="Strategy\SortByFormatStrategy.cs" />
     <Compile Include="Strategy\SortByTitleStrategy.cs" />
     <Compile Include="Strategy\SortByIdStrategy.cs" />
+    <Compile Include="TemplateMethod\CsvLibraryReportGenerator.cs" />
+    <Compile Include="TemplateMethod\LibraryReportGenerator.cs" />
+    <Compile Include="TemplateMethod\PdfLibraryReportGenerator.cs" />
     <Content Include="Views\Home\ChainOfResponsibility.cshtml" />
     <None Include="Views\Home\Composite.cshtml" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
@@ -653,6 +667,8 @@
     <Content Include="Views\Home\PrototypeReportPdf.cshtml" />
     <Content Include="Views\Home\MyReservations.cshtml" />
     <Content Include="Views\Home\State.cshtml" />
+    <Content Include="Views\Home\Mediator.cshtml" />
+    <Content Include="Views\Shared\TemplateMethod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />

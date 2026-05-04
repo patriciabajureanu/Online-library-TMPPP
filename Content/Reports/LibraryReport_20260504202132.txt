@@ -1,0 +1,6 @@
+PDF LIBRARY REPORT
+
+Books borrowed: 15
+Books returned: 10
+Active users: 7
+Report processed for PDF.

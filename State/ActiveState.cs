@@ -8,7 +8,6 @@ namespace OnlineLibrary.State
 
           public override string Renew()
           {
-               Membership.ExpirationDate = Membership.ExpirationDate.AddMonths(1);
                return "Membership renewed successfully.";
           }
 

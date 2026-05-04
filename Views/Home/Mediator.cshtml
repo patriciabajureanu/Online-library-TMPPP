@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Mediator Pattern";
+    var books = ViewBag.Results as List<OnlineLibrary.Models.Book>;
+    var categories = ViewBag.Categories as List<string>;
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Mediator Pattern - Search & Filter</h2>
+
+    <!-- Search -->
+    <form method="get" class="mb-3">
+        <input type="text" name="searchText" placeholder="Search books..."
+               class="form-control mb-2" />
+
+        <button class="btn btn-primary">Search</button>
+    </form>
+
+    <!-- Filter -->
+    <div class="mb-4">
+        <h5>Filter by Category:</h5>
+
+        @foreach (var cat in categories)
+        {
+            <a href="@Url.Action("Mediator", new { category = cat })"
+               class="btn btn-outline-secondary btn-sm m-1">
+                @cat
+            </a>
+        }
+    </div>
+
+    <!-- Results -->
+    <div class="row">
+        @foreach (var book in books)
+        {
+            <div class="col-md-3 mb-3">
+                <div class="p-3 border rounded shadow-sm">
+                    <h6>@book.Title</h6>
+                    <small>@(book.Category != null ? book.Category.Name : "No category")</small>                </div>
+            </div>
+        }
+    </div>
+</div>    

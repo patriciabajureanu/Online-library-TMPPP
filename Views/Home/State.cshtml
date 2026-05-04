@@ -9,13 +9,9 @@
      <h2 class="mb-4">State Pattern - Library Membership</h2>
 
      <div class="card shadow-sm p-4">
-          <h4>Member: @membership.MemberId</h4>
-          <p>
-               <strong>Expiration Date:</strong>
-               @membership.ExpirationDate.ToString("dd MMM yyyy")
-          </p>
+          <h4>Member: @membership.UserEmail</h4>
 
-          <div class="alert alert-info">
+          <div class="alert alert-info mt-3">
                Current State: <strong>@membership.GetStateName()</strong>
           </div>
 
