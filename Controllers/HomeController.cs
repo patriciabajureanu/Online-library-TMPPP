@@ -9,6 +9,7 @@ using OnlineLibrary.Adapter.Adapters;
 using OnlineLibrary.Adapter.Services;
 using OnlineLibrary.Bridge;
 using OnlineLibrary.Builder;
+using OnlineLibrary.ChainOfResponsibility;
 using OnlineLibrary.Command;
 using OnlineLibrary.Composite;
 using OnlineLibrary.Data;
@@ -20,9 +21,10 @@ using OnlineLibrary.Iterator;
 using OnlineLibrary.Memento;
 using OnlineLibrary.Models;
 using OnlineLibrary.Observer;
-using OnlineLibrary.Proxy;
 using OnlineLibrary.Prototype;
+using OnlineLibrary.Proxy;
 using OnlineLibrary.Repositories;
+using OnlineLibrary.State;
 using OnlineLibrary.Strategy;
 using Rotativa;
 
@@ -287,7 +289,7 @@ namespace OnlineLibrary.Controllers
                     return View();
                }
           }
-          public ActionResult CompositeDemo()
+          public ActionResult Composite()
           {
                using (var db = new OnlineLibraryDbContext())
                {
@@ -610,7 +612,59 @@ namespace OnlineLibrary.Controllers
 
                return View(book);
           }
-          
-          
+
+          public ActionResult ChainOfResponsibility(int bookId)
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    string userEmail = User.Identity.IsAuthenticated
+                        ? User.Identity.Name
+                        : null;
+
+                    var request = new AccessRequest(userEmail, bookId);
+
+                    var membership = new MembershipHandler();
+                    var availability = new AvailabilityHandler(db);
+                    var borrowLimit = new BorrowLimitHandler(db);
+
+                    membership
+                        .SetNext(availability)
+                        .SetNext(borrowLimit);
+
+                    var result = membership.Handle(request);
+
+                    ViewBag.Result = result;
+                    ViewBag.Book = db.Books.FirstOrDefault(b => b.Id == bookId);
+
+                    return View();
+               }
+          }
+          public ActionResult State()
+          {
+               var membership = new LibraryMembership(User.Identity.IsAuthenticated
+                   ? User.Identity.Name
+                   : "guest@library.com");
+
+               var actions = new List<string>();
+
+               actions.Add("Initial state: " + membership.GetStateName());
+
+               actions.Add(membership.Suspend());
+               actions.Add("Current state: " + membership.GetStateName());
+
+               actions.Add(membership.Activate());
+               actions.Add("Current state: " + membership.GetStateName());
+
+               actions.Add(membership.Expire());
+               actions.Add("Current state: " + membership.GetStateName());
+
+               actions.Add(membership.Renew());
+               actions.Add("Current state: " + membership.GetStateName());
+
+               ViewBag.Membership = membership;
+               ViewBag.Actions = actions;
+
+               return View();
+          }
      }
      }

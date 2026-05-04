@@ -520,6 +520,13 @@
     <Compile Include="Bridge\StreamingDelivery.cs" />
     <Compile Include="Builder\BookBuilder.cs" />
     <Compile Include="Builder\BookBuilderDirector.cs" />
+    <Compile Include="ChainOfResponsibility\AccessRequest.cs" />
+    <Compile Include="ChainOfResponsibility\AccessResult.cs" />
+    <Compile Include="ChainOfResponsibility\AvailabilityHandler.cs" />
+    <Compile Include="ChainOfResponsibility\BaseHandler.cs" />
+    <Compile Include="ChainOfResponsibility\BorrowLimitHandler.cs" />
+    <Compile Include="ChainOfResponsibility\IHandler.cs" />
+    <Compile Include="ChainOfResponsibility\MembershipHandler.cs" />
     <Compile Include="Command\BorrowBookCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\LibraryInvoker.cs" />
@@ -622,11 +629,18 @@
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="State\ActiveState.cs" />
+    <Compile Include="State\ExpiredState.cs" />
+    <Compile Include="State\LibraryMembership.cs" />
+    <Compile Include="State\MembershipState.cs" />
+    <Compile Include="State\SuspendedState.cs" />
     <Compile Include="Strategy\BookCatalogContext.cs" />
     <Compile Include="Strategy\IBookSortStrategy.cs" />
     <Compile Include="Strategy\SortByFormatStrategy.cs" />
     <Compile Include="Strategy\SortByTitleStrategy.cs" />
     <Compile Include="Strategy\SortByIdStrategy.cs" />
+    <Content Include="Views\Home\ChainOfResponsibility.cshtml" />
+    <None Include="Views\Home\Composite.cshtml" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
@@ -638,7 +652,7 @@
     <Content Include="Views\Home\MyLoans.cshtml" />
     <Content Include="Views\Home\PrototypeReportPdf.cshtml" />
     <Content Include="Views\Home\MyReservations.cshtml" />
-    <Content Include="Views\Home\TestSingleton.cshtml" />
+    <Content Include="Views\Home\State.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -694,9 +708,7 @@
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Home\Read.cshtml" />
     <Content Include="Views\Home\BridgeDemo.cshtml" />
-    <Content Include="Views\Home\ProxyDemo.cshtml" />
     <Content Include="Views\Home\MementoDemo.cshtml" />
-    <Content Include="Views\Home\IteratorDemo.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Home\DbBooks.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />

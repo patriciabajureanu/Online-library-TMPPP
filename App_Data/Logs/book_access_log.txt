@@ -8,3 +8,15 @@
 [5/3/2026 11:53:55 PM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Book content loaded: C# in Depth
 [5/4/2026 12:00:00 AM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Book content loaded: C# in Depth
 [5/4/2026 12:08:02 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
+[5/4/2026 12:32:22 AM] User: bajureanu.patricia@gmail.com accessed book ID: 11. Result: Access denied. You must borrow this book first.
+[5/4/2026 12:33:11 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
+[5/4/2026 9:52:33 AM] User: patricia.bajureanu@gmail.com accessed book ID: 11. Result: Access denied. You must borrow this book first.
+[5/4/2026 10:18:48 AM] User: bajureanu.patricia@gmail.com accessed book ID: 11. Result: Access denied. You must borrow this book first.
+[5/4/2026 10:50:14 AM] User: bajureanu.patricia@gmail.com accessed book ID: 11. Result: Access denied. You must borrow this book first.
+[5/4/2026 10:50:20 AM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Access denied. You must borrow this book first.
+[5/4/2026 10:50:25 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
+[5/4/2026 10:53:00 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
+[5/4/2026 10:53:12 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
+[5/4/2026 10:57:19 AM] User: bajureanu.patricia@gmail.com accessed book ID: 11. Result: Access denied. You must borrow this book first.
+[5/4/2026 10:57:28 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
+[5/4/2026 10:57:40 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code

@@ -1,0 +1,35 @@
+﻿@using OnlineLibrary.State
+@{
+     ViewBag.Title = "State Pattern";
+     var membership = ViewBag.Membership as LibraryMembership;
+     var actions = ViewBag.Actions as List<string>;
+}
+
+<div class="container mt-5">
+     <h2 class="mb-4">State Pattern - Library Membership</h2>
+
+     <div class="card shadow-sm p-4">
+          <h4>Member: @membership.MemberId</h4>
+          <p>
+               <strong>Expiration Date:</strong>
+               @membership.ExpirationDate.ToString("dd MMM yyyy")
+          </p>
+
+          <div class="alert alert-info">
+               Current State: <strong>@membership.GetStateName()</strong>
+          </div>
+
+          <hr />
+
+          <h5>State transitions:</h5>
+
+          <ul class="list-group mt-3">
+               @foreach (var action in actions)
+               {
+                    <li class="list-group-item">
+                         @action
+                    </li>
+               }
+          </ul>
+     </div>
+</div>

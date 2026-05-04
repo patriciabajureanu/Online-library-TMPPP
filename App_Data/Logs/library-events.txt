@@ -29,3 +29,11 @@
 03.05.2026 16:36:22 | Event: return | Book: Introduction to Algorithms | User: bajureanu.patricia@gmail.com
 03.05.2026 16:44:22 | Event: borrow | Book: Clean Code | User: bajureanu.patricia@gmail.com
 03.05.2026 23:17:11 | Event: borrow | Book: C# in Depth | User: bajureanu.patricia@gmail.com
+04.05.2026 00:32:39 | Event: reserve | Book: Artificial Intelligence: A Modern Approach | User: bajureanu.patricia@gmail.com
+04.05.2026 09:54:31 | Event: borrow | Book: Head First Design Patterns | User: bajureanu.patricia@gmail.com
+04.05.2026 09:55:09 | Event: return | Book: C# in Depth | User: bajureanu.patricia@gmail.com
+04.05.2026 10:19:42 | Event: borrow | Book: Clean Code | User: bajureanu.patricia@gmail.com
+04.05.2026 10:20:07 | Event: return | Book: Head First Design Patterns | User: bajureanu.patricia@gmail.com
+04.05.2026 10:52:18 | Event: reserve | Book: Design Patterns | User: bajureanu.patricia@gmail.com
+04.05.2026 10:52:37 | Event: borrow | Book: Clean Code | User: bajureanu.patricia@gmail.com
+04.05.2026 19:45:41 | Event: return | Book: Design Patterns | User: patricia.bajureanu@gmail.com
