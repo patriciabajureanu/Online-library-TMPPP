@@ -653,6 +653,13 @@
     <Compile Include="TemplateMethod\CsvLibraryReportGenerator.cs" />
     <Compile Include="TemplateMethod\LibraryReportGenerator.cs" />
     <Compile Include="TemplateMethod\PdfLibraryReportGenerator.cs" />
+    <Compile Include="Visitor\Audiobook.cs" />
+    <Compile Include="Visitor\Ebook.cs" />
+    <Compile Include="Visitor\ILibraryResource.cs" />
+    <Compile Include="Visitor\IVisitor.cs" />
+    <Compile Include="Visitor\Magazine.cs" />
+    <Compile Include="Visitor\PreviewVisitor.cs" />
+    <Compile Include="Visitor\SizeCalculatorVisitor.cs" />
     <Content Include="Views\Home\ChainOfResponsibility.cshtml" />
     <None Include="Views\Home\Composite.cshtml" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
@@ -669,6 +676,7 @@
     <Content Include="Views\Home\State.cshtml" />
     <Content Include="Views\Home\Mediator.cshtml" />
     <Content Include="Views\Shared\TemplateMethod.cshtml" />
+    <Content Include="Views\Home\Visitor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />

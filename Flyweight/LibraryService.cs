@@ -30,6 +30,7 @@ namespace OnlineLibrary.Flyweight
 
                          book.PublishedYear = b.PublishedYear;
                          book.CategoryName = b.Category != null ? b.Category.Name : "Uncategorized";
+                         book.BookType = b.BookType;
 
                          return book;
                     }).ToList();

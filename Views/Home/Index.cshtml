@@ -23,6 +23,18 @@
 <section id="billboard">
 
      <div class="container">
+          <!-- HEADER -->
+          <div class="section-header align-center billboard-header">
+
+               <div class="title">
+                    <span>Featured Library Collection</span>
+               </div>
+
+               <h2 class="section-title">
+                    Discover Popular Books
+               </h2>
+
+          </div>
           <div class="row">
                <div class="col-md-12">
 
@@ -30,21 +42,22 @@
                          <i class="icon icon-arrow-left"></i>
                     </button>
 
-                    <div class="main-slider pattern-overlay">
+                    <div class="main-slider">
+                         @{
+                              var slideIndex = 0;
+                         }
 
                          @foreach (var book in Model.FeaturedBooks)
                          {
-                              <div class="slider-item">
+                              <div class="slider-item @(slideIndex == 0 ? "active-slide" : "")">
                                    <div class="banner-content">
                                         <h2 class="banner-title">@book.Title</h2>
 
-                                        <p>
-                                             @book.Description
-                                        </p>
+                                        <p>@book.Description</p>
 
                                         <div class="btn-wrap">
                                              <a href="@Url.Action("Read", "Home", new { id = book.Id })"
-                                                class="btn btn-outline-accent btn-accent-arrow">
+                                                class="hero-read-btn">
                                                   Read Book <i class="icon icon-ns-arrow-right"></i>
                                              </a>
                                         </div>
@@ -54,6 +67,8 @@
                                         alt="@book.Title"
                                         class="banner-image">
                               </div>
+
+                              slideIndex++;
                          }
 
                     </div>
@@ -67,149 +82,139 @@
      </div>
 </section>
 
-<section id="newest-books" class="py-4 my-4">
+<section id="newest-books" class="library-showcase">
      <div class="container">
-          <div class="row">
-               <div class="col-md-12">
 
-                    <div class="section-header align-center newest-header">
-                         <div class="title">
-                              <span>Latest Online Library Collection</span>
-                         </div>
+          <div class="section-header align-center newest-header">
+               <div class="title">
+                    <span>Browse Library</span>
+               </div>
 
-                         <h2 class="section-title">Newest Books</h2>
+               <h2 class="section-title">Explore Our Collection</h2>
 
-                         <div class="sort-container text-center mb-4">
+               <div class="sort-container">
+                    <span class="sort-label">Sort by</span>
 
-                              <span class="sort-label">Sort by:</span>
+                    <div class="sort-buttons">
+                         <a href="@Url.Action("Index", "Home", new { sortType = "title" })#newest-books"
+                            class="sort-btn @(Request["sortType"] == "title" || Request["sortType"] == null ? "active" : "")">
+                              Title
+                         </a>
 
-                              <div class="sort-buttons">
+                         <a href="@Url.Action("Index", "Home", new { sortType = "id" })#newest-books"
+                            class="sort-btn @(Request["sortType"] == "id" ? "active" : "")">
+                              Id
+                         </a>
 
-                                   <a href="@Url.Action("Index", "Home", new { sortType = "title" })"
-                                      class="sort-btn @(Request["sortType"] == "title" ? "active" : "")">
-                                        Title
-                                   </a>
-
-                                   <a href="@Url.Action("Index", "Home", new { sortType = "id" })"
-                                      class="sort-btn @(Request["sortType"] == "id" ? "active" : "")">
-                                        Newest
-                                   </a>
-
-                                   <a href="@Url.Action("Index", "Home", new { sortType = "format" })"
-                                      class="sort-btn @(Request["sortType"] == "format" ? "active" : "")">
-                                        Format
-                                   </a>
-
-                              </div>
-
-                         </div>
-                    </div>
-                    <div class="product-list newest-product-list" data-aos="fade-up">
-                         <div class="row">
-                              @foreach (var book in Model.FeaturedBooks.Take(8))
-                              {
-                                   <div class="col-md-3 mb-4">
-                                        <div class="product-item newest-book-card">
-
-                                             <figure class="product-style">
-                                                  <img src="@(string.IsNullOrEmpty(book.ImagePath) ? Url.Content("~/Content/Images/default.jpg") : book.ImagePath)"
-                                                       alt="@book.Title"
-                                                       class="product-item newest-book-image">
-                                             </figure>
-
-                                             <figcaption>
-                                                  <h3>@book.Title</h3>
-                                                  <div><strong>Format:</strong> @book.FormatType</div>
-                                                  <div><strong>Language:</strong> @book.Language</div>
-                                                  <div><strong>Published Year:</strong> @book.PublishedYear</div>
-
-                                                  <!-- 🔽 BUTON MIC DOWNLOAD -->
-                                                  <div class="mt-3 text-center">
-                                                       <a href="@Url.Action("AccessLoanResource", "Home", new {
-                                resourceType = "ebook",
-                                deliveryType = "download",
-                                id = book.Id
-                         })"
-                                                          class="btn btn-sm btn-outline-dark">
-                                                            Download
-                                                       </a>
-                                                  </div>
-
-                                             </figcaption>
-
-                                        </div>
-                                   </div>
-                              }
-                         </div>
-                    </div>
-                    <div class="text-center mt-4">
-                         <a href="@Url.Action("Composite", "Home")"
-                            class="btn btn-outline-accent btn-accent-arrow px-4 py-2">
-                              View All by Category <i class="icon icon-ns-arrow-right"></i>
+                         <a href="@Url.Action("Index", "Home", new { sortType = "format" })#newest-books"
+                            class="sort-btn @(Request["sortType"] == "format" ? "active" : "")">
+                              Format
                          </a>
                     </div>
-
-
                </div>
           </div>
+
+          <div class="product-list newest-product-list">
+               <div class="row">
+                    @foreach (var book in Model.FeaturedBooks.Take(8))
+                    {
+                         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                              <div class="newest-book-card">
+
+                                   <figure class="product-style">
+                                        <img src="@(string.IsNullOrEmpty(book.ImagePath) ? Url.Content("~/Content/Images/default.jpg") : book.ImagePath)"
+                                             alt="@book.Title"
+                                             class="newest-book-image">
+                                   </figure>
+
+                                   <figcaption class="book-info">
+                                        <h3>@book.Title</h3>
+
+                                        <div class="book-meta">
+                                             <span>@book.BookType</span>
+                                             <span>@book.Language</span>
+                                             <span>@book.PublishedYear</span>
+                                        </div>
+
+                                        <a href="@Url.Action("AccessLoanResource", "Home", new {
+                                             resourceType = "ebook",
+                                             deliveryType = "download",
+                                             id = book.Id
+                                        })"
+                                           class="download-btn">
+                                             Download
+                                        </a>
+                                   </figcaption>
+
+                              </div>
+                         </div>
+                    }
+               </div>
+          </div>
+
+          <div class="text-center mt-4">
+               <a href="@Url.Action("Composite", "Home")"
+                  class="view-all-btn">
+                    View All by Category <i class="icon icon-ns-arrow-right"></i>
+               </a>
+          </div>
+
      </div>
 </section>
 
 
-<section id="best-selling" class="leaf-pattern-overlay">
-     <div class="corner-pattern-overlay"></div>
+<section id="best-selling" class="best-borrowed-section">
      <div class="container">
-          <div class="row justify-content-center">
+          @if (Model.BestBook != null)
+          {
+               <div class="best-borrowed-card">
 
-               <div class="col-md-8">
+                    <div class="best-book-image-wrap">
+                         <img src="@(string.IsNullOrEmpty(Model.BestBook.ImagePath) ? Url.Content("~/Content/Images/default.jpg") : Model.BestBook.ImagePath)"
+                              alt="@Model.BestBook.Title"
+                              class="best-book-image">
+                    </div>
 
-                    @if (Model.BestBook != null)
-                    {
-                         <div class="row">
+                    <div class="best-book-content">
+                         <span class="best-book-label">Most Popular</span>
 
-                              <!-- Imagine -->
-                              <div class="col-md-6">
-                                   <figure class="products-thumb">
-                                        <img src="@(string.IsNullOrEmpty(Model.BestBook.ImagePath) ? Url.Content("~/Content/Images/default.jpg") : Model.BestBook.ImagePath)"
-                                             alt="@Model.BestBook.Title"
-                                             class="single-image">
-                                   </figure>
+                         <h2>Best Borrowed Book</h2>
+
+                         <h3>@Model.BestBook.Title</h3>
+
+                         <p>
+                              @Model.BestBook.Description
+                         </p>
+
+                         <div class="best-book-meta">
+                              <div>
+                                   <span>Author</span>
+                                   <strong>@Model.BestBook.AuthorName</strong>                              </div>
+
+                              <div>
+                                   <span>Language</span>
+                                   <strong>@Model.BestBook.Language</strong>
                               </div>
 
-                              <!-- Text -->
-                              <div class="col-md-6">
-                                   <div class="product-entry">
-
-                                        <h2 class="section-title divider">Best Borrowed Book</h2>
-                                        <div class="products-content">
-
-                                             <h3 class="item-title">@Model.BestBook.Title</h3>
-
-                                             <p>
-                                                  @Model.BestBook.Description
-                                             </p>
-
-                                             <div><strong>Language:</strong> @Model.BestBook.Language</div>
-                                             <div><strong>Published:</strong> @Model.BestBook.PublishedYear</div>
-
-                                             <div class="btn-wrap mt-3">
-                                                  <a href="@Url.Action("Read", "Home", new { id = Model.BestBook.Id })"
-                                                     class="btn-accent-arrow">
-                                                       Read Book <i class="icon icon-ns-arrow-right"></i>
-                                                  </a>
-                                             </div>
-
-                                        </div>
-
-                                   </div>
+                              <div>
+                                   <span>Published</span>
+                                   <strong>@Model.BestBook.PublishedYear</strong>
                               </div>
 
+                              <div>
+                                   <span>Available</span>
+                                   <strong>@Model.BestBook.AvailableCopies copies</strong>
+                              </div>
                          </div>
-                    }
+
+                         <a href="@Url.Action("Read", "Home", new { id = Model.BestBook.Id })"
+                            class="best-read-btn">
+                              Read Book <i class="icon icon-ns-arrow-right"></i>
+                         </a>
+                    </div>
 
                </div>
-
-          </div>
+          }
      </div>
 </section>
 
@@ -220,9 +225,9 @@
 
                     <div class="section-header align-center">
                          <div class="title">
-                              <span>Browse our library collection</span>
+                              <span>See which books you can borrow</span>
                          </div>
-                         <h2 class="section-title">Books Available</h2>
+                         <h2 class="section-title">Check Book Availability</h2>
                     </div>
 
                     <div class="product-list">
@@ -247,7 +252,7 @@
                                                   <div class="mt-3 text-center">
                                                        <a href="@Url.Action("ChainOfResponsibility", "Home", new { bookId = book.Id })"
                                                           class="btn btn-sm btn-outline-primary">
-                                                            Check Borrow Access
+                                                            Check Access
                                                        </a>
                                                   </div>
                                              </figcaption>
@@ -263,10 +268,40 @@
           </div>
      </div>
 </section>
-<a href="@Url.Action("DownloadPrototypeReport", "Home")"
-   class="btn btn-warning">
-     Download Report PDF
-</a>
+<script>
+     document.addEventListener("DOMContentLoaded", function () {
+          var slides = document.querySelectorAll("#billboard .slider-item");
+          var prevBtn = document.querySelector("#billboard .prev");
+          var nextBtn = document.querySelector("#billboard .next");
+          var current = 0;
+
+          function showSlide(index) {
+               slides.forEach(function (slide) {
+                    slide.classList.remove("active-slide");
+               });
+
+               slides[index].classList.add("active-slide");
+          }
+
+          if (slides.length > 0) {
+               showSlide(current);
+          }
+
+          if (nextBtn) {
+               nextBtn.addEventListener("click", function () {
+                    current = (current + 1) % slides.length;
+                    showSlide(current);
+               });
+          }
+
+          if (prevBtn) {
+               prevBtn.addEventListener("click", function () {
+                    current = (current - 1 + slides.length) % slides.length;
+                    showSlide(current);
+               });
+          }
+     });
+</script>
 
 <script>
      function closeToast() {

@@ -5,10 +5,10 @@
      Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section id="borrow-book-details" class="py-5 my-5">
+<section id="borrow-book-details">
      <div class="container">
 
-          <div class="section-header align-center">
+          <div class="section-header align-center borrow-details-header">
                <div class="title">
                     <span>Confirm your loan</span>
                </div>
@@ -17,73 +17,118 @@
 
           @if (TempData["Error"] != null)
           {
-               <div class="alert alert-danger text-center">
+               <div class="borrow-alert">
                     @TempData["Error"]
                </div>
           }
 
-          <div class="row justify-content-center">
-               <div class="col-md-8">
-                    <div class="borrow-details-card">
+          <div class="borrow-details-card">
 
-                         <div class="row">
-                              <div class="col-md-5">
-                                   <img src="@(string.IsNullOrEmpty(Model.CoverImageUrl) ? Url.Content("~/Content/Images/default.png") : Model.CoverImageUrl)"
-                                        alt="@Model.Title"
-                                        class="borrow-details-image" />
-                              </div>
+               <div class="borrow-details-image-wrap">
+                    <img src="@(string.IsNullOrEmpty(Model.CoverImageUrl) ? Url.Content("~/Content/Images/default.png") : Model.CoverImageUrl)"
+                         alt="@Model.Title"
+                         class="borrow-details-image" />
+               </div>
 
-                              <div class="col-md-7">
-                                   <h3>@Model.Title</h3>
+               <div class="borrow-details-content">
 
-                                   <p>@Model.Description</p>
+                    <span class="borrow-status @(Model.AvailableCopies > 0 ? "available" : "unavailable")">
+                         @(Model.AvailableCopies > 0 ? "Available to borrow" : "Currently unavailable")
+                    </span>
 
-                                   <div><strong>ISBN:</strong> @Model.ISBN</div>
-                                   <div><strong>Language:</strong> @Model.Language</div>
-                                   <div><strong>Published Year:</strong> @Model.PublishedYear</div>
-                                   <div><strong>Available Copies:</strong> @Model.AvailableCopies</div>
-                                   <div class="mt-4 d-flex gap-3 flex-wrap">
-                                        @if (Model.AvailableCopies > 0)
-                                        {
-                                            using (Html.BeginForm("BorrowBookConfirm", "Home", FormMethod.Post))
-                                             {
-                                                  @Html.AntiForgeryToken()
-                                                  @Html.HiddenFor(m => m.Id)
+                    <h3>@Model.Title</h3>
 
+                    <p class="borrow-description">
+                         @Model.Description
+                    </p>
 
+                    <div class="borrow-details-grid">
 
-                                                  <button type="submit" class="btn borrow-btn">
-                                                       <span>Borrow Book</span>
-                                                       <i class="icon icon-ns-arrow-right"></i>
-                                                  </button>
-                                             }
-                                        }
-                                        else
-                                        {
-                                             <button class="btn btn-secondary" disabled>
-                                                  Not Available
-                                             </button>
-                                        }
-                                        @using (Html.BeginForm("ReserveBook", "Home", FormMethod.Post))
-                                        {
-                                             @Html.AntiForgeryToken()
-                                             @Html.HiddenFor(m => m.Id)
+                         <div>
+                              <span>ISBN</span>
+                              <strong>@Model.ISBN</strong>
+                         </div>
 
-                                             <button type="submit" class="btn borrow-btn reserve-btn">
-                                                  <span>Reserve Book</span>
-                                                  <i class="icon icon-ns-arrow-right"></i>
-                                             </button>
-                                        }
-                                        <a href="@Url.Action("Borrow", "Home")" class="btn borrow-btn back-btn">
-                                             <span>Back</span>
-                                        </a>
-                                   </div>
+                         <div>
+                              <span>Language</span>
+                              <strong>@Model.Language</strong>
+                         </div>
 
-                              </div>
+                         <div>
+                              <span>Published</span>
+                              <strong>@Model.PublishedYear</strong>
+                         </div>
+
+                         <div>
+                              <span>Pages</span>
+                              <strong>@Model.Pages</strong>
+                         </div>
+
+                         <div>
+                              <span>Book Type</span>
+                              <strong>@Model.BookType</strong>
+                         </div>
+
+                         <div>
+                              <span>Format</span>
+                              <strong>@Model.FormatType</strong>
+                         </div>
+
+                         <div>
+                              <span>Available Copies</span>
+                              <strong>@Model.AvailableCopies / @Model.TotalCopies</strong>
+                         </div>
+
+                         <div>
+                              <span>Created At</span>
+                              <strong>
+                                   @(Model.CreatedAt.HasValue
+     ? Model.CreatedAt.Value.ToString("dd MMM yyyy")
+     : "Unknown")
+                              </strong>
                          </div>
 
                     </div>
+
+                    <div class="borrow-actions">
+                         @if (Model.AvailableCopies > 0)
+                         {
+                              using (Html.BeginForm("BorrowBookConfirm", "Home", FormMethod.Post))
+                              {
+                                   @Html.AntiForgeryToken()
+                                   @Html.HiddenFor(m => m.Id)
+
+                                   <button type="submit" class="borrow-action-btn primary-btn">
+                                        <span>Borrow Book</span>
+                                        <i class="icon icon-ns-arrow-right"></i>
+                                   </button>
+                              }
+                         }
+                         else
+                         {
+                              <button class="borrow-action-btn disabled-btn" disabled>
+                                   Not Available
+                              </button>
+                         }
+
+                         @using (Html.BeginForm("ReserveBook", "Home", FormMethod.Post))
+                         {
+                              @Html.AntiForgeryToken()
+                              @Html.HiddenFor(m => m.Id)
+
+                              <button type="submit" class="borrow-action-btn reserve-btn">
+                                   <span>Reserve Book</span>
+                                   <i class="icon icon-ns-arrow-right"></i>
+                              </button>
+                         }
+
+                         <a href="@Url.Action("Borrow", "Home")" class="borrow-action-btn back-btn">
+                              <span>Back</span>
+                         </a>
+                    </div>
+
                </div>
+
           </div>
 
      </div>

@@ -20,3 +20,17 @@
 [5/4/2026 10:57:19 AM] User: bajureanu.patricia@gmail.com accessed book ID: 11. Result: Access denied. You must borrow this book first.
 [5/4/2026 10:57:28 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
 [5/4/2026 10:57:40 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
+[5/8/2026 3:31:35 PM] User: bajureanu.patricia@gmail.com accessed book ID: 11. Result: Access denied. You must borrow this book first.
+[5/8/2026 4:37:05 PM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Access denied. You must borrow this book first.
+[5/8/2026 4:43:40 PM] User: patricia.bajureanu@gmail.com accessed book ID: 5. Result: Access denied. You must borrow this book first.
+[5/8/2026 5:00:11 PM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Access denied. You must borrow this book first.
+[5/8/2026 5:00:15 PM] User: bajureanu.patricia@gmail.com accessed book ID: 13. Result: Access denied. You must borrow this book first.
+[5/8/2026 5:00:18 PM] User: bajureanu.patricia@gmail.com accessed book ID: 9. Result: Access denied. You must borrow this book first.
+[5/8/2026 5:00:23 PM] User: bajureanu.patricia@gmail.com accessed book ID: 12. Result: Access denied. You must borrow this book first.
+[5/8/2026 5:00:29 PM] User: bajureanu.patricia@gmail.com accessed book ID: 8. Result: Book content loaded: You Don’t Know JS
+[5/8/2026 5:03:48 PM] User: bajureanu.patricia@gmail.com accessed book ID: 3. Result: Book content loaded: Design Patterns
+[5/8/2026 5:03:57 PM] User: bajureanu.patricia@gmail.com accessed book ID: 3. Result: Book content loaded: Design Patterns
+[5/8/2026 5:05:20 PM] User: bajureanu.patricia@gmail.com accessed book ID: 3. Result: Book content loaded: Design Patterns
+[5/8/2026 5:10:28 PM] User: bajureanu.patricia@gmail.com accessed book ID: 3. Result: Book content loaded: Design Patterns
+[5/8/2026 5:16:11 PM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Access denied. You must borrow this book first.
+[5/8/2026 5:17:10 PM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Access denied. You must borrow this book first.

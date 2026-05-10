@@ -1,68 +1,120 @@
-﻿@{
-     ViewBag.Title = "Admin - Create Book";
+﻿@model OnlineLibrary.Models.Book
+
+@{
+     ViewBag.Title = "Admin Panel";
      Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="text-center mt-3">
-     <a href="@Url.Action("TemplateMethod", "Home")"
-        class="btn btn-outline-accent btn-accent-arrow px-4 py-2">
-          Report Generator
-     </a>
-</div>
-<section class="py-5 my-5">
+
+<section id="admin-panel">
      <div class="container">
 
-          <div class="section-header align-center">
+          <div class="section-header align-center admin-header">
                <div class="title">
                     <span>Admin Panel</span>
                </div>
-               <h2 class="section-title">Create New Book</h2>
+
+               <h2 class="section-title">Library Management</h2>
+
+               <p class="admin-subtitle">
+                    Manage books, loans, users, reports and system patterns from one place.
+               </p>
           </div>
 
-          @using (Html.BeginForm("CreateBook", "Admin", FormMethod.Post))
-          {
-               @Html.AntiForgeryToken()
+          <div class="admin-actions-grid">
 
-               <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" name="title" class="form-control" required />
+               <a href="@Url.Action("TemplateMethod", "Home")" class="admin-action-card">
+                    <span>Reports</span>
+                    <strong>Report Generator</strong>
+               </a>
+
+               <a href="@Url.Action("Visitor", "Home")" class="admin-action-card">
+                    <span>Analytics</span>
+                    <strong>Visitor</strong>
+               </a>
+
+               <a href="@Url.Action("DownloadPrototypeReport", "Home")" class="admin-action-card">
+                    <span>Export</span>
+                    <strong>Download PDF Report</strong>
+               </a>
+
+               <a href="@Url.Action("State", "Home")" class="admin-action-card">
+                    <span>Membership</span>
+                    <strong>Membership State</strong>
+               </a>
+
+               
+
+          </div>
+
+          <div class="admin-form-card">
+
+               <div class="admin-form-header">
+                    <span>Create Book</span>
+                    <h3>Add a New Book</h3>
                </div>
 
-               <div class="form-group">
-                    <label>Author</label>
-                    <input type="text" name="author" class="form-control" required />
-               </div>
+               @using (Html.BeginForm("CreateBook", "Admin", FormMethod.Post))
+               {
+                    @Html.AntiForgeryToken()
 
-               <div class="form-group">
-                    <label>Description</label>
-                    <textarea name="description" class="form-control"></textarea>
-               </div>
+                    <div class="admin-form-grid">
 
-               <div class="form-group">
-                    <label>Pages</label>
-                    <input type="number" name="pages" class="form-control" required />
-               </div>
+                         <div class="form-group">
+                              <label>Title</label>
+                              <input type="text" name="title" class="form-control" required />
+                         </div>
 
-               <div class="form-group">
-                    <label>Book Type</label>
-                    <select name="bookType" class="form-control" required>
-                         <option value="Printed">Printed Book</option>
-                         <option value="Digital">Digital Book</option>
-                         <option value="Audio">Audio Book</option>
-                    </select>
-               </div>
+                         <div class="form-group">
+                              <label>Author</label>
+                              <input type="text" name="author" class="form-control" required />
+                         </div>
 
-               <button type="submit" class="btn borrow-btn">
-                    Create Book
-               </button>
-          }
+                         <div class="form-group">
+                              <label>Pages</label>
+                              <input type="number" name="pages" class="form-control" required />
+                         </div>
 
-          @if (TempData["Success"] != null)
-          {
-               <div class="alert alert-success mt-4 text-center">
-                    @TempData["Success"]
-               </div>
-          }
+                         <div class="form-group">
+                              <label>Book Type</label>
+                              <select name="bookType" class="form-control" required>
+                                   <option value="PDF">PDF</option>
+                                   <option value="DOCX">DOCX</option>
+                                   <option value="Printed">Printed Book</option>
+                                   <option value="Digital">Digital Book</option>
+                                   <option value="Audio">Audio Book</option>
+                              </select>
+                         </div>
+
+                         <div class="form-group">
+                              @Html.LabelFor(model => model.FormatType)
+                              @Html.DropDownListFor(model => model.FormatType,
+                                   new SelectList(new[] { "ebook", "audiobook", "magazine" }),
+                                   "Select format",
+                                   new { @class = "form-control" })
+                         </div>
+
+                         <div class="form-group full-width">
+                              <label>Description</label>
+                              <textarea name="description" class="form-control admin-textarea"></textarea>
+                         </div>
+
+                    </div>
+
+                    <div class="admin-submit-wrap">
+                         <button type="submit" class="admin-submit-btn">
+                              Create Book
+                         </button>
+                    </div>
+               }
+
+               @if (TempData["Success"] != null)
+               {
+                    <div class="admin-success">
+                         @TempData["Success"]
+                    </div>
+               }
+
+          </div>
 
      </div>
-     <a href="@Url.Action("CreateUserLoan", "Admin")">Create User Loan</a>
 </section>

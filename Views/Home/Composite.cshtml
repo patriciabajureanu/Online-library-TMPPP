@@ -1,57 +1,108 @@
 ﻿@using OnlineLibrary.Composite
 @{
-    ViewBag.Title = "Library by Category";
-    var categories = ViewBag.Categories as List<CategoryComponent>;
+     ViewBag.Title = "Library by Category";
+     var categories = ViewBag.Categories as List<CategoryComponent>;
 }
 
-<div class="container mt-5">
-    <h2 class="text-center mb-5 fw-light">Library Catalog</h2>
+<section id="composite-library">
+     <div class="container">
 
-    @if (categories != null && categories.Any())
-    {
-        foreach (var category in categories)
-        {
-            <div class="mb-5">
+          <div class="composite-header text-center">
+               <h2>Library Catalog</h2>
+          </div>
 
-                <!-- Category -->
-                <h3 class="mb-4 text-dark border-bottom pb-2">
-                    📚 @category.Name
-                </h3>
+          @if (categories != null && categories.Any())
+          {
+               <div class="category-tabs">
+                    <button class="category-tab active" data-category="all">All Categories</button>
 
-                @foreach (AuthorComponent author in category.GetChildren())
-                {
-                    <div class="mb-4 ps-3">
+                    @foreach (var category in categories)
+                    {
+                         <button class="category-tab" data-category="cat-@category.Name.Replace(" ", "-").ToLower()">
+                              @category.Name
+                         </button>
+                    }
+               </div>
 
-                        <!-- Author -->
-                        <h5 class="author-title mb-3">
-    ✍️ @author.Name
-</h5>
+               <div class="category-content active" id="cat-all">
+                    @foreach (var category in categories)
+                    {
+                         <div class="category-block">
+                              <h3>@category.Name</h3>
 
-                        <!-- Books -->
-                        <div class="row">
-                            @foreach (BookComponent book in author.GetChildren())
-                            {
-                                <div class="col-md-4 mb-3">
-                                    <div class="p-3 border rounded shadow-sm h-100 book-card">
-                                        <h6 class="mb-2 text-dark">
-                                            📖 @book.Title
-                                        </h6>
-                                        <small class="text-muted">
-                                            @book.Pages pages
-                                        </small>
-                                    </div>
-                                </div>
-                            }
-                        </div>
+                              @foreach (AuthorComponent author in category.GetChildren())
+                              {
+                                   <div class="author-block">
+                                        <h4>@author.Name</h4>
 
+                                        <div class="row">
+                                             @foreach (BookComponent book in author.GetChildren())
+                                             {
+                                                  <div class="col-lg-4 col-md-6 mb-4">
+                                                       <div class="book-card">
+                                                            <h5>@book.Title</h5>
+                                                            <span>@book.Pages pages</span>
+                                                       </div>
+                                                  </div>
+                                             }
+                                        </div>
+                                   </div>
+                              }
+                         </div>
+                    }
+               </div>
+
+               foreach (var category in categories)
+               {
+                    <div class="category-content" id="cat-@category.Name.Replace(" ", "-").ToLower()">
+                         <div class="category-block">
+                              <h3>@category.Name</h3>
+
+                              @foreach (AuthorComponent author in category.GetChildren())
+                              {
+                                   <div class="author-block">
+                                        <h4>@author.Name</h4>
+
+                                        <div class="row">
+                                             @foreach (BookComponent book in author.GetChildren())
+                                             {
+                                                  <div class="col-lg-4 col-md-6 mb-4">
+                                                       <div class="book-card">
+                                                            <h5>@book.Title</h5>
+                                                            <span>@book.Pages pages</span>
+                                                       </div>
+                                                  </div>
+                                             }
+                                        </div>
+                                   </div>
+                              }
+                         </div>
                     </div>
-                }
+               }
+          }
+          else
+          {
+               <p class="text-center text-muted">No data available.</p>
+          }
 
-            </div>
-        }
-    }
-    else
-    {
-        <p class="text-center text-muted">No data available.</p>
-    }
-</div>
+     </div>
+</section>
+
+<script>
+    document.querySelectorAll(".category-tab").forEach(function (tab) {
+        tab.addEventListener("click", function () {
+            document.querySelectorAll(".category-tab").forEach(t => t.classList.remove("active"));
+            document.querySelectorAll(".category-content").forEach(c => c.classList.remove("active"));
+
+            tab.classList.add("active");
+
+            var category = tab.getAttribute("data-category");
+
+            if (category === "all") {
+                document.getElementById("cat-all").classList.add("active");
+            } else {
+                document.getElementById(category).classList.add("active");
+            }
+        });
+    });
+</script>

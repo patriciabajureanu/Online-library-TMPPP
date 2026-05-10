@@ -4,79 +4,150 @@
      ViewBag.Title = "My Reservations";
      Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (TempData["Success"] != null)
+{
+     <div id="success-alert" class="custom-toast">
+          <span>@TempData["Success"]</span>
+          <button onclick="closeToast()">×</button>
+     </div>
+}
 
-<section id="my-reservations" class="bookshelf py-5 my-5">
+@if (TempData["Error"] != null)
+{
+     <div id="error-alert" class="custom-toast error-toast">
+          <span>@TempData["Error"]</span>
+          <button onclick="closeToast()">×</button>
+     </div>
+}
+
+<section id="my-reservations">
      <div class="container">
 
           <div class="section-header align-center">
                <div class="title">
                     <span>Your reserved books</span>
                </div>
-               <h2 class="section-title">My Reservations</h2>
+
+               <h2 class="section-title">
+                    My Reservations
+               </h2>
           </div>
 
           @if (!Model.Any())
           {
-               <div class="text-center">
-                    <p>You have no reservations yet.</p>
+               <div class="reservation-empty">
 
-                    <a href="@Url.Action("Borrow", "Home")" class="btn borrow-btn">
+                    <p>
+                         You have no reservations yet.
+                    </p>
+
+                    <a href="@Url.Action("Borrow", "Home")"
+                       class="reservation-main-btn">
                          Browse Books
                     </a>
+
                </div>
           }
           else
           {
-               <div class="product-list">
-                    <div class="row">
+               <div class="row">
 
-                         @foreach (var reservation in Model)
-                         {
-                              <div class="col-md-3 mb-4">
-                                   <div class="product-item borrow-book-card">
+                    @foreach (var reservation in Model)
+                    {
+                         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
 
-                                        <figure class="product-style">
-                                             <img src="@(reservation.Book == null || string.IsNullOrEmpty(reservation.Book.CoverImageUrl)
-                                                  ? Url.Content("~/Content/Images/default.png")
-                                                  : reservation.Book.CoverImageUrl)"
-                                                  alt="@(reservation.Book == null ? "Book" : reservation.Book.Title)"
-                                                  class="product-item borrow-book-image">
-                                        </figure>
+                              <div class="reservation-card">
 
-                                        <figcaption>
-                                             <h3>
-                                                  @(reservation.Book == null ? "Unknown Book" : reservation.Book.Title)
-                                             </h3>
+                                   <div class="reservation-image-wrap">
 
-                                             <div>
-                                                  <strong>Reserved:</strong>
-                                                  @reservation.ReservedAt.ToString("dd.MM.yyyy")
-                                             </div>
-
-                                             <div>
-                                                  <strong>Status:</strong>
-                                                  <span class="text-warning">Reserved</span>
-                                             </div>
-
-                                             @using (Html.BeginForm("CancelReservation", "Home", FormMethod.Post))
-                                             {
-                                                  @Html.AntiForgeryToken()
-                                                  <input type="hidden" name="id" value="@reservation.BookId" />
-
-                                                  <button type="submit" class="borrow-card-btn return-card-btn">
-                                                       Cancel Reservation
-                                                  </button>
-                                             }
-
-                                        </figcaption>
+                                        <img src="@(reservation.Book == null || string.IsNullOrEmpty(reservation.Book.CoverImageUrl)
+                                             ? Url.Content("~/Content/Images/default.png")
+                                             : reservation.Book.CoverImageUrl)"
+                                             alt="@(reservation.Book == null ? "Book" : reservation.Book.Title)"
+                                             class="reservation-book-image">
 
                                    </div>
-                              </div>
-                         }
 
-                    </div>
+                                   <div class="reservation-content">
+
+                                        <span class="reservation-badge">
+                                             Reserved
+                                        </span>
+
+                                        <h3>
+                                             @(reservation.Book == null ? "Unknown Book" : reservation.Book.Title)
+                                        </h3>
+
+                                        @if (reservation.Book != null && reservation.Book.Author != null)
+                                        {
+                                             <div class="reservation-author">
+                                                  @reservation.Book.Author.FullName
+                                             </div>
+                                        }
+
+                                        <div class="reservation-meta">
+
+                                             <div>
+                                                  <span>Reserved On</span>
+                                                  <strong>
+                                                       @reservation.ReservedAt.ToString("dd MMM yyyy")
+                                                  </strong>
+                                             </div>
+
+                                             @if (reservation.Book != null)
+                                             {
+                                                  <div>
+                                                       <span>Language</span>
+                                                       <strong>@reservation.Book.Language</strong>
+                                                  </div>
+
+                                                  <div>
+                                                       <span>Format</span>
+                                                       <strong>@reservation.Book.FormatType</strong>
+                                                  </div>
+
+                                                  <div>
+                                                       <span>Book Type</span>
+                                                       <strong>@reservation.Book.BookType</strong>
+                                                  </div>
+                                             }
+
+                                        </div>
+
+                                        @using (Html.BeginForm("CancelReservation", "Home", FormMethod.Post))
+                                        {
+                                             @Html.AntiForgeryToken()
+
+                                             <input type="hidden"
+                                                    name="id"
+                                                    value="@reservation.BookId" />
+
+                                             <button type="submit"
+                                                     class="reservation-btn cancel-btn">
+
+                                                  Cancel Reservation
+
+                                             </button>
+                                        }
+
+                                   </div>
+
+                              </div>
+
+                         </div>
+                    }
+
                </div>
           }
 
      </div>
 </section>
+
+<script>
+     function closeToast() {
+          document.getElementById("success-alert")?.remove();
+          document.getElementById("error-alert")?.remove();
+     }
+
+     setTimeout(closeToast, 4000);
+</script>

@@ -11,6 +11,10 @@
           public string ImagePath { get; set; }
           public int PublishedYear { get; set; }
           public string CategoryName { get; set; }
+          public string Author { get; set; }
+          public int AvailableCopies { get; set; }
+          public string AuthorName { get; set; }
+          public string BookType { get; set; }
 
      }
 }

@@ -37,3 +37,6 @@
 04.05.2026 10:52:18 | Event: reserve | Book: Design Patterns | User: bajureanu.patricia@gmail.com
 04.05.2026 10:52:37 | Event: borrow | Book: Clean Code | User: bajureanu.patricia@gmail.com
 04.05.2026 19:45:41 | Event: return | Book: Design Patterns | User: patricia.bajureanu@gmail.com
+08.05.2026 16:37:31 | Event: borrow | Book: Head First Design Patterns | User: bajureanu.patricia@gmail.com
+08.05.2026 17:31:49 | Event: return | Book: You Don’t Know JS | User: bajureanu.patricia@gmail.com
+08.05.2026 18:20:56 | Event: borrow | Book: The Pragmatic Programmer | User: bajureanu.patricia@gmail.com

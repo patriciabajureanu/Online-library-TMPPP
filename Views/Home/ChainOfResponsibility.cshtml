@@ -1,37 +1,96 @@
 ﻿@using OnlineLibrary.ChainOfResponsibility
 @{
-    ViewBag.Title = "Chain of Responsibility";
-    var result = ViewBag.Result as AccessResult;
-    var book = ViewBag.Book;
+     ViewBag.Title = "Borrow Access";
+     var result = ViewBag.Result as AccessResult;
+     var book = ViewBag.Book;
 }
 
-<div class="container mt-5">
-    <h2 class="mb-4">Chain of Responsibility - Borrow Access</h2>
+<section id="borrow-access-page">
 
-    <div class="card shadow-sm p-4">
-        <h4>@book.Title</h4>
+     <div class="container">
 
-        @if (result != null && result.Granted)
-        {
-            <div class="alert alert-success mt-3">
-                Access granted: @result.Message
-            </div>
-        }
-        else
-        {
-            <div class="alert alert-danger mt-3">
-                Access denied: @result.Message
-            </div>
-        }
+          <div class="borrow-access-header text-center">
+               <span class="borrow-access-label">
+                    Borrow Validation
+               </span>
 
-        <hr />
+               <h2>
+                    Check Borrow Access
+               </h2>
 
-        <h5>Request validation chain:</h5>
+               <p>
+                    The system validates borrowing eligibility using the Chain of Responsibility pattern.
+               </p>
+          </div>
 
-        <ol class="mt-3">
-            <li>MembershipHandler - checks if the user is logged in</li>
-            <li>AvailabilityHandler - checks if the book has available copies</li>
-            <li>BorrowLimitHandler - checks if user has less than 3 active loans</li>
-        </ol>
-    </div>
-</div>
+          <div class="borrow-access-card">
+
+               <div class="book-preview">
+
+                    <div class="book-preview-content">
+                         <h3>@book.Title</h3>
+
+                         @if (result != null && result.Granted)
+                         {
+                              <div class="access-alert success-alert">
+                                   <strong>Access Granted</strong>
+                                   <span>@result.Message</span>
+                              </div>
+                         }
+                         else
+                         {
+                              <div class="access-alert denied-alert">
+                                   <strong>Access Denied</strong>
+                                   <span>@result.Message</span>
+                              </div>
+                         }
+                    </div>
+
+               </div>
+
+               <div class="validation-chain">
+
+                    <h4>
+                         Request Validation Flow
+                    </h4>
+
+                    <div class="chain-step">
+                         <div class="step-number">01</div>
+
+                         <div class="step-content">
+                              <h5>Membership Handler</h5>
+                              <p>
+                                   Verifies whether the user is authenticated.
+                              </p>
+                         </div>
+                    </div>
+
+                    <div class="chain-step">
+                         <div class="step-number">02</div>
+
+                         <div class="step-content">
+                              <h5>Availability Handler</h5>
+                              <p>
+                                   Checks if the selected book has available copies.
+                              </p>
+                         </div>
+                    </div>
+
+                    <div class="chain-step">
+                         <div class="step-number">03</div>
+
+                         <div class="step-content">
+                              <h5>Borrow Limit Handler</h5>
+                              <p>
+                                   Ensures the user has fewer than 3 active loans.
+                              </p>
+                         </div>
+                    </div>
+
+               </div>
+
+          </div>
+
+     </div>
+
+</section>

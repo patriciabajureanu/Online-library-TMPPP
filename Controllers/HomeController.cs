@@ -28,6 +28,7 @@ using OnlineLibrary.Repositories;
 using OnlineLibrary.State;
 using OnlineLibrary.Strategy;
 using OnlineLibrary.TemplateMethod;
+using OnlineLibrary.Visitor;
 using Rotativa;
 
 namespace OnlineLibrary.Controllers
@@ -58,21 +59,53 @@ namespace OnlineLibrary.Controllers
                }
 
                var sortedBooks = context.SortBooks(books);
-               var bestBook = sortedBooks.FirstOrDefault();
+
+               var newestBooks = books
+                    .OrderByDescending(b => b.PublishedYear)
+                    .ToList();
+               var db = new OnlineLibraryDbContext();
+               var bestBookId = db.Loans
+                    .GroupBy(l => l.BookId)
+                    .Select(g => new
+                    {
+                         BookId = g.Key,
+                         BorrowCount = g.Count()
+                    })
+                    .OrderByDescending(x => x.BorrowCount)
+                    .Select(x => x.BookId)
+                    .FirstOrDefault();
+
+               var bestBookDb = db.Books
+     .Where(b => b.Id == bestBookId)
+     .Select(b => new
+     {
+          b.Id,
+          b.Title,
+          b.Description,
+          ImagePath = b.CoverImageUrl,
+          b.FormatType,
+          b.Language,
+          b.PublishedYear,
+          b.AvailableCopies,
+          AuthorName = db.Authors
+               .Where(a => a.Id == b.AuthorId)
+               .Select(a => a.FullName)
+               .FirstOrDefault()
+     })
+     .FirstOrDefault();
                var model = new HomeViewModel
                {
-                    FeaturedBooks = sortedBooks.Select(b => new BookViewModel
+                    FeaturedBooks = newestBooks.Select(b => new BookViewModel
                     {
                          Id = b.Id,
                          Title = b.Title,
                          Description = b.Description,
                          ImagePath = b.ImagePath,
-
                          FormatType = b.FormatType,
                          Language = b.Language,
                          Publisher = b.Publisher,
-
                          PublishedYear = b.PublishedYear,
+                         BookType = b.BookType,
                          CategoryName = b.CategoryName
                     }).ToList(),
 
@@ -80,19 +113,19 @@ namespace OnlineLibrary.Controllers
 
                     TotalSharedFormats = service.GetSharedFormatsCount(),
 
-                    BestBook = bestBook != null ? new BookViewModel
+                    BestBook = bestBookDb != null ? new BookViewModel
                     {
-                         Id = bestBook.Id,
-                         Title = bestBook.Title,
-                         Description = bestBook.Description,
-                         ImagePath = bestBook.ImagePath,
+                         Id = bestBookDb.Id,
+                         Title = bestBookDb.Title,
+                         Description = bestBookDb.Description,
+                         ImagePath = bestBookDb.ImagePath,
 
-                         FormatType = bestBook.FormatType,
-                         Language = bestBook.Language,
-                         Publisher = bestBook.Publisher,
+                         FormatType = bestBookDb.FormatType,
+                         Language = bestBookDb.Language,
+                         PublishedYear = bestBookDb.PublishedYear,
 
-                         PublishedYear = bestBook.PublishedYear,
-                         CategoryName = bestBook.CategoryName
+                         AvailableCopies = bestBookDb.AvailableCopies,
+                         AuthorName = bestBookDb.AuthorName ?? "Unknown Author"
                     } : null
                };
 
@@ -103,8 +136,9 @@ namespace OnlineLibrary.Controllers
           {
                using (var db = new OnlineLibraryDbContext())
                {
-                    var books = db.Books.ToList();
-
+                    var books = db.Books
+                         .Include("Author")
+                         .ToList();
                     ViewBag.TotalBooks = books.Count;
 
                     ViewBag.TotalSharedFormats = books
@@ -170,6 +204,7 @@ namespace OnlineLibrary.Controllers
 
                     var reservations = db.Reservations
                          .Include("Book")
+                         .Include("Book.Author")
                          .Where(r => r.UserEmail == userEmail)
                          .OrderByDescending(r => r.ReservedAt)
                          .ToList();
@@ -182,14 +217,21 @@ namespace OnlineLibrary.Controllers
           [ValidateAntiForgeryToken]
           public ActionResult CancelReservation(int id)
           {
-               var userEmail = User.Identity.Name;
+               try
+               {
+                    var userEmail = User.Identity.Name;
 
-               var manager = new LibraryManager();
-               var command = new ReserveBookCommand(manager, id, userEmail);
+                    var manager = new LibraryManager();
+                    var command = new ReserveBookCommand(manager, id, userEmail);
 
-               command.Undo();
+                    command.Undo();
 
-               TempData["Success"] = "Reservation cancelled successfully.";
+                    TempData["Success"] = "Reservation cancelled successfully.";
+               }
+               catch
+               {
+                    TempData["Error"] = "Reservation could not be cancelled.";
+               }
 
                return RedirectToAction("MyReservations");
           }
@@ -546,6 +588,7 @@ namespace OnlineLibrary.Controllers
 
                     var loansFromDb = db.Loans
                         .Include("Book")
+                        .Include("Book.Author")
                         .Where(l => l.UserEmail == userEmail)
                         .OrderByDescending(l => l.BorrowDate)
                         .ToList();
@@ -721,6 +764,49 @@ namespace OnlineLibrary.Controllers
 
                     ViewBag.Type = type.ToUpper();
                     ViewBag.FilePath = filePath;
+
+                    return View();
+               }
+          }
+          public ActionResult Visitor()
+          {
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var books = db.Books
+                        .Include("Category")
+                        .ToList();
+
+                    var resources = new List<ILibraryResource>();
+
+                    foreach (var book in books)
+                    {
+                         var format = book.FormatType != null ? book.FormatType.ToLower() : "";
+
+                         if (format.Contains("audio"))
+                         {
+                              resources.Add(new Audiobook(book.Title, book.Pages > 0 ? book.Pages * 2 : 120));
+                         }
+                         else if (format.Contains("magazine"))
+                         {
+                              resources.Add(new Magazine(book.Title, book.Id));
+                         }
+                         else
+                         {
+                              resources.Add(new Ebook(book.Title, book.Pages > 0 ? book.Pages / 10 : 10));
+                         }
+                    }
+
+                    var sizeVisitor = new SizeCalculatorVisitor();
+                    var previewVisitor = new PreviewVisitor();
+
+                    foreach (var resource in resources)
+                    {
+                         resource.Accept(sizeVisitor);
+                         resource.Accept(previewVisitor);
+                    }
+
+                    ViewBag.SizeResults = sizeVisitor.Results;
+                    ViewBag.PreviewResults = previewVisitor.Results;
 
                     return View();
                }

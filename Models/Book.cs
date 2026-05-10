@@ -36,5 +36,6 @@ namespace OnlineLibrary.Models
           public int? AuthorId { get; set; }
           public int Pages { get; set; }
           public virtual Author Author { get; set; }
+          public string FormatType { get; set; }
      }
 }

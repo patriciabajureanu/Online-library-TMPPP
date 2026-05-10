@@ -24,5 +24,9 @@
           public string Publisher => _format.Publisher;
           public int PublishedYear { get; set; }
           public string CategoryName { get; set; }
+          public int AvailableCopies { get; set; }
+          public int TotalCopies { get; set; }
+          public int AuthorId { get; set; }
+          public string BookType { get; set; }
      }
 }

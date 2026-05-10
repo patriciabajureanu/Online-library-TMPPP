@@ -1,42 +1,81 @@
 ﻿@{
-    ViewBag.Title = "Mediator Pattern";
-    var books = ViewBag.Results as List<OnlineLibrary.Models.Book>;
-    var categories = ViewBag.Categories as List<string>;
+     ViewBag.Title = "Search Books";
+     var books = ViewBag.Results as List<OnlineLibrary.Models.Book>;
+     var categories = ViewBag.Categories as List<string>;
 }
 
-<div class="container mt-5">
-    <h2 class="mb-4">Mediator Pattern - Search & Filter</h2>
+<section id="mediator-search-page">
+     <div class="container">
 
-    <!-- Search -->
-    <form method="get" class="mb-3">
-        <input type="text" name="searchText" placeholder="Search books..."
-               class="form-control mb-2" />
+          <div class="mediator-header text-center">
+               <span class="mediator-label">Search Library</span>
+               <h2>Find Your Next Book</h2>
+               <p>Search and filter books by title or category.</p>
+          </div>
 
-        <button class="btn btn-primary">Search</button>
-    </form>
+          <form method="get" class="mediator-search-form">
+               <input type="text"
+                      name="searchText"
+                      placeholder="Search books..."
+                      class="mediator-search-input" />
 
-    <!-- Filter -->
-    <div class="mb-4">
-        <h5>Filter by Category:</h5>
+               <button type="submit" class="mediator-search-btn">
+                    Search
+               </button>
+          </form>
 
-        @foreach (var cat in categories)
-        {
-            <a href="@Url.Action("Mediator", new { category = cat })"
-               class="btn btn-outline-secondary btn-sm m-1">
-                @cat
-            </a>
-        }
-    </div>
+          <div class="mediator-filter-box">
+               <h5>Filter by Category</h5>
 
-    <!-- Results -->
-    <div class="row">
-        @foreach (var book in books)
-        {
-            <div class="col-md-3 mb-3">
-                <div class="p-3 border rounded shadow-sm">
-                    <h6>@book.Title</h6>
-                    <small>@(book.Category != null ? book.Category.Name : "No category")</small>                </div>
-            </div>
-        }
-    </div>
-</div>    
+               <div class="mediator-category-list">
+                    @if (categories != null)
+                    {
+                         foreach (var cat in categories)
+                         {
+                              <a href="@Url.Action("Mediator", new { category = cat })"
+                                 class="mediator-category-btn">
+                                   @cat
+                              </a>
+                         }
+                    }
+               </div>
+          </div>
+
+          <div class="row">
+               @if (books != null && books.Any())
+               {
+                    foreach (var book in books)
+                    {
+                         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                              <div class="mediator-book-card">
+
+                                   <div class="mediator-book-image-wrap">
+                                        <img src="@(string.IsNullOrEmpty(book.CoverImageUrl) ? Url.Content("~/Content/Images/default.jpg") : book.CoverImageUrl)"
+                                             alt="@book.Title"
+                                             class="mediator-book-image" />
+                                   </div>
+
+                                   <div class="mediator-book-content">
+                                        <h3>@book.Title</h3>
+
+                                        <span>
+                                             @(book.Category != null ? book.Category.Name : "No category")
+                                        </span>
+                                   </div>
+
+                              </div>
+                         </div>
+                    }
+               }
+               else
+               {
+                    <div class="col-12">
+                         <div class="mediator-empty">
+                              No books found.
+                         </div>
+                    </div>
+               }
+          </div>
+
+     </div>
+</section>

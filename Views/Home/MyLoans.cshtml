@@ -18,12 +18,7 @@
           <button onclick="closeToast()">×</button>
      </div>
 }
-<div class="text-center mt-3">
-     <a href="@Url.Action("State", "Home")"
-        class="btn btn-outline-accent btn-accent-arrow px-4 py-2">
-          Membership State<i class="icon icon-ns-arrow-right"></i>
-     </a>
-</div>
+
 <section id="my-loans" class="bookshelf py-5 my-5">
      <div class="container">
 
@@ -46,117 +41,219 @@
           }
           else
           {
-               <div class="product-list">
-                    <div class="row">
+               
+                    var activeLoans = Model.Where(x => !x.IsReturned).ToList();
+                    var returnedLoans = Model.Where(x => x.IsReturned).ToList();
+              
 
-                         @foreach (var loan in Model)
-                         {
-                              <div class="col-md-3 mb-4">
-                                   <div class="product-item borrow-book-card">
+               if (activeLoans.Any())
+               {
+                    <div class="loan-group">
 
-                                        <figure class="product-style">
-                                             <img src="@(loan.Book == null || string.IsNullOrEmpty(loan.Book.CoverImageUrl) ? Url.Content("~/Content/Images/default.png") : loan.Book.CoverImageUrl)"
-                                                  alt="@(loan.Book == null ? "Book" : loan.Book.Title)"
-                                                  class="product-item borrow-book-image">
-                                        </figure>
+                         <div class="loan-group-header">
+                              <h3>Active Loans</h3>
+                              <span>@activeLoans.Count books</span>
+                         </div>
 
-                                        <figcaption>
-                                             <h3>@(loan.Book == null ? "Unknown Book" : loan.Book.Title)</h3>
+                         <div class="row">
 
-                                             <div>
-                                                  <strong>Borrowed:</strong>
-                                                  @loan.BorrowDate.ToString("dd.MM.yyyy")
+                              @foreach (var loan in activeLoans)
+                              {
+                                   <div class="col-lg-6 mb-4">
+
+                                        <div class="loan-list-card active-card">
+
+                                             <div class="loan-cover">
+                                                  <img src="@(loan.Book == null || string.IsNullOrEmpty(loan.Book.CoverImageUrl)
+                                        ? Url.Content("~/Content/Images/default.png")
+                                        : loan.Book.CoverImageUrl)"
+                                                       alt="Book"
+                                                       class="loan-cover-image">
                                              </div>
 
-                                             <div>
-                                                  <strong>User Type:</strong>
-                                                  @(string.IsNullOrEmpty(loan.UserType) ? "Unknown" : loan.UserType)
-                                             </div>
+                                             <div class="loan-info">
 
-                                             @if (loan.DueDate != null)
-                                             {
-                                                  <div>
-                                                       <strong>Due Date:</strong>
-                                                       @loan.DueDate.Value.ToString("dd.MM.yyyy")
-                                                  </div>
-                                             }
+                                                  <h4>
+                                                       @(loan.Book == null ? "Unknown Book" : loan.Book.Title)
+                                                  </h4>
 
-                                             <div>
-                                                  <strong>Status:</strong>
-
-                                                  @if (loan.IsReturned)
+                                                  @if (loan.Book != null && loan.Book.Author != null)
                                                   {
-                                                       <span class="text-success">Returned</span>
+                                                       <div class="loan-author">
+                                                            @loan.Book.Author.FullName
+                                                       </div>
                                                   }
-                                                  else if (loan.DueDate.HasValue && loan.DueDate.Value < DateTime.Now)
-                                                  {
-                                                       <span class="text-danger">OVERDUE</span>
-                                                  }
-                                                  else
-                                                  {
-                                                       <span class="text-warning">Active</span>
-                                                  }
-                                             </div>
 
-                                             @if (loan.ReturnDate != null)
-                                             {
-                                                  <div>
-                                                       <strong>Returned:</strong>
-                                                       @loan.ReturnDate.Value.ToString("dd.MM.yyyy")
+                                                  <div class="loan-meta">
+
+                                                       <div>
+                                                            <span>Borrowed</span>
+                                                            <strong>@loan.BorrowDate.ToString("dd MMM yyyy")</strong>
+                                                       </div>
+
+                                                       @if (loan.DueDate.HasValue)
+                                                       {
+                                                            <div>
+                                                                 <span>Due Date</span>
+                                                                 <strong>@loan.DueDate.Value.ToString("dd MMM yyyy")</strong>
+                                                            </div>
+                                                       }
+
+                                                       <div>
+                                                            <span>Status</span>
+
+                                                            @if (loan.DueDate.HasValue && loan.DueDate.Value < DateTime.Now)
+                                                            {
+                                                                 <strong class="loan-status overdue">
+                                                                      OVERDUE
+                                                                 </strong>
+                                                            }
+                                                            else
+                                                            {
+                                                                 <strong class="loan-status active">
+                                                                      ACTIVE
+                                                                 </strong>
+                                                            }
+                                                       </div>
+
                                                   </div>
-                                             }
 
-                                             @if (!loan.IsReturned && loan.Book != null)
-                                             {
-                                                  var resourceType = string.IsNullOrEmpty(loan.Book.BookType)
-                                                       ? "ebook"
-                                                       : loan.Book.BookType.ToLower();
+                                                  @{
+                                                       var resourceType =
+                                                            string.IsNullOrEmpty(loan.Book?.BookType)
+                                                            ? "ebook"
+                                                            : loan.Book.BookType.ToLower();
+                                                  }
 
-                                                  <div class="bridge-actions mt-3">
+                                             <div class="loan-actions">
 
-                                                       <a href="@Url.Action("AccessLoanResource", "Home", new { resourceType = resourceType, deliveryType = "download", id = loan.Book.Id })"
-                                                          class="bridge-btn">
-                                                            Download
-                                                       </a>
+                                                  <a href="@Url.Action("Read", "Home", new { id = loan.Book.Id })"
+                                                     class="mini-loan-btn filled-btn">
+                                                       Read
+                                                  </a>
 
-                                                       <a href="@Url.Action("AccessLoanResource", "Home", new { resourceType = resourceType, deliveryType = "streaming", id = loan.Book.Id })"
-                                                          class="bridge-btn">
-                                                            Stream
-                                                       </a>
+                                                  <div class="loan-resource-dropdown">
+                                                       <button type="button" class="mini-loan-btn resource-toggle">
+                                                            Resources
+                                                       </button>
 
-                                                       <a href="@Url.Action("AccessLoanResource", "Home", new { resourceType = resourceType, deliveryType = "cloud", id = loan.Book.Id })"
-                                                          class="bridge-btn">
-                                                            Cloud
-                                                       </a>
-                                                       <a href="@Url.Action("Read", "Home", new { id = loan.Book.Id })"
-                                                          class="borrow-card-btn return-card-btn text-center d-block">
-                                                            Read
-                                                       </a>
+                                                       <div class="resource-menu">
+                                                            <a href="@Url.Action("AccessLoanResource", "Home", new {
+                    resourceType = resourceType,
+                    deliveryType = "download",
+                    id = loan.Book.Id
+               })">
+                                                                 Download
+                                                            </a>
+
+                                                            <a href="@Url.Action("AccessLoanResource", "Home", new {
+                    resourceType = resourceType,
+                    deliveryType = "streaming",
+                    id = loan.Book.Id
+               })">
+                                                                 Stream
+                                                            </a>
+
+                                                            <a href="@Url.Action("AccessLoanResource", "Home", new {
+                    resourceType = resourceType,
+                    deliveryType = "cloud",
+                    id = loan.Book.Id
+               })">
+                                                                 Cloud
+                                                            </a>
+                                                       </div>
                                                   </div>
-                                             }
 
-
-                                             @if (!loan.IsReturned)
-                                             {
-                                                  using (Html.BeginForm("ReturnBook", "Home", FormMethod.Post))
+                                                  @using (Html.BeginForm("ReturnBook", "Home", FormMethod.Post))
                                                   {
                                                        @Html.AntiForgeryToken()
                                                        <input type="hidden" name="id" value="@loan.Id" />
 
-                                                       <button type="submit" class="borrow-card-btn return-card-btn">
-                                                            Return Book
+                                                       <button type="submit" class="mini-loan-btn danger-btn">
+                                                            Return
                                                        </button>
                                                   }
-                                             }
 
-                                        </figcaption>
+                                             </div>
+
+                                             </div>
+
+                                        </div>
 
                                    </div>
-                              </div>
-                         }
+                              }
+
+                         </div>
 
                     </div>
-               </div>
+               }
+
+               if (returnedLoans.Any())
+               {
+                    <div class="loan-group mt-5">
+
+                         <div class="loan-group-header">
+                              <h3>Returned Books</h3>
+                              <span>@returnedLoans.Count books</span>
+                         </div>
+
+                         <div class="row">
+
+                              @foreach (var loan in returnedLoans)
+                              {
+                                   <div class="col-lg-6 mb-4">
+
+                                        <div class="loan-list-card returned-card">
+
+                                             <div class="loan-cover">
+                                                  <img src="@(loan.Book == null || string.IsNullOrEmpty(loan.Book.CoverImageUrl)
+                                        ? Url.Content("~/Content/Images/default.png")
+                                        : loan.Book.CoverImageUrl)"
+                                                       alt="Book"
+                                                       class="loan-cover-image">
+                                             </div>
+
+                                             <div class="loan-info">
+
+                                                  <h4>
+                                                       @(loan.Book == null ? "Unknown Book" : loan.Book.Title)
+                                                  </h4>
+
+                                                  <div class="loan-meta">
+
+                                                       <div>
+                                                            <span>Borrowed</span>
+                                                            <strong>@loan.BorrowDate.ToString("dd MMM yyyy")</strong>
+                                                       </div>
+
+                                                       @if (loan.ReturnDate.HasValue)
+                                                       {
+                                                            <div>
+                                                                 <span>Returned</span>
+                                                                 <strong>@loan.ReturnDate.Value.ToString("dd MMM yyyy")</strong>
+                                                            </div>
+                                                       }
+
+                                                       <div>
+                                                            <span>Status</span>
+                                                            <strong class="loan-status returned">
+                                                                 RETURNED
+                                                            </strong>
+                                                       </div>
+
+                                                  </div>
+
+                                             </div>
+
+                                        </div>
+
+                                   </div>
+                              }
+
+                         </div>
+
+                    </div>
+               }
           }
 
      </div>
