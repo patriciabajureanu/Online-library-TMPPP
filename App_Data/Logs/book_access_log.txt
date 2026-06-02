@@ -34,3 +34,10 @@
 [5/8/2026 5:10:28 PM] User: bajureanu.patricia@gmail.com accessed book ID: 3. Result: Book content loaded: Design Patterns
 [5/8/2026 5:16:11 PM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Access denied. You must borrow this book first.
 [5/8/2026 5:17:10 PM] User: bajureanu.patricia@gmail.com accessed book ID: 5. Result: Access denied. You must borrow this book first.
+[5/10/2026 2:54:16 PM] User: patricia.bajureanu@gmail.com accessed book ID: 5. Result: Access denied. You must borrow this book first.
+[5/10/2026 2:54:26 PM] User: bajureanu.patricia@gmail.com accessed book ID: 3. Result: Book content loaded: Design Patterns
+[5/10/2026 8:45:21 PM] User: bajureanu.patricia@gmail.com accessed book ID: 9. Result: Access denied. You must borrow this book first.
+[5/10/2026 8:45:32 PM] User: bajureanu.patricia@gmail.com accessed book ID: 3. Result: Book content loaded: Design Patterns
+[5/10/2026 8:45:45 PM] User: bajureanu.patricia@gmail.com accessed book ID: 3. Result: Book content loaded: Design Patterns
+[5/11/2026 10:23:59 AM] User: bajureanu.patricia@gmail.com accessed book ID: 1. Result: Book content loaded: Clean Code
+[5/11/2026 11:01:42 AM] User: bajureanu.patricia@gmail.com accessed book ID: 2. Result: Book content loaded: The Pragmatic Programmer

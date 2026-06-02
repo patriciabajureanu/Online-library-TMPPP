@@ -1,0 +1,16 @@
+Title,Author,Category,Year,AvailableCopies
+"Clean Code","Robert C. Martin","Software Engineering",2008,6
+"The Pragmatic Programmer","Andrew Hunt and David Thomas","Fiction",1999,5
+"Design Patterns","Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides","Science",1994,4
+"Refactoring","Martin Fowler","Software Engineering",1999,6
+"C# in Depth","Jon Skeet","Fiction",2019,9
+"Introduction to Algorithms","Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein","History",2009,5
+"Head First Design Patterns","Eric Freeman, Elisabeth Robson, Bert Bates, Kathy Sierra","Science",2004,6
+"You Don’t Know JS","Kyle Simpson","Programming",2015,7
+"Eloquent JavaScript","Marijn Haverbeke","Programming",2018,8
+"Cracking the Coding Interview","Gayle Laakmann McDowell","Technology",2015,10
+"Artificial Intelligence: A Modern Approach","Stuart Russell and Peter Norvig","Artificial Intelligence",2010,4
+"Deep Learning","Ian Goodfellow, Yoshua Bengio, Aaron Courville","Artificial Intelligence",2016,3
+"Python Crash Course","Eric Matthes","Programming",2019,6
+"The Clean Coder","Robert C. Martin","Software Engineering",2011,5
+"Working Effectively with Legacy Code","Michael Feathers","Software Engineering",2004,4

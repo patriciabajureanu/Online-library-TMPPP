@@ -1,35 +1,44 @@
 ﻿@{
      ViewBag.Title = "Visitor Pattern";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+
      var sizeResults = ViewBag.SizeResults as List<string>;
-     var previewResults = ViewBag.PreviewResults as List<string>;
 }
 
-<div class="container mt-5">
-     <h2 class="mb-4">Visitor Pattern - Library Resources</h2>
+<section id="visitor-pattern">
+     <div class="container">
 
-     <div class="card shadow-sm p-4 mb-4">
-          <h4>Size Calculator Visitor</h4>
+          <div class="section-header align-center visitor-header">
+               <div class="title">
+                    <span>Visitor Pattern</span>
+               </div>
 
-          <ul class="list-group mt-3">
-               @foreach (var item in sizeResults)
-               {
-                    <li class="list-group-item">
-                         @item
-                    </li>
-               }
-          </ul>
+               <h2 class="section-title">Library Resource Size Calculator</h2>
+
+               <p class="visitor-subtitle">
+                    The Visitor pattern is used to calculate resource sizes without changing the resource classes.
+               </p>
+          </div>
+
+          <div class="visitor-card visitor-single-card">
+
+               <div class="visitor-card-header">
+                    <span>Size Calculator Visitor</span>
+                    <h3>Resource Size Results</h3>
+                    <p>
+                         Each library resource accepts the visitor, and the visitor applies the correct calculation
+                         depending on the resource type.
+                    </p>
+               </div>
+
+               <ul class="visitor-list">
+                    @foreach (var item in sizeResults)
+                    {
+                         <li>@item</li>
+                    }
+               </ul>
+
+          </div>
+
      </div>
-
-     <div class="card shadow-sm p-4">
-          <h4>Preview Visitor</h4>
-
-          <ul class="list-group mt-3">
-               @foreach (var item in previewResults)
-               {
-                    <li class="list-group-item">
-                         @item
-                    </li>
-               }
-          </ul>
-     </div>
-</div>
+</section>

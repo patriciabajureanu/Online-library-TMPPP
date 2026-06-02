@@ -1,31 +1,57 @@
-﻿@using OnlineLibrary.State
-@{
-     ViewBag.Title = "State Pattern";
-     var membership = ViewBag.Membership as LibraryMembership;
-     var actions = ViewBag.Actions as List<string>;
-}
+﻿@model IEnumerable<OnlineLibrary.Models.MembershipStateViewModel>
 
-<div class="container mt-5">
-     <h2 class="mb-4">State Pattern - Library Membership</h2>
+<section id="membership-state-page">
+     <div class="container">
 
-     <div class="card shadow-sm p-4">
-          <h4>Member: @membership.UserEmail</h4>
+          <div class="section-header align-center">
+               <div class="title">
+                    <span>Admin Overview</span>
+               </div>
 
-          <div class="alert alert-info mt-3">
-               Current State: <strong>@membership.GetStateName()</strong>
+               <h2 class="section-title">Membership State</h2>
           </div>
 
-          <hr />
+          <div class="membership-table-wrap">
 
-          <h5>State transitions:</h5>
+               <table class="membership-table">
 
-          <ul class="list-group mt-3">
-               @foreach (var action in actions)
-               {
-                    <li class="list-group-item">
-                         @action
-                    </li>
-               }
-          </ul>
+                    <thead>
+                         <tr>
+                              <th>User</th>
+                              <th>Email</th>
+                              <th>Role</th>
+                              <th>Active Loans</th>
+                              <th>Status</th>
+                         </tr>
+                    </thead>
+
+                    <tbody>
+
+                         @foreach (var user in Model)
+                         {
+                              <tr>
+                                   <td>@user.Username</td>
+                                   <td>@user.Email</td>
+                                   <td>@user.Role</td>
+                                   <td>@user.ActiveLoans</td>
+
+                                   <td>
+                                        <span class="membership-badge
+                                             @(user.MembershipState == "Active" ? "active" :
+                                               user.MembershipState == "Limit Reached" ? "limit" :
+                                               "inactive")">
+
+                                             @user.MembershipState
+                                        </span>
+                                   </td>
+                              </tr>
+                         }
+
+                    </tbody>
+
+               </table>
+
+          </div>
+
      </div>
-</div>
+</section>

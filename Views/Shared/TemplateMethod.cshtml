@@ -1,42 +1,59 @@
 ﻿@{
      ViewBag.Title = "Template Method";
+     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5">
-     <h2 class="mb-4">Template Method - Library Report Generator</h2>
+<section id="template-method">
+     <div class="container">
 
-     <div class="card shadow-sm p-4">
-          <p>
-               Report is generated from real database books.
-          </p>
-
-          <ol>
-               <li>FetchData - reads books, authors and categories from DB</li>
-               <li>FormatReport - prepares report content</li>
-               <li>ExportReport - exports as PDF or CSV</li>
-          </ol>
-
-          <div class="mb-3">
-               <a href="@Url.Action("TemplateMethod", "Home", new { type = "pdf" })"
-                  class="btn btn-outline-primary">
-                    Generate PDF Report
-               </a>
-
-               <a href="@Url.Action("TemplateMethod", "Home", new { type = "csv" })"
-                  class="btn btn-outline-success">
-                    Generate CSV Report
-               </a>
-          </div>
-
-          @if (ViewBag.FilePath != null)
-          {
-               <div class="alert alert-success mt-3">
-                    @ViewBag.Type report generated successfully from database.
+          <div class="section-header align-center template-header">
+               <div class="title">
+                    <span>Template Method</span>
                </div>
 
-               <a href="@ViewBag.FilePath" class="btn btn-warning" download>
-                    Download Report
-               </a>
-          }
+               <h2 class="section-title">Library Report Generator</h2>
+
+               <p class="template-subtitle">
+                    Generate structured PDF or CSV reports using real books, authors and categories from the database.
+               </p>
+          </div>
+
+          <div class="template-export-card">
+
+               <div class="template-export-header">
+                    <span>Database Reports</span>
+                    <h3>Choose Export Format</h3>
+                    <p>Select the format you want and generate a report based on real library data.</p>
+               </div>
+
+               <div class="template-actions">
+                    <a href="@Url.Action("TemplateMethod", "Home", new { type = "pdf" })"
+                       class="template-btn">
+                         Generate PDF Report
+                    </a>
+
+                    <a href="@Url.Action("TemplateMethod", "Home", new { type = "csv" })"
+                       class="template-btn">
+                         Generate CSV Report
+                    </a>
+               </div>
+
+               @if (ViewBag.FilePath != null)
+               {
+                    <div class="template-success">
+                         <strong>@ViewBag.Type Report</strong> generated successfully from database.
+                    </div>
+
+                    <div class="template-download-wrap">
+                         <a href="@ViewBag.FilePath"
+                            class="template-download-btn"
+                            download>
+                              Download Report
+                         </a>
+                    </div>
+               }
+
+          </div>
+
      </div>
-</div>
+</section>

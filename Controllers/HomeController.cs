@@ -167,14 +167,41 @@ namespace OnlineLibrary.Controllers
           }
           [Authorize]
           [HttpPost]
+          [ValidateAntiForgeryToken]
           public ActionResult BorrowBookConfirm(int id)
           {
-               string userId = User.Identity.Name;
+               string userEmail = User.Identity.Name;
+
+               using (var db = new OnlineLibraryDbContext())
+               {
+                    var activeLoansCount = db.Loans
+                         .Count(l => l.UserEmail == userEmail && !l.IsReturned);
+
+                    if (activeLoansCount >= 3)
+                    {
+                         TempData["Error"] = "You cannot borrow more than 3 active books.";
+                         return RedirectToAction("BorrowBook", new { id = id });
+                    }
+
+                    var book = db.Books.FirstOrDefault(b => b.Id == id);
+
+                    if (book == null)
+                    {
+                         TempData["Error"] = "Book not found.";
+                         return RedirectToAction("Borrow");
+                    }
+
+                    if (book.AvailableCopies <= 0)
+                    {
+                         TempData["Error"] = "This book is not available.";
+                         return RedirectToAction("BorrowBook", new { id = id });
+                    }
+               }
 
                var facade = new LibraryFacade();
-               var result = facade.BorrowBook(userId, id);
+               var result = facade.BorrowBook(userEmail, id);
 
-               TempData["Success"] = "📚 Book borrowed successfully!";
+               TempData["Success"] = "Book borrowed successfully!";
 
                return RedirectToAction("MyLoans");
           }
@@ -193,7 +220,7 @@ namespace OnlineLibrary.Controllers
 
                TempData["Success"] = "📌 Reservation successful!";
 
-               return RedirectToAction("MyLoans");
+               return RedirectToAction("MyReservations");
           }
           [Authorize]
           public ActionResult MyReservations()
@@ -684,30 +711,46 @@ namespace OnlineLibrary.Controllers
                     return View();
                }
           }
+          [Authorize]
           public ActionResult State()
           {
                using (var db = new OnlineLibraryDbContext())
                {
-                    string email = User.Identity.IsAuthenticated
-                        ? User.Identity.Name
-                        : "guest@library.com";
+                    var users = db.Users.ToList();
 
-                    var membership = new LibraryMembership(email, db);
+                    var result = users.Select(user =>
+                    {
+                         var activeLoans = db.Loans
+                              .Count(l =>
+                                   l.UserEmail == user.Email &&
+                                   !l.IsReturned);
 
-                    var actions = new List<string>();
+                         string membershipState;
 
-                    actions.Add("Initial state: " + membership.GetStateName());
+                         if (activeLoans == 0)
+                         {
+                              membershipState = "Inactive";
+                         }
+                         else if (activeLoans < 3)
+                         {
+                              membershipState = "Active";
+                         }
+                         else
+                         {
+                              membershipState = "Limit Reached";
+                         }
 
-                    actions.Add(membership.Suspend());
-                    actions.Add("Current state: " + membership.GetStateName());
+                         return new MembershipStateViewModel
+                         {
+                              Username = user.Username,
+                              Email = user.Email,
+                              Role = user.Role,
+                              ActiveLoans = activeLoans,
+                              MembershipState = membershipState
+                         };
+                    }).ToList();
 
-                    actions.Add(membership.Activate());
-                    actions.Add("Current state: " + membership.GetStateName());
-
-                    ViewBag.Membership = membership;
-                    ViewBag.Actions = actions;
-
-                    return View();
+                    return View(result);
                }
           }
           public ActionResult Mediator(string searchText = "", string category = "")
@@ -747,8 +790,13 @@ namespace OnlineLibrary.Controllers
                     return View();
                }
           }
-          public ActionResult TemplateMethod(string type = "pdf")
+          public ActionResult TemplateMethod(string type = null)
           {
+               if (string.IsNullOrEmpty(type))
+               {
+                    return View();
+               }
+
                using (var db = new OnlineLibraryDbContext())
                {
                     string reportId = DateTime.Now.ToString("yyyyMMddHHmmss");

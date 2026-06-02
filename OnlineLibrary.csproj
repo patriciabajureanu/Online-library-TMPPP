@@ -614,6 +614,7 @@
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="FactoryMethod\PrintedBook.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\MembershipStateViewModel.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\ProxyDemoViewModel.cs" />
     <Compile Include="Models\ReadingProgress.cs" />
